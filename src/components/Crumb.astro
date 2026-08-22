@@ -1,0 +1,8 @@
+---
+const { trail } = Astro.props as { trail: { href?: string; label: string }[] };
+---
+<p class="crumb">
+  {trail.map((t, i) => (
+    <>{i > 0 && <span>/</span>}{t.href ? <a href={t.href}>{t.label}</a> : t.label}</>
+  ))}
+</p>

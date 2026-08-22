@@ -1,0 +1,78 @@
+---
+import Detail from './Detail.astro';
+
+type Day = { rest?: true; km?: number; text?: string; detail?: any[] };
+const DAYS = [
+  ['mon', 'Mon'], ['tue', 'Tue'], ['wed', 'Wed'], ['thu', 'Thu'],
+  ['fri', 'Fri'], ['sat', 'Sat'], ['sun', 'Sun'],
+] as const;
+
+/** Role plus the description from the original plan — each day says why it exists. */
+const ROLE: Record<string, [string, string]> = {
+  mon: ['Easy', 'Start the week moving · + strides most weeks'],
+  tue: ['Quality', 'Hills → threshold → marathon pace'],
+  wed: ['Rest', '+ strength · lower & vertical pull'],
+  thu: ['Medium-long', 'The session that separates this plan from a novice one'],
+  fri: ['Rest', '+ strength · upper & hips'],
+  sat: ['Long run', 'Capped at 3 hours regardless of km'],
+  sun: ['Recovery', 'Slowest run of the week. Genuinely.'],
+};
+const ONRAMP_ROLE: Record<string, [string, string]> = {
+  mon: ['Easy', 'All of it easy · run/walk if you need to'],
+  tue: ['Easy', 'Run/walk counts toward the distance'],
+  wed: ['Easy', 'Third run of the on-ramp week'],
+  thu: ['Rest', 'No running'],
+  fri: ['Rest', 'No running'],
+  sat: ['Long run', 'The week’s longest · conversational throughout'],
+  sun: ['Recovery', 'Slowest run of the week. Genuinely.'],
+};
+
+const { days, onramp = false, strength = 0, markToday = false } = Astro.props as {
+  days: Record<string, Day>;
+  onramp?: boolean;
+  strength?: number;
+  markToday?: boolean;
+};
+
+const role = onramp ? ONRAMP_ROLE : ROLE;
+
+/**
+ * Block weeks: the plan reserves Wed and Fri, both already rest days.
+ * On-ramp weeks: Wednesday is a *running* day, so lifts go on whichever days
+ * are actually free, taking them in order until the week's dose is met.
+ */
+const restDays = DAYS.map(([k]) => k).filter((k) => days[k]?.rest);
+const liftDays = onramp
+  ? restDays.slice(0, strength)
+  : ['wed', 'fri'].slice(0, strength);
+---
+<div class="week">
+  {DAYS.map(([key, label]) => {
+    const d = days[key];
+    const isRest = !!d?.rest;
+    const lift = liftDays.includes(key);
+    return (
+      <div
+        class={`day${isRest ? ' day--rest' : ''}${lift ? ' day--lift' : ''}`}
+        data-day={markToday ? key : undefined}
+      >
+        <h5>{label}</h5>
+        <p>
+          {isRest ? (lift ? 'Rest + strength' : 'Rest') : <>{d.km ? `${d.km} km` : d.text}</>}
+          <span class="sub">
+            {isRest
+              ? (lift ? 'Strength session' : 'No running')
+              : <>{role[key][0]}{d.detail?.length ? <> · <Detail tokens={d.detail} /></> : null}<br />{role[key][1]}</>}
+          </span>
+        </p>
+      </div>
+    );
+  })}
+</div>
+
+{markToday && (
+  <script>
+    const key = ['sun','mon','tue','wed','thu','fri','sat'][new Date().getDay()];
+    document.querySelector(`.day[data-day="${key}"]`)?.classList.add('day--today');
+  </script>
+)}

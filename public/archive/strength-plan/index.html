@@ -1,0 +1,1498 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strength Plan — Marathon Block</title>
+<style>
+  :root {
+    --ground: #EDEEEA;
+    --surface: #F8F9F6;
+    --surface-2: #E3E6E0;
+    --ink: #15191B;
+    --ink-2: #4E585B;
+    --ink-3: #7B858A;
+    --rule: #CFD3CD;
+    --rule-strong: #9DA5A2;
+    --accent: #23477E;
+    --accent-ink: #1B3A6B;
+    --accent-soft: #DCE3EF;
+    --caution: #8A6206;
+    --caution-soft: #F0E8CF;
+    --stop: #8E2318;
+    --stop-soft: #F3DFDA;
+    --go: #23604A;
+    --go-soft: #DBE9E2;
+
+    --easy: #2E7D57;
+    --easy-soft: #D9EBE2;
+    --mp: #B0851C;
+    --mp-soft: #F2E8CC;
+    --hard: #BF6320;
+    --hard-soft: #F5E1D2;
+    --max: #9E3226;
+    --max-soft: #F2DBD6;
+
+    --font-display: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-body: "Iowan Old Style", Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+    --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Consolas, monospace;
+
+    --step-0: 1.0625rem;
+    --step-1: 1.25rem;
+    --step-2: 1.5rem;
+    --step-3: 2rem;
+    --step-4: 3.25rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0F1316;
+      --surface: #161B1F;
+      --surface-2: #1E252A;
+      --ink: #E6EAEC;
+      --ink-2: #9CA7AC;
+      --ink-3: #6E797E;
+      --rule: #2A3238;
+      --rule-strong: #48545B;
+      --accent: #86ABE8;
+      --accent-ink: #A6C4F2;
+      --accent-soft: #1A2740;
+      --caution: #D9AB4A;
+      --caution-soft: #2E2716;
+      --stop: #E28C7E;
+      --stop-soft: #33201C;
+      --go: #6FBF9B;
+      --go-soft: #163026;
+
+      --easy: #62BF92;
+      --easy-soft: #142C22;
+      --mp: #DDB44F;
+      --mp-soft: #2C2515;
+      --hard: #E8925A;
+      --hard-soft: #301F13;
+      --max: #E0776A;
+      --max-soft: #301A16;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #0F1316;
+    --surface: #161B1F;
+    --surface-2: #1E252A;
+    --ink: #E6EAEC;
+    --ink-2: #9CA7AC;
+    --ink-3: #6E797E;
+    --rule: #2A3238;
+    --rule-strong: #48545B;
+    --accent: #86ABE8;
+    --accent-ink: #A6C4F2;
+    --accent-soft: #1A2740;
+    --caution: #D9AB4A;
+    --caution-soft: #2E2716;
+    --stop: #E28C7E;
+    --stop-soft: #33201C;
+    --go: #6FBF9B;
+    --go-soft: #163026;
+
+    --easy: #62BF92;
+    --easy-soft: #142C22;
+    --mp: #DDB44F;
+    --mp-soft: #2C2515;
+    --hard: #E8925A;
+    --hard-soft: #301F13;
+    --max: #E0776A;
+    --max-soft: #301A16;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: var(--step-0);
+    line-height: 1.62;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1080px; margin-inline: auto; padding: 0 clamp(1.15rem, 4vw, 3rem) 6rem; }
+  .prose { max-width: 68ch; }
+
+  p { margin: 0 0 1.05em; }
+  p:last-child { margin-bottom: 0; }
+  a { color: var(--accent-ink); text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .masthead { padding: clamp(3rem, 8vw, 5.5rem) 0 0; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 1.4rem;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--step-4);
+    line-height: 0.94;
+    letter-spacing: -0.032em;
+    text-transform: uppercase;
+    text-wrap: balance;
+    margin: 0 0 1.1rem;
+    max-width: 15ch;
+  }
+
+  .standfirst { font-size: var(--step-1); line-height: 1.5; color: var(--ink-2); max-width: 58ch; margin: 0 0 2.4rem; }
+
+  .statbar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 0 0 3.5rem;
+  }
+  .stat { background: var(--surface); padding: 0.95rem 1rem 1.05rem; }
+  .stat dt {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 0.3rem;
+  }
+  .stat dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.45rem;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .stat dd small { font-size: 0.72rem; font-weight: 600; color: var(--ink-2); letter-spacing: 0; }
+
+  section { margin-bottom: 4rem; }
+
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--step-3);
+    line-height: 1.05;
+    letter-spacing: -0.024em;
+    text-transform: uppercase;
+    text-wrap: balance;
+    margin: 0 0 0.35rem;
+    padding-top: 1.2rem;
+    border-top: 2px solid var(--ink);
+  }
+
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 1.6rem;
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-1);
+    letter-spacing: -0.012em;
+    text-transform: uppercase;
+    margin: 2.4rem 0 0.8rem;
+    text-wrap: balance;
+  }
+
+  h4 {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.74rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin: 1.8rem 0 0.6rem;
+  }
+
+  ul, ol { margin: 0 0 1.05em; padding-left: 1.2em; }
+  li { margin-bottom: 0.42em; }
+  li:last-child { margin-bottom: 0; }
+  strong { font-weight: 700; }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--surface-2);
+    padding: 0.1em 0.36em;
+    border-radius: 2px;
+  }
+
+  .note {
+    border-left: 4px solid var(--rule-strong);
+    background: var(--surface);
+    padding: 1.15rem 1.35rem;
+    margin: 1.8rem 0;
+    max-width: 72ch;
+  }
+  .note .label {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .note--stop { border-left-color: var(--stop); background: var(--stop-soft); }
+  .note--stop .label { color: var(--stop); }
+  .note--caution { border-left-color: var(--caution); background: var(--caution-soft); }
+  .note--caution .label { color: var(--caution); }
+  .note--go { border-left-color: var(--go); background: var(--go-soft); }
+  .note--go .label { color: var(--go); }
+  .note--accent { border-left-color: var(--accent); background: var(--accent-soft); }
+  .note--accent .label { color: var(--accent-ink); }
+
+  .scroller { overflow-x: auto; margin: 1.6rem 0; border-block: 1px solid var(--rule); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 1.45;
+    font-variant-numeric: tabular-nums;
+    min-width: 620px;
+  }
+
+  thead th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding: 0.7rem 0.7rem;
+    border-bottom: 1px solid var(--rule-strong);
+    white-space: nowrap;
+    background: var(--ground);
+  }
+
+  tbody td { padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:nth-child(even) { background: var(--surface); }
+
+  td.wide { font-family: var(--font-body); font-size: 0.92rem; min-width: 18ch; }
+  td.num { white-space: nowrap; }
+  th.num { text-align: left; }
+  .wk { font-weight: 700; color: var(--ink); }
+  .dash { color: var(--ink-3); }
+  .tot { font-weight: 700; }
+  .lead { font-weight: 700; color: var(--ink); }
+
+  .z {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 0.1em 0.4em;
+    border-radius: 2px;
+    white-space: nowrap;
+    border: 1px solid;
+  }
+  .ze { color: var(--easy); border-color: var(--easy); background: var(--easy-soft); }
+  .zm { color: var(--mp); border-color: var(--mp); background: var(--mp-soft); }
+  .zh { color: var(--hard); border-color: var(--hard); background: var(--hard-soft); }
+  .zx { color: var(--max); border-color: var(--max); background: var(--max-soft); }
+
+  tr[data-block] td:first-child { border-left: 3px solid transparent; padding-left: 0.55rem; }
+  tr[data-block="0"] td:first-child { border-left-color: var(--rule-strong); }
+  tr[data-block="1"] td:first-child { border-left-color: var(--caution); }
+  tr[data-block="2"] td:first-child { border-left-color: var(--accent); }
+  tr[data-block="3"] td:first-child { border-left-color: var(--go); }
+  tr[data-block="4"] td:first-child { border-left-color: var(--stop); }
+
+  tr.down td { color: var(--ink-2); font-style: italic; }
+  tr.down td.wk { font-style: normal; }
+  tr.milestone td { background: var(--accent-soft); }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-top: 0.9rem;
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 0.45rem; }
+  .legend i { width: 14px; height: 3px; border-radius: 1px; display: inline-block; }
+  .legend .s3 { background: var(--accent); }
+  .legend .s2 { background: var(--go); }
+  .legend .s1 { background: var(--caution); }
+  .legend .s0 { background: var(--surface-2); border: 1px solid var(--rule-strong); height: 5px; }
+
+  .week {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 1.6rem 0;
+  }
+  .day { background: var(--surface); padding: 0.95rem 1rem 1.1rem; }
+  .day--rest { background: var(--ground); }
+  .day--lift { background: var(--accent-soft); }
+  .day h5 {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 0.45rem;
+  }
+  .day p { margin: 0; font-size: 0.95rem; line-height: 1.45; }
+  .day .sub { display: block; color: var(--ink-2); font-size: 0.85rem; margin-top: 0.3rem; }
+
+  .chart-wrap { margin: 1.8rem 0; }
+  .bars {
+    display: grid;
+    grid-template-columns: repeat(19, minmax(14px, 1fr));
+    align-items: end;
+    gap: 3px;
+    height: 150px;
+  }
+  .bars .b { display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
+  .bars .b i { display: block; background: var(--accent); border-radius: 1px 1px 0 0; }
+  .bars .b.s2 i { background: var(--go); }
+  .bars .b.s1 i { background: var(--caution); }
+  .bars .b.s0 i { background: var(--surface-2); border: 1px solid var(--rule-strong); border-bottom: 0; }
+  .axis {
+    display: grid;
+    grid-template-columns: repeat(19, minmax(14px, 1fr));
+    gap: 3px;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--ink-3);
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.4rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .steps { counter-reset: step; list-style: none; padding-left: 0; max-width: 68ch; }
+  .steps li { counter-increment: step; position: relative; padding-left: 2.6rem; margin-bottom: 0.9rem; }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0; top: 0.05em;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent-ink);
+    border: 1px solid var(--accent);
+    width: 1.7rem; height: 1.7rem;
+    display: grid; place-items: center;
+    border-radius: 50%;
+  }
+
+  .closer {
+    border-top: 2px solid var(--ink);
+    padding-top: 1.6rem;
+    margin-top: 4rem;
+    max-width: 68ch;
+  }
+  .closer p:last-child {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.015em;
+    font-size: var(--step-2);
+    line-height: 1.15;
+    margin-top: 1.4rem;
+  }
+
+
+  .vids {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(296px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 1.6rem 0;
+  }
+  .vid { background: var(--surface); padding: 0.85rem 0.95rem 1rem; }
+
+  .vid-play {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    padding: 0;
+    margin: 0 0 0.7rem;
+    border: 1px solid var(--rule);
+    background: var(--surface-2);
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .vid-play img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .vid-tri {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--ink);
+    display: grid;
+    place-items: center;
+  }
+  .vid-tri::after {
+    content: "";
+    border-left: 14px solid var(--surface);
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    margin-left: 4px;
+  }
+  .vid-play:hover .vid-tri, .vid-play:focus-visible .vid-tri { background: var(--accent); }
+
+  .vid-frame {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--rule);
+    margin: 0 0 0.7rem;
+  }
+
+  .vid .t {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 0.28rem;
+  }
+  .vid .src {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-3);
+    margin-bottom: 0.5rem;
+  }
+  .vid .cue { display: block; font-size: 0.84rem; line-height: 1.42; color: var(--ink-2); }
+  .vid .go {
+    display: inline-block;
+    margin-top: 0.55rem;
+    font-family: var(--font-mono);
+    font-size: 0.63rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    text-underline-offset: 3px;
+  }
+  .vid--out { background: var(--ground); }
+  .vid--out .t { color: var(--ink-3); }
+
+  @media (max-width: 620px) {
+    :root { --step-4: 2.4rem; --step-3: 1.6rem; --step-1: 1.1rem; }
+
+    .scroller {
+      margin-inline: calc(-1 * clamp(1.15rem, 4vw, 3rem));
+      padding-inline: clamp(1.15rem, 4vw, 3rem);
+    }
+    table { min-width: 560px; font-size: 0.74rem; }
+    thead th { padding: 0.6rem 0.5rem; }
+    tbody td { padding: 0.5rem 0.5rem; }
+    td.wide { font-size: 0.85rem; min-width: 14ch; }
+
+    .stat { padding: 0.75rem 0.8rem 0.85rem; }
+    .stat dd { font-size: 1.25rem; }
+
+    .day { padding: 0.8rem 0.85rem 0.9rem; }
+
+    .bars { gap: 2px; height: 120px; }
+    .axis { gap: 2px; font-size: 0.52rem; }
+
+    .note { padding: 0.95rem 1.05rem; }
+    .steps li { padding-left: 2.3rem; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Companion to the 16-week marathon plan · 71 kg · right lateral knee</p>
+    <h1>Strength inside a marathon block</h1>
+    <p class="standfirst">Two sessions a week that make you harder to break, faster per step, and stronger than you are now — without ever costing you a run. Plus a six-minute daily block aimed straight at that knee.</p>
+
+    <dl class="statbar">
+      <div class="stat"><dt>Sessions</dt><dd>2 <small>/ week in the block</small></dd></div>
+      <div class="stat"><dt>On-ramp</dt><dd>3 <small>/ week, 3 weeks</small></dd></div>
+      <div class="stat"><dt>Session length</dt><dd>40 <small>min, falling to 25</small></dd></div>
+      <div class="stat"><dt>Knee block</dt><dd>6 <small>min, most days</small></dd></div>
+      <div class="stat"><dt>Runway</dt><dd>19 <small>weeks to race day</small></dd></div>
+      <div class="stat"><dt>Last heavy lift</dt><dd>W14 <small>≈12 days out</small></dd></div>
+    </dl>
+  </header>
+
+  <section>
+    <h2>What this plan is honest about</h2>
+    <p class="kicker">Read once · the rest of the document assumes you have</p>
+
+    <div class="prose">
+      <p>You said three things: your strength is low relative to where you want it, you feel heavy and carry fat you'd rather not, and you want to become a strong athlete. All three are reachable. Not all three are reachable <em>during</em> this marathon block, and pretending otherwise is how people end up doing neither well.</p>
+
+      <p>Here is the actual physiology you're up against. High-volume endurance training blunts the strength and muscle-building response to lifting — the interference effect. It scales with how much running you do, it hits the legs far harder than the upper body, and at 60–66&nbsp;km a week it is not a small effect. Simultaneously, you want to be in a calorie deficit to lose fat, and a deficit is the other thing that suppresses muscle gain. Stack a peak marathon week on top of a deficit on top of hypertrophy training and you don't get all three adaptations; you get an injury.</p>
+
+      <p>So the plan sequences them instead:</p>
+
+      <ul>
+        <li><strong>Now through week 8</strong> — running volume is still moderate. This is your window. Lift three times a week during the on-ramp, twice a week after, eat in a modest deficit, and get genuinely leaner and measurably stronger.</li>
+        <li><strong>Weeks 9–14</strong> — running takes over. Strength drops to a maintenance dose that holds everything you built. Eating goes to maintenance. You are not trying to gain here; you are trying not to lose, and to arrive at the start line uninjured.</li>
+        <li><strong>After the race</strong> — this is where "strong athlete" actually gets built, and there's a block sketched at the bottom of this page for it.</li>
+      </ul>
+
+      <p>The good news is more interesting than the constraint. Two heavy sessions a week is not a consolation prize for a runner. Heavy strength work plus low-amplitude plyometrics improves running economy by a few percent in trained distance runners — meaning you hold the same pace at a lower oxygen cost — and it does it without adding meaningful bodyweight. That improvement is worth more to your marathon than the Tuesday session is. It is one of the few genuinely free lunches in endurance sport.</p>
+
+      <p>And on feeling heavy: at 71&nbsp;kg, losing fat is directly a performance lever. Every kilogram costs you roughly 2–3 seconds per kilometre at marathon pace — call it a minute and a half over 42&nbsp;km per kilo. Losing three or four kilos of fat between now and week 8 is worth more than any session in this document. Adding upper-body muscle, by contrast, is performance-<em>negative</em> for a marathon. That's not a reason to skip upper-body work — you want to be strong, and strong is a legitimate goal on its own terms — but it's the reason the upper-body work here is written to <em>maintain and slowly build</em> rather than to grow you.</p>
+    </div>
+
+    <div class="note note--caution">
+      <span class="label">The one rule that overrides everything below</span>
+      <p><strong>Strength never costs a run.</strong> If a session leaves you sore enough to change how you move on Thursday or Saturday, it was too hard — not because you're soft, but because the marathon is built by kilometres and this document is insurance on those kilometres. In blocks 3 and 4 you will feel undertrained in the gym. That is the plan working, not failing.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>The knee</h2>
+    <p class="kicker">Right lateral knee · the thing you actually asked about</p>
+
+    <div class="prose">
+      <p>What you've described — pain on the outside of the right knee, not sharp, tolerable while running, most noticeable walking afterwards, arriving since you started running again — is the single most recognisable presentation in distance running. It looks most like <strong>iliotibial band syndrome</strong>. I want to be careful with that word: I can't examine you, and lateral knee pain also comes from the patellofemoral joint, the popliteus tendon, the biceps femoris insertion and the lateral meniscus. But the pattern fits ITB well, the plan below is the right first move for most of those causes anyway, and the tests in the next block will sharpen the picture considerably.</p>
+
+      <p>One thing worth separating: this is probably <em>not</em> the same problem as the deep-squat pain and clicking from your old plan. That was anterior and load-related. This is lateral and volume-related. Treat them as two files.</p>
+
+      <h3>Three tests, five minutes, do them today</h3>
+
+      <ol class="steps">
+        <li><strong>Point to it with one finger.</strong> If the sorest spot sits on the bony bump on the outside of the thigh just above the joint line, roughly 2–3&nbsp;cm above the knee crease, that's the classic ITB location. If it's <em>on</em> the joint line itself, or behind it, that points elsewhere — note which.</li>
+        <li><strong>Stairs.</strong> Going down is the discriminator. ITB and patellofemoral pain both dislike descending; ITB tends to bite at around 30 degrees of knee bend. Note whether down is clearly worse than up.</li>
+        <li><strong>Single-leg squat, filmed from the front.</strong> Stand on the right leg, phone on the floor, bend to about 45 degrees, five slow reps. Then the left for comparison. Watch for the right hip dropping on the non-standing side, or the right knee drifting inward over the big toe. That collapse is what loads the outside of the knee, and it is exactly what the hip block below fixes.</li>
+      </ol>
+
+      <h3>What actually works, and what doesn't</h3>
+
+      <p>Two things you'll be told to do that are largely a waste of your time. <strong>Stretching the IT band</strong> — it is dense fascia anchored along the femur, with a tensile stiffness closer to tendon than muscle. You are not lengthening it with a standing lean-over. <strong>Foam rolling the IT band itself</strong> — the current understanding is that the pain comes from compression of a richly innervated fat pad underneath the band, not from friction, so grinding the band down onto that structure is painful and mechanistically backwards. Roll the <em>tensor fasciae latae</em> at the front of the hip, the outer quad, and the glutes instead. That's defensible and it feels better.</p>
+
+      <p>Three things that do work, in order of evidence:</p>
+
+      <ul>
+        <li><strong>Hip abductor and external rotator strength.</strong> Runners with lateral knee pain reliably test weaker in hip abduction on the affected side, and structured hip strengthening resolves symptoms in the large majority within about six weeks. This is the main intervention and it's the daily block below.</li>
+        <li><strong>Cadence.</strong> Raising your step rate by 5–10% reduces hip adduction and the strain on the band, at zero fitness cost. Count your steps for 30 seconds on an easy run, double it. If you're under about 165 per minute, aim to add 5% and hold it on easy runs only. A metronome app or a 170&nbsp;bpm playlist does the job.</li>
+        <li><strong>Terrain.</strong> Downhill running is the worst possible stimulus for this, and cambered roads are the second worst — the leg on the low side of the camber sits in extra adduction all run. Your August-to-October treadmill default is genuinely lucky here: a belt has no camber and no downhill. When you move outdoors in November, alternate which side of the road you run on.</li>
+      </ul>
+
+
+    <p class="kicker">The three tests, demonstrated</p>
+      <div class="vids">
+      <div class="vid" data-yt="PmUGl7ryQOo">
+        <button class="vid-play" type="button" aria-label="Play video: Noble compression test">
+          <img loading="lazy" src="https://i.ytimg.com/vi/PmUGl7ryQOo/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Noble compression test</span>
+        <span class="src">Physiotutors</span>
+        <span class="cue">Press the epicondyle, then straighten the leg. Pain reproducing at about 30° is positive.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=PmUGl7ryQOo" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="fEVx6bzUWrM">
+        <button class="vid-play" type="button" aria-label="Play video: Renne's test">
+          <img loading="lazy" src="https://i.ytimg.com/vi/fEVx6bzUWrM/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Renne's test</span>
+        <span class="src">Physiotutors</span>
+        <span class="cue">Single-leg semi-squat to about 30°. Pain sharpening at that depth is positive — <strong>yours is.</strong></span>
+        <a class="go" href="https://www.youtube.com/watch?v=fEVx6bzUWrM" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="y-v4seZ7eZ8">
+        <button class="vid-play" type="button" aria-label="Play video: What to look for in a single-leg bend">
+          <img loading="lazy" src="https://i.ytimg.com/vi/y-v4seZ7eZ8/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">What to look for in a single-leg bend</span>
+        <span class="src">Physiotutors</span>
+        <span class="cue">The hip drop and inward knee drift you are filming for. This is the cause, not the symptom.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=y-v4seZ7eZ8" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      </div>
+      <div class="note">
+        <span class="label">About these videos</span>
+        <p>Every one is checked to resolve, and the channel is named so you can judge the source before you watch. The knee and hip work is deliberately physiotherapist-led — <strong>Physiotutors, Physio REHAB, Hinge Health and Revo</strong> — because form matters most on the movements you are doing for an injury. The gym lifts come from general strength channels, which is fine for a barbell.</p>
+        <p><strong>Opening this file straight from disk, a tap opens the video on YouTube.</strong> That is not a fault in the page — YouTube refuses to run its player when a page has no web address to identify itself with, which is the case for any file opened from storage. Every tile below is still the real thumbnail of the real video, and one tap gets you there.</p>
+        <p>If you would rather they played inline, serve the folder over a local address once — <code>python3 -m http.server</code> in this directory, then open <code>localhost:8000/strength-plan.html</code>. The page detects that and plays every video in place, loading no player until you press one. Either way YouTube sets no cookies on you before you choose to watch.</p>
+        <p><strong>Videos need a connection.</strong> Offline the tiles go blank — the text, tables and every number in this document work untouched. <strong>Watch each new movement once before its first session</strong>, then stop watching and do the work.</p>
+      </div>
+
+      <div class="note note--go">
+        <span class="label">What to expect, and when</span>
+        <p>Consistent hip work changes this on a scale of <strong>four to six weeks</strong>, not days. You should see the after-run walking ache shrink first, then the in-run awareness. Judge it at week 4, not week 1.</p>
+      </div>
+
+      <div class="note note--caution">
+        <span class="label">Running is not cancelled — it is capped</span>
+        <p>You are on <strong>on-ramp week B</strong>, not week 2 of the block, which means you have three weeks of slack before the 16-week plan even starts. Use it. Repeat week B rather than progressing to C, and hold the long run at 9&nbsp;km until the after-run ache shrinks. The specific thing to watch with this condition is <em>the distance at which it arrives</em>: if it turns up at 7&nbsp;km this week and 5&nbsp;km next week, the volume is winning and you cut, regardless of how mild the pain is at the time.</p>
+      </div>
+
+      <div class="note note--stop">
+        <span class="label">Stop pushing through and get it looked at if</span>
+        <ul>
+          <li>The pain becomes sharp, or arrives earlier in each successive run.</li>
+          <li>The knee swells, catches, locks, or gives way — that combination points at the meniscus and no amount of glute work addresses it.</li>
+          <li>Four weeks of consistent hip work produces no change at all.</li>
+          <li>It starts hurting during ordinary walking rather than just after running.</li>
+        </ul>
+        <p>You said you'd prefer to fix it, and you're right to. An annoyance at 24&nbsp;km a week is frequently a season-ender at 60. The cheap moment to deal with this is now, while running volume is still low.</p>
+      </div>
+
+      <div class="note">
+        <span class="label">The other thing from that run — the numb foot</span>
+        <p>Separate problem, almost certainly benign. Numbness that builds mid-run, does not resolve on loosening the laces, then eases the longer you run and is gone afterwards is the signature of <strong>lace pressure on the nerves crossing the top of the foot</strong>, not a nerve pathology — feet swell during a run, more so in this heat. Skip-lace over the high point of the midfoot: take the laces straight up the sides for one eyelet instead of crossing over the sore spot. Then check shoe size — running shoes want a half to a full size above street size. If the numbness sits <em>between the third and fourth toes</em> and burns, that is a different pattern and needs a wider toebox rather than looser laces. Recurring on three consecutive runs after the lacing change means get the foot looked at.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The daily hip block</h2>
+    <p class="kicker">6 minutes · 5–6 days a week for six weeks, then 3 days a week</p>
+
+    <div class="prose">
+      <p>This is the highest-value thing on this page and the easiest to skip. It needs no gym and no equipment beyond a mini-band. Do it in the evening, or after a run, or while something is cooking. <strong>Frequency beats intensity here</strong> — six honest minutes most days outperforms twenty minutes twice a week, because you are chasing a control and endurance quality, not a strength maximum.</p>
+
+      <p>Work the right side first and match the left to it, so the weak side sets the dose.</p>
+    </div>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr>
+            <th>Exercise</th>
+            <th>Weeks 1–2</th>
+            <th>Weeks 3–6</th>
+            <th>Week 7+</th>
+            <th class="num">Target</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="wide lead">Side-lying hip abduction</td>
+            <td>2 × 15 / side</td>
+            <td>3 × 15, ankle weight</td>
+            <td>3 × 12, heavier</td>
+            <td class="wide">Glute medius. Top leg slightly behind the body and toe turned <em>down</em>, not up — that's what takes the TFL out of it.</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Side plank, top-leg raise</td>
+            <td>2 × 20 s / side</td>
+            <td>3 × 30 s + 8 raises</td>
+            <td>3 × 45 s + 10 raises</td>
+            <td class="wide">Glute medius under trunk load. From the knees if the full version breaks form.</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Single-leg glute bridge</td>
+            <td>2 × 10 / side</td>
+            <td>3 × 12, 2 s hold</td>
+            <td>3 × 10, weighted</td>
+            <td class="wide">Glute max. Hips level throughout — if the free-side hip drops, the set is over.</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Banded lateral walk</td>
+            <td>2 × 12 steps</td>
+            <td>2 × 15 each way</td>
+            <td>2 × 20 each way</td>
+            <td class="wide">Band above the knees, quarter-squat, feet never touching. Burn on the outside of the hip, not the thigh.</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Copenhagen plank</td>
+            <td><span class="dash">skip</span></td>
+            <td>2 × 15 s / side, knee version</td>
+            <td>2 × 25 s / side, full</td>
+            <td class="wide">Adductors. Balances the abduction work and is the best-evidenced groin-injury insurance there is.</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Single-leg step-down</td>
+            <td>2 × 6, 10 cm step</td>
+            <td>2 × 8, 15 cm step</td>
+            <td>3 × 8, 20 cm step</td>
+            <td class="wide">The transfer exercise — this is the single-leg squat from the test, trained. Knee tracks over the second toe. <strong>Pain-free range only.</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <p class="kicker">Watch each one &middot; opens on YouTube</p>
+    <div class="vids">
+      <div class="vid" data-yt="BSGho5DuaR0">
+        <button class="vid-play" type="button" aria-label="Play video: Side-lying hip abduction">
+          <img loading="lazy" src="https://i.ytimg.com/vi/BSGho5DuaR0/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Side-lying hip abduction</span>
+        <span class="src">Muscle Motion</span>
+        <span class="cue">Top leg slightly behind the body, toe turned <em>down</em> — that is what takes the TFL out of it.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=BSGho5DuaR0" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="aNcJx1OCnJc">
+        <button class="vid-play" type="button" aria-label="Play video: Side plank, top-leg raise">
+          <img loading="lazy" src="https://i.ytimg.com/vi/aNcJx1OCnJc/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Side plank, top-leg raise</span>
+        <span class="src">Andrea Claassen</span>
+        <span class="cue">Hips stacked and lifted throughout. From the knees if the full version breaks form.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=aNcJx1OCnJc" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="fUOB9VcyvYo">
+        <button class="vid-play" type="button" aria-label="Play video: Single-leg glute bridge">
+          <img loading="lazy" src="https://i.ytimg.com/vi/fUOB9VcyvYo/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Single-leg glute bridge</span>
+        <span class="src">Hinge Health &middot; physiotherapist-led</span>
+        <span class="cue">Hips level throughout — if the free-side hip drops, the set is over.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=fUOB9VcyvYo" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="h8LJktRKl5U">
+        <button class="vid-play" type="button" aria-label="Play video: Banded lateral walk">
+          <img loading="lazy" src="https://i.ytimg.com/vi/h8LJktRKl5U/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Banded lateral walk</span>
+        <span class="src">Vo2maxProductions &middot; for runners</span>
+        <span class="cue">Quarter-squat, feet never touching. Burn on the outside of the hip, not the thigh.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=h8LJktRKl5U" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="ZvVTPLX3l60">
+        <button class="vid-play" type="button" aria-label="Play video: Copenhagen plank">
+          <img loading="lazy" src="https://i.ytimg.com/vi/ZvVTPLX3l60/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Copenhagen plank</span>
+        <span class="src">Revo Physiotherapy</span>
+        <span class="cue"><strong>This is the knee version</strong> — the one you start with, not the full-length one.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=ZvVTPLX3l60" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid vid--out" data-yt="rvI7OxBQqS4">
+        <button class="vid-play" type="button" aria-label="Play video: Single-leg step-down">
+          <img loading="lazy" src="https://i.ytimg.com/vi/rvI7OxBQqS4/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Single-leg step-down</span>
+        <span class="src">Physio REHAB &middot; Tim Keeley</span>
+        <span class="cue"><strong>Currently out of the block until ~5 September.</strong> Watch the regressions — that is how you reintroduce it.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=rvI7OxBQqS4" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+    </div>
+
+    <div class="note note--accent">
+      <span class="label">The step-down is out for now</span>
+      <p><strong>As of 22 August the step-down is removed from this block for two weeks.</strong> A single-leg semi-squat on the right sharpens the pain — a positive Renne test — and the step-down is that exact movement under control, so at present it is provocation rather than treatment. Reintroduce it around 5 September at a 10&nbsp;cm step; a 10&nbsp;cm step is not embarrassing, it's a starting load. From then on, if it hurts, drop the step height before you drop the exercise.</p>
+      <p><strong>The other five movements are knee-neutral and continue unchanged.</strong> They load the hip without taking the knee through flexion, and they are the actual treatment — the step-down is the transfer exercise, and transfer can wait until there is something to transfer.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>How strength fits the running week</h2>
+    <p class="kicker">Wednesday and Friday · the two slots the marathon plan already reserved</p>
+
+    <div class="prose">
+      <p>Your marathon plan already writes "rest + strength" on Wednesday and Friday. Those are the right two days, but they are not interchangeable, and the reason matters more than it looks.</p>
+    </div>
+
+    <div class="week">
+      <div class="day"><h5>Mon</h5><p>Easy run<span class="sub">Hip block after</span></p></div>
+      <div class="day"><h5>Tue</h5><p>Quality<span class="sub">Hardest run of the week</span></p></div>
+      <div class="day day--lift"><h5>Wed</h5><p><strong>Session A</strong><span class="sub">Lower + vertical pull · the heavy one</span></p></div>
+      <div class="day"><h5>Thu</h5><p>Medium-long<span class="sub">Hip block after</span></p></div>
+      <div class="day day--lift"><h5>Fri</h5><p><strong>Session B</strong><span class="sub">Upper + hips · legs stay fresh</span></p></div>
+      <div class="day"><h5>Sat</h5><p>Long run<span class="sub">Nothing may compromise this</span></p></div>
+      <div class="day day--rest"><h5>Sun</h5><p>Recovery run<span class="sub">Hip block, nothing else</span></p></div>
+    </div>
+
+    <div class="prose">
+      <p><strong>All heavy leg work lives on Wednesday.</strong> It sits 24 hours after the quality session, when you're already fatigued and nothing is at stake, and a full 48 hours before Thursday's medium-long run. It is also as far from Saturday as the week allows.</p>
+
+      <p><strong>Friday is deliberately light on legs.</strong> This is the correction most people miss. Loading the legs on Friday puts peak muscle soreness — which arrives 24 to 48 hours later — directly on top of the most important run of your week. One heavy Friday squat session can quietly ruin four consecutive Saturdays before you work out why the long runs feel bad. So Friday is chest, back, arms, core and hips: everything that makes you stronger without making Saturday worse.</p>
+
+      <p>Does one heavy leg session a week build legs? Not much. But it holds strength very well — maintaining strength needs far less volume than gaining it did, provided the <em>intensity</em> stays high. That is why the leg work in this plan is heavy and brief rather than moderate and long. Sets of five hold what sets of twelve cannot.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Session A — Wednesday</h2>
+    <p class="kicker">Lower + vertical pull · 40 min falling to 25</p>
+
+    <div class="prose">
+      <p>Warm up six minutes: five easy on the bike, then leg swings, bodyweight hinges, and the banded lateral walk from the hip block. Then, from block week 3 onward, the ankle plyometrics — they go first, while you're fresh, and they take two minutes.</p>
+    </div>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr>
+            <th>Exercise</th>
+            <th>Why it's here</th>
+            <th class="num">On-ramp + W1–4</th>
+            <th class="num">W5–8</th>
+            <th class="num">W9–13</th>
+            <th class="num">Rest</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="wide lead">Pogo hops <span class="z ze">plyo</span></td>
+            <td class="wide">Ankle and Achilles stiffness — the cheapest running-economy gain there is. Small, fast, quiet. Knees barely bend.</td>
+            <td class="num">3 × 20</td>
+            <td class="num">3 × 25</td>
+            <td class="num">2 × 20</td>
+            <td class="num">45 s</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Trap-bar or dumbbell RDL <span class="z zx">heavy</span></td>
+            <td class="wide">Hinge. Hamstrings and glutes under real load, with almost no knee flexion — the heaviest thing you can do without provoking the knee.</td>
+            <td class="num">4 × 6</td>
+            <td class="num">3 × 5</td>
+            <td class="num">2 × 5</td>
+            <td class="num">2–3 min</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Bulgarian split squat <em>or</em> step-up <span class="z zh">hard</span></td>
+            <td class="wide">Single-leg strength — running is a single-leg sport and this is the most specific lift in the plan. Also directly trains the hip control your knee is asking for.</td>
+            <td class="num">3 × 8 / leg</td>
+            <td class="num">3 × 6 / leg</td>
+            <td class="num">2 × 6 / leg</td>
+            <td class="num">2 min</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Seated calf raise, bent knee <span class="z zx">heavy</span></td>
+            <td class="wide"><strong>The most important lift on this page.</strong> Bent knee targets the soleus, which absorbs the largest single load in running and is the tissue that protects the Achilles and the shin.</td>
+            <td class="num">4 × 10</td>
+            <td class="num">4 × 8</td>
+            <td class="num">3 × 8</td>
+            <td class="num">60 s</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Standing calf raise, straight knee</td>
+            <td class="wide">Gastrocnemius. Full range, pause at the bottom stretch. Both calf variants are needed; they load different muscles.</td>
+            <td class="num">3 × 12</td>
+            <td class="num">3 × 10</td>
+            <td class="num">2 × 10</td>
+            <td class="num">45 s</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Weighted pull-up <span class="z zx">heavy</span></td>
+            <td class="wide">Your headline calisthenic. Placed here because it costs the legs nothing and Wednesday has the recovery room for it.</td>
+            <td class="num">4 × 5</td>
+            <td class="num">3 × 5</td>
+            <td class="num">2 × 5</td>
+            <td class="num">2–3 min</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Suitcase carry</td>
+            <td class="wide">Anti-lateral-flexion core and grip. One heavy dumbbell, walk tall, don't lean. Transfers to holding form late in a marathon better than any crunch.</td>
+            <td class="num">3 × 40 m</td>
+            <td class="num">2 × 40 m</td>
+            <td class="num">2 × 30 m</td>
+            <td class="num">60 s</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <p class="kicker">Session A, demonstrated</p>
+    <div class="vids">
+      <div class="vid" data-yt="7SIfCcfP4g0">
+        <button class="vid-play" type="button" aria-label="Play video: Pogo hops">
+          <img loading="lazy" src="https://i.ytimg.com/vi/7SIfCcfP4g0/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Pogo hops</span>
+        <span class="src">The Irish Physio TV</span>
+        <span class="cue">Knees barely bend. Small, fast and quiet — ankle stiffness, not height.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=7SIfCcfP4g0" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="aa57T45iFSE">
+        <button class="vid-play" type="button" aria-label="Play video: Dumbbell RDL">
+          <img loading="lazy" src="https://i.ytimg.com/vi/aa57T45iFSE/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Dumbbell RDL</span>
+        <span class="src">NASM</span>
+        <span class="cue">Hinge, not squat. Hips back, bar close, almost no knee bend.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=aa57T45iFSE" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="tqECKZxlCKE">
+        <button class="vid-play" type="button" aria-label="Play video: Step-up">
+          <img loading="lazy" src="https://i.ytimg.com/vi/tqECKZxlCKE/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Step-up</span>
+        <span class="src">Overtime Athletes</span>
+        <span class="cue">Drive through the front heel and do not push off the back foot. Lower box than prescribed until the knee is quiet.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=tqECKZxlCKE" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="pYs6drHFySs">
+        <button class="vid-play" type="button" aria-label="Play video: Seated calf raise, bent knee">
+          <img loading="lazy" src="https://i.ytimg.com/vi/pYs6drHFySs/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Seated calf raise, bent knee</span>
+        <span class="src">Alpha Project Phyzio</span>
+        <span class="cue"><strong>The most important lift on this page.</strong> Bent knee targets the soleus.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=pYs6drHFySs" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="ndQc4mz4mBU">
+        <button class="vid-play" type="button" aria-label="Play video: Standing calf raise">
+          <img loading="lazy" src="https://i.ytimg.com/vi/ndQc4mz4mBU/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Standing calf raise</span>
+        <span class="src">Steev</span>
+        <span class="cue">Straight knee targets the gastrocnemius. Full range off a step, slow down.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=ndQc4mz4mBU" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="HuuyDNGrCI8">
+        <button class="vid-play" type="button" aria-label="Play video: Weighted pull-up">
+          <img loading="lazy" src="https://i.ytimg.com/vi/HuuyDNGrCI8/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Weighted pull-up</span>
+        <span class="src">ScottHermanFitness</span>
+        <span class="cue">Strict, full hang to chin over the bar. Add a belt only once bodyweight sets are clean.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=HuuyDNGrCI8" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="1OyY036lYRM">
+        <button class="vid-play" type="button" aria-label="Play video: Suitcase carry">
+          <img loading="lazy" src="https://i.ytimg.com/vi/1OyY036lYRM/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Suitcase carry</span>
+        <span class="src">Limitless Power Tennis</span>
+        <span class="cue">One side only. Stay tall — the work is the anti-lean, not the walking.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=1OyY036lYRM" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="label">Choosing the split squat variant</span>
+      <p>Start with the <strong>step-up</strong> — a 30–40&nbsp;cm box, dumbbells at your sides, drive through the front heel and do not push off the back foot. It's the knee-friendlier option and it loads the glute hard. Move to the Bulgarian split squat once four weeks of step-ups have passed without lateral knee complaints. If either one provokes the knee, shorten the range before you lower the weight — a partial rep is a legitimate rep, as your old plan already told you.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Session B — Friday</h2>
+    <p class="kicker">Upper + hips · 35 min falling to 22 · legs stay fresh for Saturday</p>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr>
+            <th>Exercise</th>
+            <th>Why it's here</th>
+            <th class="num">On-ramp + W1–4</th>
+            <th class="num">W5–8</th>
+            <th class="num">W9–13</th>
+            <th class="num">Rest</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="wide lead">Weighted dip <span class="z zx">heavy</span></td>
+            <td class="wide">Your best press. Torso slightly forward, stop at a shoulder-comfortable depth.</td>
+            <td class="num">4 × 6</td>
+            <td class="num">3 × 6</td>
+            <td class="num">2 × 6</td>
+            <td class="num">2–3 min</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Chest-supported row <span class="z zh">hard</span></td>
+            <td class="wide">Horizontal pull with no lower-back cost — the chest support matters on a day before a long run.</td>
+            <td class="num">3 × 8</td>
+            <td class="num">3 × 8</td>
+            <td class="num">2 × 8</td>
+            <td class="num">90 s</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Overhead press, dumbbell</td>
+            <td class="wide">Vertical press and overhead shoulder health. Seated or standing.</td>
+            <td class="num">3 × 8</td>
+            <td class="num">3 × 6</td>
+            <td class="num">2 × 6</td>
+            <td class="num">2 min</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Weighted push-up</td>
+            <td class="wide">Second press dose. At 30–40 bodyweight reps this is endurance, not stimulus, so it must carry a plate or elevated feet to count.</td>
+            <td class="num">3 × 12</td>
+            <td class="num">2 × 12</td>
+            <td class="num"><span class="dash">cut</span></td>
+            <td class="num">90 s</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Hip thrust, barbell or dumbbell</td>
+            <td class="wide">Heavy glutes with essentially no knee flexion and minimal next-day soreness — the one lower-body lift that's safe this close to Saturday.</td>
+            <td class="num">3 × 10</td>
+            <td class="num">3 × 8</td>
+            <td class="num">2 × 8</td>
+            <td class="num">90 s</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Face pull or reverse fly</td>
+            <td class="wide">Rear delts and upper back. Counterweight to the pressing and to hours at a desk.</td>
+            <td class="num">3 × 15</td>
+            <td class="num">2 × 15</td>
+            <td class="num">2 × 15</td>
+            <td class="num">60 s</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Superset: EZ curl + overhead triceps</td>
+            <td class="wide">Arms. Present because you want to be strong and it costs the running nothing. First thing cut when time is short.</td>
+            <td class="num">2 × 10 each</td>
+            <td class="num">2 × 10 each</td>
+            <td class="num"><span class="dash">cut</span></td>
+            <td class="num">90 s</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Ab wheel or long-lever plank</td>
+            <td class="wide">Anti-extension. The trunk stiffness that stops your form folding in the last 10&nbsp;km.</td>
+            <td class="num">3 × 10</td>
+            <td class="num">3 × 10</td>
+            <td class="num">2 × 10</td>
+            <td class="num">60 s</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <p class="kicker">Session B, demonstrated</p>
+    <div class="vids">
+      <div class="vid" data-yt="JannOlicL4w">
+        <button class="vid-play" type="button" aria-label="Play video: Weighted dip">
+          <img loading="lazy" src="https://i.ytimg.com/vi/JannOlicL4w/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Weighted dip</span>
+        <span class="src">FIT.nl</span>
+        <span class="cue">Slight forward lean for the chest, upright for the triceps. No bouncing out of the bottom.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=JannOlicL4w" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="_b6ch2nIchk">
+        <button class="vid-play" type="button" aria-label="Play video: Chest-supported row">
+          <img loading="lazy" src="https://i.ytimg.com/vi/_b6ch2nIchk/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Chest-supported row</span>
+        <span class="src">Fit Father Project</span>
+        <span class="cue">Chest on the pad so the low back does nothing. Pull to the ribs.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=_b6ch2nIchk" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="Did01dFR3Lk">
+        <button class="vid-play" type="button" aria-label="Play video: Overhead press">
+          <img loading="lazy" src="https://i.ytimg.com/vi/Did01dFR3Lk/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Overhead press</span>
+        <span class="src">Bobby Maximus</span>
+        <span class="cue">Ribs down, do not arch. Dumbbells so the shoulders pick their own path.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=Did01dFR3Lk" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="Q_FnrwhkdpU">
+        <button class="vid-play" type="button" aria-label="Play video: Weighted push-up">
+          <img loading="lazy" src="https://i.ytimg.com/vi/Q_FnrwhkdpU/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Weighted push-up</span>
+        <span class="src">Live Lean TV</span>
+        <span class="cue">Plate on the upper back. One straight line from head to heels.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=Q_FnrwhkdpU" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="pF17m_CXfL0">
+        <button class="vid-play" type="button" aria-label="Play video: Hip thrust">
+          <img loading="lazy" src="https://i.ytimg.com/vi/pF17m_CXfL0/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Hip thrust</span>
+        <span class="src">Runna &middot; for runners</span>
+        <span class="cue">Heavy glutes with essentially no knee flexion — safe this close to Saturday.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=pF17m_CXfL0" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="3pToT5_DUiY">
+        <button class="vid-play" type="button" aria-label="Play video: Face pull">
+          <img loading="lazy" src="https://i.ytimg.com/vi/3pToT5_DUiY/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Face pull</span>
+        <span class="src">Colossus Fitness</span>
+        <span class="cue">Elbows high. This is what balances all the pressing.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=3pToT5_DUiY" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="5NsFLGUf0Fo">
+        <button class="vid-play" type="button" aria-label="Play video: EZ bar curl">
+          <img loading="lazy" src="https://i.ytimg.com/vi/5NsFLGUf0Fo/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">EZ bar curl</span>
+        <span class="src">Colossus Fitness</span>
+        <span class="cue">Elbows pinned. Half of the superset.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=5NsFLGUf0Fo" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="X-iV-cG8cYs">
+        <button class="vid-play" type="button" aria-label="Play video: Overhead triceps extension">
+          <img loading="lazy" src="https://i.ytimg.com/vi/X-iV-cG8cYs/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Overhead triceps extension</span>
+        <span class="src">Colossus Fitness</span>
+        <span class="cue">The other half. Three rounds and you are done.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=X-iV-cG8cYs" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="ikkOq5mHaho">
+        <button class="vid-play" type="button" aria-label="Play video: Ab wheel rollout">
+          <img loading="lazy" src="https://i.ytimg.com/vi/ikkOq5mHaho/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Ab wheel rollout</span>
+        <span class="src">K&#8217;s Perfect Fitness TV</span>
+        <span class="cue">Roll out only as far as the ribs stay down. That distance is the exercise.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=ikkOq5mHaho" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+    </div>
+
+    <div class="note note--go">
+      <span class="label">The third session — on-ramp only</span>
+      <p>You have three weeks of on-ramp left, running 22–28&nbsp;km a week. That is the only window in the next 19 weeks with genuine room for a third lift, and it is worth taking. Add a <strong>Session C</strong> on a non-running day: repeat Session A's RDL, step-up and both calf raises at the on-ramp set counts, plus bodyweight pull-ups and push-ups to two reps short of failure. Drop it the week you start block week 1. Do not try to keep three sessions once running passes 40&nbsp;km — that is the exact decision that turns this into an injury.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>The dose across nineteen weeks</h2>
+    <p class="kicker">Strength falls as running rises · that inversion is the whole design</p>
+
+    <div class="chart-wrap">
+      <div class="bars">
+        <div class="b"      title="On-ramp B · 24 km · 3 lifts"><i style="height:36%"></i></div>
+        <div class="b"      title="On-ramp C · 28 km · 3 lifts"><i style="height:42%"></i></div>
+        <div class="b"      title="On-ramp D · 22 km · 3 lifts"><i style="height:33%"></i></div>
+        <div class="b s2"   title="Week 1 · 34 km · 2 lifts"><i style="height:52%"></i></div>
+        <div class="b s2"   title="Week 2 · 38 km · 2 lifts"><i style="height:58%"></i></div>
+        <div class="b s2"   title="Week 3 · 42 km · 2 lifts"><i style="height:64%"></i></div>
+        <div class="b s2"   title="Week 4 · 30 km · 2 lifts"><i style="height:45%"></i></div>
+        <div class="b s2"   title="Week 5 · 44 km · 2 lifts"><i style="height:67%"></i></div>
+        <div class="b s2"   title="Week 6 · 48 km · 2 lifts"><i style="height:73%"></i></div>
+        <div class="b s2"   title="Week 7 · 52 km · 2 lifts"><i style="height:79%"></i></div>
+        <div class="b s2"   title="Week 8 · 38 km · 2 lifts · 10K test"><i style="height:58%"></i></div>
+        <div class="b s2"   title="Week 9 · 55 km · 2 lifts, minimum dose"><i style="height:83%"></i></div>
+        <div class="b s2"   title="Week 10 · 60 km · 2 lifts, minimum dose"><i style="height:91%"></i></div>
+        <div class="b s2"   title="Week 11 · 64 km · 2 lifts, minimum dose"><i style="height:97%"></i></div>
+        <div class="b s2"   title="Week 12 · 46 km · 2 lifts, minimum dose"><i style="height:70%"></i></div>
+        <div class="b s2"   title="Week 13 · 66 km · 2 lifts, no plyos"><i style="height:100%"></i></div>
+        <div class="b s1"   title="Week 14 · 52 km · 1 light lift, the last one"><i style="height:79%"></i></div>
+        <div class="b s0"   title="Week 15 · 38 km · hip block only"><i style="height:58%"></i></div>
+        <div class="b s0"   title="Week 16 · race week · hip block only"><i style="height:35%"></i></div>
+      </div>
+      <div class="axis">
+        <span>B</span><span>C</span><span>D</span>
+        <span>1</span><span>2</span><span>3</span><span>4</span>
+        <span>5</span><span>6</span><span>7</span><span>8</span>
+        <span>9</span><span>10</span><span>11</span><span>12</span>
+        <span>13</span><span>14</span><span>15</span><span>16</span>
+      </div>
+      <div class="legend">
+        <span><i class="s3"></i> 3 sessions</span>
+        <span><i class="s2"></i> 2 sessions</span>
+        <span><i class="s1"></i> 1 light session</span>
+        <span><i class="s0"></i> Hip block only</span>
+      </div>
+    </div>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th class="num">Weeks</th>
+            <th class="num">Running</th>
+            <th class="num">Lifts</th>
+            <th>What you're doing</th>
+            <th>Eating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-block="0">
+            <td class="wk">On-ramp</td>
+            <td class="num">B–D</td>
+            <td class="num">22–28 km</td>
+            <td class="num tot">3</td>
+            <td class="wide"><strong>Build.</strong> Full set counts, learn the movements, establish the hip block as a daily habit. Your only real strength window.</td>
+            <td class="wide">Deficit ~350 kcal</td>
+          </tr>
+          <tr data-block="1">
+            <td class="wk">Base</td>
+            <td class="num">1–4</td>
+            <td class="num">30–42 km</td>
+            <td class="num tot">2</td>
+            <td class="wide"><strong>Build.</strong> Two sessions, full volume. Add pogo hops from week 3. Add weight every week you can.</td>
+            <td class="wide">Deficit ~350 kcal</td>
+          </tr>
+          <tr data-block="2">
+            <td class="wk">Build</td>
+            <td class="num">5–8</td>
+            <td class="num">38–52 km</td>
+            <td class="num tot">2</td>
+            <td class="wide"><strong>Consolidate.</strong> Sets drop, loads hold or creep up. Fewer reps, same weight — this is where you defend what you built.</td>
+            <td class="wide">Deficit, closing by W8</td>
+          </tr>
+          <tr data-block="3">
+            <td class="wk">Specific</td>
+            <td class="num">9–13</td>
+            <td class="num">46–66 km</td>
+            <td class="num tot">2</td>
+            <td class="wide"><strong>Maintain.</strong> Minimum effective dose — two working sets per lift, 25 minutes, in and out. Never within 3 reps of failure. Drop plyos in week 13.</td>
+            <td class="wide">Maintenance. No deficit.</td>
+          </tr>
+          <tr data-block="4">
+            <td class="wk">Taper</td>
+            <td class="num">14–16</td>
+            <td class="num">52–23 km</td>
+            <td class="num tot">1 → 0</td>
+            <td class="wide"><strong>Shed.</strong> Week 14: one light full-body session at 60% of usual load, ~12 days out — the last lift. Weeks 15–16: hip block only.</td>
+            <td class="wide">Maintenance, carbs up</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="legend">
+        <span>Running volumes are read straight off the 16-week plan</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How to progress</h2>
+    <p class="kicker">Four rules · they replace guessing</p>
+
+    <div class="prose">
+      <ol class="steps">
+        <li><strong>Never train to failure.</strong> Stop every set with 2–3 reps left in the tank, all block. This is the single biggest difference between lifting as a runner and lifting as a lifter. Failure buys a small amount of extra stimulus at a large cost in soreness and recovery, and you are spending that recovery on running.</li>
+        <li><strong>Double progression, on the top of the range.</strong> When you can hit every set at the prescribed reps with 2–3 in reserve, add the smallest available increment next week — 2.5&nbsp;kg on the bar, 2&nbsp;kg on a dumbbell — and expect the reps to feel hard again. That's it. No percentages, no maxes.</li>
+        <li><strong>When the sets drop, the weight does not.</strong> Going from 4 × 6 to 3 × 5 to 2 × 5 is a volume reduction, not an intensity one. The weight on the bar should be the same or higher in week 11 than in week 4, on half the sets. This is what makes a maintenance dose actually maintain.</li>
+        <li><strong>Cut exercises, not rest.</strong> Short on time on a Wednesday? Drop the carry and the second calf variant. Do not compress the rest on the RDL and the pull-up — three heavy sets with full rest beats six rushed ones, and the rushed version also costs you more recovery.</li>
+      </ol>
+
+      <h3>Two ordering rules that are not negotiable</h3>
+      <ul>
+        <li><strong>If you ever lift on a run day, lift after the run</strong>, and leave as many hours as you can. Lifting first degrades the run; running first degrades the lift a little less, and the run is the priority.</li>
+        <li><strong>Nothing heavy for the legs within 36 hours of the long run.</strong> That's the whole reason Friday looks the way it does. If you have to move Session A, move it earlier in the week, never later.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Eating for two goals at once</h2>
+    <p class="kicker">Front-load the fat loss · then stop</p>
+
+    <div class="prose">
+      <p>You want to be leaner and you want to be stronger. Both need protein; they disagree about calories. The resolution is timing, not compromise.</p>
+
+      <ul>
+        <li><strong>Protein: 130–155 g a day, every day, all 19 weeks.</strong> That's roughly 1.8–2.2&nbsp;g per kilo. It is the one number that serves fat loss, strength and recovery simultaneously, and it's the number most runners miss by a wide margin. Spread it across 3–4 feedings rather than loading it at dinner.</li>
+        <li><strong>Deficit now, through week 8 only.</strong> About 350 kcal below maintenance — enough for roughly 0.3–0.4&nbsp;kg a week, which is 3–4&nbsp;kg by the end of block 2. Slower than you'd like. Faster loss than that at rising running volume costs muscle and bone, and the bill arrives as a stress fracture in week 11.</li>
+        <li><strong>Maintenance from week 9 onwards. Not negotiable.</strong> Running 55–66&nbsp;km a week in a calorie deficit is the textbook route to low energy availability: bone stress injuries, suppressed immunity, flat training, and adaptations that simply don't happen. Whatever fat is left at week 9 stays until after the race. It'll come off faster afterwards anyway.</li>
+        <li><strong>Carbohydrate is a training variable, not a moral one.</strong> Eat properly before Tuesday's session and Saturday's long run, and eat carbohydrate afterwards. The deficit comes out of the easy days, never out of the two runs that matter.</li>
+        <li><strong>Creatine, 3–5 g daily, if you want one supplement.</strong> Well-evidenced for strength, cheap, no endurance downside. It brings about a kilo of water weight in the first fortnight, which will look like the fat loss stalled. It isn't. Start it now rather than mid-block so the weight shift doesn't confuse your week-8 read.</li>
+      </ul>
+
+      <div class="note note--caution">
+        <span class="label">The signals that mean you've cut too far</span>
+        <p>Resting heart rate creeping up week on week. Sleep getting worse rather than better. Soreness that lasts three days. Easy pace drifting slower at the same effort. Getting sick. Losing interest in training you were enjoying. Any two of these together and you eat more that week — that's the whole intervention, and it works.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Baseline, this week</h2>
+    <p class="kicker">Eight numbers · retest at weeks 4, 8 and 13</p>
+
+    <div class="prose">
+      <p>Take these before you start, because in eight weeks you will not remember what "annoying" felt like, and the knee work in particular is impossible to judge without a number.</p>
+    </div>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr>
+            <th>Test</th>
+            <th>How</th>
+            <th>What good looks like</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="wide lead">Single-leg calf raise, max reps</td>
+            <td class="wide">Standing, straight knee, full range, one every two seconds until form breaks. Both legs.</td>
+            <td class="wide">25+ reps. <strong>A gap of more than 10% between legs is a flag</strong> — and at 66 km a week, the weaker calf is where the Achilles goes.</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Side plank hold</td>
+            <td class="wide">Full side plank to failure, both sides.</td>
+            <td class="wide">45–60 s, symmetrical. The right side being clearly weaker fits the knee picture.</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Single-leg squat, filmed</td>
+            <td class="wide">Five slow reps each leg, phone on the floor in front of you.</td>
+            <td class="wide">Hips level, knee tracking over the second toe. Keep the video — the week-8 comparison is the most convincing evidence you'll get.</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Knee-to-wall</td>
+            <td class="wide">Kneel, front foot flat, drive the knee past the toes without the heel lifting. Measure toe to wall.</td>
+            <td class="wide">10 cm+ both sides. Under 10 cm is a genuine ankle restriction and it changes how the leg above it loads — the one "mobility" measure with a defensible link to running injury.</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Hip extension</td>
+            <td class="wide">Lie on your back at the edge of a table, pull one knee to your chest, let the other leg hang. Both sides.</td>
+            <td class="wide">The hanging thigh should reach horizontal. If it doesn't, the TFL works harder and band tension rises. <strong>A secondary contributor, not the cause</strong> — measure it, don't build a routine around it.</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Bodyweight pull-ups, max</td>
+            <td class="wide">Strict, one set, honest.</td>
+            <td class="wide">Baseline was 7–8. Holding 8 through a marathon block is a win; you're stronger relative to bodyweight if you also lose 3 kg.</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Single-leg semi-squat, 0–10</td>
+            <td class="wide">Five slow reps on the right, quarter-depth. Score the sharpest moment. Fifteen seconds, every morning.</td>
+            <td class="wide"><strong>The short-cycle marker.</strong> It was positive on 22 August, so there is a number to beat. This moves before the after-run ache does. Note whether the pain spikes at a specific depth or builds throughout — the former fits ITB, the latter needs assessing.</td>
+          </tr>
+          <tr>
+            <td class="wide lead">Knee pain, 0–10</td>
+            <td class="wide">Three numbers each week: worst during a run, worst in the two hours after, and the distance at which it first showed up.</td>
+            <td class="wide">The after-run number should fall first, and the onset distance should push further out. Log it weekly — it's the only way to know whether four weeks of hip work did anything.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <p class="kicker">The baseline tests, demonstrated</p>
+    <div class="vids">
+      <div class="vid" data-yt="TbXGtsx3Y3Y">
+        <button class="vid-play" type="button" aria-label="Play video: Single-leg calf raise test">
+          <img loading="lazy" src="https://i.ytimg.com/vi/TbXGtsx3Y3Y/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Single-leg calf raise test</span>
+        <span class="src">Evolution Physical Therapy</span>
+        <span class="cue">Straight knee, full range, one every two seconds until form breaks.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=TbXGtsx3Y3Y" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="wdsxep1BeMY">
+        <button class="vid-play" type="button" aria-label="Play video: Knee-to-wall test">
+          <img loading="lazy" src="https://i.ytimg.com/vi/wdsxep1BeMY/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Knee-to-wall test</span>
+        <span class="src">Catalyst University</span>
+        <span class="cue">Heel stays down. Measure toe to wall — <strong>under 10&nbsp;cm is a genuine restriction.</strong></span>
+        <a class="go" href="https://www.youtube.com/watch?v=wdsxep1BeMY" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="vk5GnoRf4xM">
+        <button class="vid-play" type="button" aria-label="Play video: Modified Thomas test">
+          <img loading="lazy" src="https://i.ytimg.com/vi/vk5GnoRf4xM/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Modified Thomas test</span>
+        <span class="src">Clinical Physio</span>
+        <span class="cue">For hip extension. The hanging thigh should reach horizontal.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=vk5GnoRf4xM" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+      <div class="vid" data-yt="rmsoDEMMPBw">
+        <button class="vid-play" type="button" aria-label="Play video: Single-leg squat assessment">
+          <img loading="lazy" src="https://i.ytimg.com/vi/rmsoDEMMPBw/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="vid-tri" aria-hidden="true"></span>
+        </button>
+        <span class="t">Single-leg squat assessment</span>
+        <span class="src">Axiom Academy &middot; NASM</span>
+        <span class="cue">What a clinician looks for, so you know what you are filming.</span>
+        <a class="go" href="https://www.youtube.com/watch?v=rmsoDEMMPBw" target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+      </div>
+    </div>
+
+    <div class="note note--accent">
+      <span class="label">On relative strength</span>
+      <p>You said you feel heavy and not strong. Those are the same measurement. If you finish block 2 at 67–68&nbsp;kg still doing 8 pull-ups and a heavier RDL than today, you haven't held steady — you've made a substantial gain in the thing that actually matters for both a marathon and a strong athlete, which is force per kilogram. Track bodyweight and lifts on the same page so you can see it.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>After the race</h2>
+    <p class="kicker">Where "strong athlete" actually gets built</p>
+
+    <div class="prose">
+      <p>Everything above is strength <em>inside</em> a marathon block, which means it is constrained on every side. The version of your training where strength is the priority starts about two weeks after the finish line, and it's worth knowing it exists so that this block doesn't feel like a detour.</p>
+
+      <ul>
+        <li><strong>Weeks 1–2 post-race.</strong> Nothing structured. Walk, swim, easy jogging if you want it. The hip block continues — it's six minutes and it's now a permanent fixture.</li>
+        <li><strong>Weeks 3–10 — a genuine strength block.</strong> Running drops to 3 easy runs a week, 25–30&nbsp;km, purely to hold aerobic fitness. Lifting goes to 4 sessions, upper/lower split, with real leg volume: squats to whatever depth your knee has earned by then, heavy hinges, and the weighted calisthenics progressions from your old plan run properly rather than squeezed in. Eat at maintenance or a small surplus. This is the block where the numbers actually move, and it will not conflict with anything.</li>
+        <li><strong>Then marathon two.</strong> Your plan's own roadmap has it peaking at 80–85&nbsp;km with two quality days. You'll start it stronger and lighter than you started this one, which is exactly how the sub-3 sequence is supposed to compound.</li>
+      </ul>
+
+      <p>The strength you build in that post-race block is also what makes the next marathon survivable at higher volume. It isn't a break from the running goal. It's the next phase of it.</p>
+    </div>
+  </section>
+
+  <div class="closer prose">
+    <p>Three things, in order of how much they matter. The <strong>six-minute hip block</strong>, most days, starting today — it is the only item here aimed directly at the knee that's bothering you, and it needs four weeks before it reports back. The <strong>heavy calf work</strong> on Wednesdays, because the soleus is what stands between you and the injuries this plan's own author listed as most likely at 66&nbsp;km. And <strong>eating enough from week 9</strong>, which will feel like giving up on the fat loss and is in fact the thing that gets you to the start line.</p>
+    <p>Everything else — the dips, the pull-ups, the arms — is there because you want to be strong and it costs the running nothing. That's a good enough reason. It's just not the reason this page is organised the way it is.</p>
+    <p>Two sessions. Six minutes daily. Nothing that costs a run.</p>
+  </div>
+
+</div>
+
+<script>
+  var canEmbedInline = location.protocol === 'http:' || location.protocol === 'https:';
+
+  if (!canEmbedInline) document.documentElement.classList.add('no-inline-video');
+
+  document.addEventListener('click', function (e) {
+    var button = e.target.closest('.vid-play');
+    if (!button) return;
+    var card = button.closest('.vid');
+
+    if (!canEmbedInline) {
+      window.open('https://www.youtube.com/watch?v=' + card.dataset.yt, '_blank', 'noopener');
+      return;
+    }
+
+    var frame = document.createElement('iframe');
+    frame.className = 'vid-frame';
+    frame.src = 'https://www.youtube-nocookie.com/embed/' + card.dataset.yt + '?autoplay=1&rel=0&playsinline=1';
+    frame.title = card.querySelector('.t').textContent;
+    frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    frame.allowFullscreen = true;
+    button.replaceWith(frame);
+    frame.focus();
+  });
+
+  document.querySelectorAll('.vid-play img').forEach(function (thumbnail) {
+    thumbnail.addEventListener('error', function () { thumbnail.remove(); });
+  });
+</script>

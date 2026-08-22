@@ -1,0 +1,15 @@
+---
+import { cva } from 'class-variance-authority';
+const note = cva('note', {
+  variants: { variant: { default: '', stop: 'note--stop', caution: 'note--caution', go: 'note--go', accent: 'note--accent' } },
+  defaultVariants: { variant: 'default' },
+});
+const { variant = 'default', label } = Astro.props as {
+  variant?: 'default' | 'stop' | 'caution' | 'go' | 'accent';
+  label?: string;
+};
+---
+<div class={note({ variant })}>
+  {label && <span class="label">{label}</span>}
+  <slot />
+</div>

@@ -1,0 +1,43 @@
+---
+/**
+ * Facade pattern — a still thumbnail inside a button. The iframe is only created
+ * on the tap that starts playback. 29 eager iframes would pull megabytes of
+ * player JS each and make the page unusable on a phone.
+ */
+type Exercise = { youtube: string; name: string; channel: string; cue: string; withdrawn: boolean };
+const { items } = Astro.props as { items: Exercise[] };
+---
+<div class="vids">
+  {items.map((e) => (
+    <div class={`vid${e.withdrawn ? ' vid--out' : ''}`} data-yt={e.youtube}>
+      <button class="vid-play" type="button" aria-label={`Play video: ${e.name}`}>
+        <img loading="lazy" src={`https://i.ytimg.com/vi/${e.youtube}/hqdefault.jpg`} alt="" width="480" height="360" />
+        <span class="vid-tri" aria-hidden="true"></span>
+      </button>
+      <span class="t">{e.name}</span>
+      <span class="src" set:html={e.channel} />
+      <span class="cue" set:html={e.cue} />
+      <a class="go" href={`https://www.youtube.com/watch?v=${e.youtube}`} target="_blank" rel="noopener noreferrer">Open on YouTube &#8599;</a>
+    </div>
+  ))}
+</div>
+
+<script>
+  document.addEventListener('click', function (e) {
+    const button = (e.target as HTMLElement).closest('.vid-play');
+    if (!button) return;
+    const card = button.closest('.vid') as HTMLElement;
+    const frame = document.createElement('iframe');
+    frame.className = 'vid-frame';
+    frame.src = 'https://www.youtube-nocookie.com/embed/' + card.dataset.yt + '?autoplay=1&rel=0&playsinline=1';
+    frame.title = card.querySelector('.t')!.textContent!;
+    frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    frame.allowFullscreen = true;
+    button.replaceWith(frame);
+    frame.focus();
+  });
+
+  document.querySelectorAll('.vid-play img').forEach((thumb) => {
+    thumb.addEventListener('error', () => thumb.remove());
+  });
+</script>

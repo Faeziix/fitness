@@ -1,0 +1,8 @@
+---
+import Zone from './Zone.astro';
+type Token = { text: string } | { zone: 'easy'|'mp'|'threshold'|'max'; label: string };
+const { tokens = [] } = Astro.props as { tokens?: Token[] };
+---
+{tokens.map((t, i) => (
+  <>{i > 0 && ' '}{'zone' in t ? <Zone zone={t.zone} label={t.label} /> : t.text}</>
+))}

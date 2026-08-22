@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Masthead from '../components/Masthead.astro';
+import Crumb from '../components/Crumb.astro';
+import CardGrid from '../components/CardGrid.astro';
+
+const items = [
+  { href: '/archive/marathon-16-week-plan/', meta: '9 Aug 2026 · superseded 22 Aug', title: 'Marathon 16-week plan',
+    desc: 'The original single-file running document. Dismantled into Programs and Articles; kept verbatim as the source of truth for every number on this site.' },
+  { href: '/archive/strength-plan/', meta: '15 Aug 2026 · superseded 22 Aug', title: 'Strength plan',
+    desc: 'The original strength companion, including the hip block, the video grids and the nutrition sequencing.' },
+  { href: '/archive/marathon-training-plan/', meta: '8 Aug 2026 · superseded 9 Aug', title: 'Marathon plan, first draft',
+    desc: 'An earlier draft of the running plan, replaced by the 16-week version.' },
+  { href: '/archive/3-month-training-plan/3-month-training-plan.md', meta: '8 Aug 2026 · superseded', title: '3-month training plan',
+    desc: 'Written while running was off the table for knee reasons. Not compatible with 66 km/week — kept for movement selection and the calisthenics baselines only.' },
+];
+---
+<BaseLayout title="Archive" section="library" description="The original documents, unchanged.">
+  <Crumb trail={[{ href: '/', label: 'Today' }, { label: 'Archive' }]} />
+  <Masthead
+    eyebrow="Originals, unchanged"
+    title="Archive"
+    standfirst="Each file still carries its own inline stylesheet, so it opens standalone with no dependency on this site."
+  />
+  <CardGrid items={items} />
+</BaseLayout>

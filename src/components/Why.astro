@@ -1,0 +1,4 @@
+---
+const { to } = Astro.props as { to: string };
+---
+<a class="why" href={`/articles/${to}/`}><slot /> &rarr;</a>

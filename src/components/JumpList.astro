@@ -1,0 +1,6 @@
+---
+const { items } = Astro.props as { items: { id: string; label: string }[] };
+---
+<nav class="jump" aria-label="On this page">
+  {items.map((i) => <a href={`#${i.id}`}>{i.label}</a>)}
+</nav>

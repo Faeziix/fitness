@@ -1,0 +1,14 @@
+---
+const { items } = Astro.props as {
+  items: { href: string; meta?: string; title: string; desc: string }[];
+};
+---
+<div class="cards">
+  {items.map((i) => (
+    <a class="card" href={i.href}>
+      {i.meta && <span class="m">{i.meta}</span>}
+      <span class="t">{i.title}</span>
+      <p class="d">{i.desc}</p>
+    </a>
+  ))}
+</div>

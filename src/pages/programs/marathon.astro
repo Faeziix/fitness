@@ -1,0 +1,228 @@
+---
+import { ordered } from '../../lib/data';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Masthead from '../../components/Masthead.astro';
+import Crumb from '../../components/Crumb.astro';
+import JumpList from '../../components/JumpList.astro';
+import Scroller from '../../components/Scroller.astro';
+import Detail from '../../components/Detail.astro';
+import Zone from '../../components/Zone.astro';
+import Note from '../../components/Note.astro';
+import Why from '../../components/Why.astro';
+import WeekGrid from '../../components/WeekGrid.astro';
+import VolumeChart from '../../components/VolumeChart.astro';
+
+const all = await ordered('weeks');
+const order = (id: string) => all.findIndex((w) => w.id === id);
+const onramp = all.filter((w) => w.block === 0);
+const blocks = [1, 2, 3, 4].map((b) => all.filter((w) => w.block === b));
+const blockWeeks = all.filter((w) => w.block > 0);
+
+const paces = await ordered('paces');
+const quality = await ordered('qualitySessions');
+const blockNotes = await ordered('blockNotes');
+
+const peak = Math.max(...blockWeeks.map((w) => w.km));
+const longest = Math.max(...blockWeeks.map((w) => w.days.sat.km ?? 0));
+const totalKm = Math.round(blockWeeks.reduce((sum, w) => sum + w.km + (w.raceKm ?? 0), 0));
+
+const DAY_COLS = [
+  ['mon', 'Mon'], ['tue', 'Tue — quality'], ['thu', 'Thu — med-long'],
+  ['sat', 'Sat — long'], ['sun', 'Sun'],
+] as const;
+const ONRAMP_COLS = [
+  ['mon', 'Mon'], ['tue', 'Tue'], ['wed', 'Wed'],
+  ['sat', 'Sat — long'], ['sun', 'Sun'],
+] as const;
+
+const PHASE = ['Base', 'Build', 'Specific', 'Peak and taper'];
+const RANGE = ['weeks 1–4', 'weeks 5–8', 'weeks 9–12', 'weeks 13–16'];
+
+const jump = [
+  { id: 'week', label: 'The week' },
+  { id: 'paces', label: 'Paces' },
+  { id: 'volume', label: 'Volume' },
+  { id: 'plan', label: 'The plan' },
+  { id: 'quality', label: 'Quality' },
+  { id: 'onramp', label: 'On-ramp' },
+];
+---
+<BaseLayout title="Marathon plan" section="programs" description="The 16-week running plan, every run in kilometres.">
+  <Crumb trail={[{ href: '/', label: 'Today' }, { href: '/programs/', label: 'Programs' }, { label: 'Marathon' }]} />
+  <Masthead
+    eyebrow="16 weeks · distance-based"
+    title="The marathon plan"
+    standfirst="A marathon block written in kilometres, built at the aggressive end of what a fit beginner can absorb. Peak 66 km a week. Real quality work. Marathon pace trained, not hoped for."
+  />
+
+  <dl class="statbar">
+    <div class="stat"><dt>Length</dt><dd>16 <small>weeks</small></dd></div>
+    <div class="stat"><dt>Runs / week</dt><dd>5</dd></div>
+    <div class="stat"><dt>Peak week</dt><dd>{peak} <small>km</small></dd></div>
+    <div class="stat"><dt>Longest run</dt><dd>{longest} <small>km</small></dd></div>
+    <div class="stat"><dt>Total volume</dt><dd>{totalKm} <small>km</small></dd></div>
+  </dl>
+
+  <JumpList items={jump} />
+
+  <section id="week">
+    <h2>The week</h2>
+    <p class="kicker">Same seven days for sixteen weeks</p>
+    <WeekGrid days={all[order('w1')].days} strength={2} />
+    <div class="prose">
+      <p><strong>The Thursday medium-long run is the most important addition here.</strong> It's Pfitzinger's signature session and it's what makes this a marathon plan rather than a long-run-plus-filler plan. It builds mitochondrial density and capillary growth without the recovery cost of a second long run, and it's the main reason this block peaks at 66 km instead of 45.</p>
+      <p><strong>The week opening with a run means four run days in a row</strong> — Saturday long, Sunday recovery, Monday easy, Tuesday quality. That's deliberate and safe, because Sunday and Monday are the two easiest runs of the week, and the mid-week rest now lands on Wednesday, straight after the quality day, which is exactly where you want it.</p>
+      <p>One quality day, four easy days. That ratio is Patrick Sang's, and it's not up for improvement. The failure mode of every ambitious amateur is that the easy days creep up to medium and the hard day gets softer, until you're running five identical medium runs and plateauing for years.</p>
+    </div>
+    <Why to="how-strength-fits">Why the strength work lands on Wednesday and Friday</Why>
+    <Note label="The three-hour cap">
+      <p>Long runs are given in km, but <strong>stop at 3 hours whatever the distance says.</strong> Maximum aerobic adaptation from a long run lands around 2.5–3 hours; past that you add recovery cost and injury risk without much return. If 30 km takes you longer than 3 hours, run 3 hours. The number in the table is the goal, not the instruction.</p>
+    </Note>
+  </section>
+
+  <section id="paces">
+    <h2>Your paces</h2>
+    <p class="kicker">Pick a target row · recalibrate after the week-8 test</p>
+    <div class="prose">
+      <p>Every run in this plan has both a distance and a pace band. Find the marathon time you're aiming at, and read across. Until the week-8 10K test gives you real data, aim at the row you think is plausible and <strong>err one row slower</strong>.</p>
+    </div>
+    <Scroller>
+      <thead>
+        <tr>
+          <th>Goal marathon</th>
+          <th class="num">Marathon pace <Zone zone="mp" label="MP" /></th>
+          <th class="num">Easy <Zone zone="easy" label="E" /></th>
+          <th class="num">Threshold <Zone zone="threshold" label="T" /></th>
+          <th class="num">Predicted 10K</th>
+        </tr>
+      </thead>
+      <tbody>
+        {paces.map((p) => (
+          <tr class={p.isMilestone ? 'milestone' : undefined}>
+            <td class="wide">{p.goal}</td>
+            <td class="num">{p.mp}</td>
+            <td class="num">{p.easy}</td>
+            <td class="num">{p.threshold}</td>
+            <td class="num">{p.predicted10k}</td>
+          </tr>
+        ))}
+      </tbody>
+    </Scroller>
+    <h4>Converting the week-8 10K into a target</h4>
+    <div class="prose">
+      <p>Take your 10K time and <strong>multiply by 4.7</strong>. A 45:00 10K predicts 3:32; a 40:00 predicts 3:08.</p>
+      <p>Then add 5–10% back on, because that formula assumes marathon-specific endurance you won't have yet in your first block. A 45:00 10K realistically means <strong>3:40–3:55</strong> on the day. Set your MP from the <em>realistic</em> number, not the predicted one. Training at a pace your endurance can't support is how first marathons blow up at 32 km.</p>
+    </div>
+    <Note variant="accent" label="Keep the effort check — it costs nothing">
+      <p>The pace band tells you what to run. The talk test tells you whether today is a day where that band is honest. On easy runs you should be able to say a full sentence out loud; if you can't, the pace is wrong for today regardless of what the plan says — heat, sleep and accumulated fatigue all move it. <strong>Distance is non-negotiable, pace is a target, effort is the veto.</strong></p>
+    </Note>
+  </section>
+
+  <section id="volume">
+    <h2>Volume, all sixteen weeks</h2>
+    <p class="kicker">Kilometres per week · three build weeks, one down week</p>
+    <VolumeChart
+      weeks={blockWeeks}
+      colourBy="block"
+      legend={[
+        { cls: 'b--caution', label: 'Block 1 · base' },
+        { cls: 'b--accent', label: 'Block 2 · build' },
+        { cls: 'b--go', label: 'Block 3 · specific' },
+        { cls: 'b--stop', label: 'Block 4 · peak & taper' },
+      ]}
+    />
+    <p class="kicker">Faded bars are down weeks · hover any bar for its total</p>
+  </section>
+
+  <section id="plan">
+    <h2>The plan</h2>
+    <p class="kicker">Every run, every week, in kilometres</p>
+    <div class="prose">
+      <p>Numbers are kilometres. Warm-up and cool-down are included in the quality-day figure. <strong>Unless a cell says otherwise, the run is <Zone zone="easy" label="easy" /> throughout.</strong> Wednesday and Friday are always rest.</p>
+    </div>
+
+    {blocks.map((weeks, i) => (
+      <>
+        <h3>Block {i + 1} · {PHASE[i]} · {RANGE[i]}</h3>
+        <Scroller>
+          <thead>
+            <tr>
+              <th class="num">Wk</th>
+              {DAY_COLS.map(([, label]) => <th class="num">{label}</th>)}
+              <th class="num">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {weeks.map((w) => (
+              <tr data-block={w.block} class={[w.isDown && 'down', w.isMilestone && 'milestone'].filter(Boolean).join(' ') || undefined}>
+                <td class="num wk">{w.label}</td>
+                {DAY_COLS.map(([key]) => {
+                  const d = w.days[key];
+                  return d.rest
+                    ? <td class="num dash">—</td>
+                    : <td class="num">{d.km}{d.detail?.length ? <> · <Detail tokens={d.detail} /></> : null}</td>;
+                })}
+                <td class="num tot">{w.kmLabel ?? w.km}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Scroller>
+        <div class="prose" set:html={blockNotes.find((n) => n.block === i + 1)?.body} />
+      </>
+    ))}
+    <Why to="honest-framing">What this plan will and will not deliver</Why>
+  </section>
+
+  <section id="quality">
+    <h2>The quality sessions in full</h2>
+    <p class="kicker">Every quality session, spelled out · Tuesdays, except race-week Monday</p>
+    <div class="prose">
+      <p>All of them are built the same way: <strong>2–3 km warm-up → the work → 1–2 km cool-down.</strong> Recovery between blocks is easy jogging, not standing still. The warm-up and cool-down are inside the distance shown in the table.</p>
+    </div>
+    <Scroller>
+      <thead><tr><th class="num">Wk</th><th>Session</th><th>The work</th><th>Why it's there</th></tr></thead>
+      <tbody>
+        {quality.map((q) => (
+          <tr>
+            <td class="num wk">{q.weeks}</td>
+            <td class="wide">{q.session}</td>
+            <td class="wide"><Detail tokens={q.work} /></td>
+            <td class="wide">{q.why}</td>
+          </tr>
+        ))}
+      </tbody>
+    </Scroller>
+    <Note variant="caution" label="The trap">
+<p>Once Tuesday gets hard, Wednesday and Thursday want to creep up too — you feel fit, and easy starts to feel insulting. <strong>Four easy runs and one hard one beats five medium ones by a distance.</strong> Elite Kenyan marathoners run roughly 80% of their kilometres <em>below</em> marathon pace. The analysis of 119,000 marathon runners found easy-pace volume is the single strongest thing separating fast marathoners from average ones — the fastest run ~80% easy, everyone else 50–60%.</p>
+    </Note>
+  </section>
+
+  <section id="onramp">
+    <h2>The on-ramp</h2>
+    <p class="kicker">Only if you can't clear the gate · 4 weeks · 4 runs</p>
+    <Scroller>
+      <thead>
+        <tr>
+          <th class="num">Wk</th>
+          {ONRAMP_COLS.map(([, label]) => <th class="num">{label}</th>)}
+          <th class="num">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {onramp.map((w) => (
+          <tr class={w.isDown ? 'down' : undefined}>
+            <td class="num wk">{w.label}</td>
+            {ONRAMP_COLS.map(([key]) => {
+              const d = w.days[key];
+              return d.rest ? <td class="num dash">—</td> : <td class="num">{d.km}</td>;
+            })}
+            <td class="num tot">{w.km}</td>
+          </tr>
+        ))}
+      </tbody>
+    </Scroller>
+    <div class="prose">
+      <p>All of it <Zone zone="easy" label="easy" />. Run/walk it if you need to — 8 minutes running, 1 walking, and the walk counts toward the distance. At the end of week D, run 8 km continuously. If it's conversational, start week 1. If it isn't, repeat weeks C and D. Nothing is lost by taking four extra weeks; a lot is lost by breaking in week 6.</p>
+    </div>
+  </section>
+</BaseLayout>

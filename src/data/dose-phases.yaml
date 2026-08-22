@@ -1,0 +1,40 @@
+- id: p0
+  seq: 0
+  phase: On-ramp
+  weeks: B–D
+  running: 22–28 km
+  lifts: '3'
+  doing: <strong>Build.</strong> Full set counts, learn the movements, establish the hip block as a daily habit. Your only real strength window.
+  eating: Deficit ~350 kcal
+- id: p1
+  seq: 1
+  phase: Base
+  weeks: 1–4
+  running: 30–42 km
+  lifts: '2'
+  doing: <strong>Build.</strong> Two sessions, full volume. Add pogo hops from week 3. Add weight every week you can.
+  eating: Deficit ~350 kcal
+- id: p2
+  seq: 2
+  phase: Build
+  weeks: 5–8
+  running: 38–52 km
+  lifts: '2'
+  doing: <strong>Consolidate.</strong> Sets drop, loads hold or creep up. Fewer reps, same weight — this is where you defend what you built.
+  eating: Deficit, closing by W8
+- id: p3
+  seq: 3
+  phase: Specific
+  weeks: 9–13
+  running: 46–66 km
+  lifts: '2'
+  doing: <strong>Maintain.</strong> Minimum effective dose — two working sets per lift, 25 minutes, in and out. Never within 3 reps of failure. Drop plyos in week 13.
+  eating: Maintenance. No deficit.
+- id: p4
+  seq: 4
+  phase: Taper
+  weeks: 14–16
+  running: 52–23 km
+  lifts: 1 → 0
+  doing: '<strong>Shed.</strong> Week 14: one light full-body session at 60% of usual load, ~12 days out — the last lift. Weeks 15–16: hip block only.'
+  eating: Maintenance, carbs up

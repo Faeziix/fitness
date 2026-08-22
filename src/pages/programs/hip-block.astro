@@ -1,0 +1,62 @@
+---
+import { ordered } from '../../lib/data';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Masthead from '../../components/Masthead.astro';
+import Crumb from '../../components/Crumb.astro';
+import Scroller from '../../components/Scroller.astro';
+import Note from '../../components/Note.astro';
+import Why from '../../components/Why.astro';
+import VideoGrid from '../../components/VideoGrid.astro';
+
+const hip = (await ordered('strengthSessions')).filter((l) => l.session === 'hip');
+const vids = (await ordered('exercises')).filter((e) => e.group === 'hip-block');
+---
+<BaseLayout title="Hip block" section="programs" description="The daily six-minute hip block for the lateral knee.">
+  <Crumb trail={[{ href: '/', label: 'Today' }, { href: '/programs/', label: 'Programs' }, { label: 'Hip block' }]} />
+  <Masthead
+    eyebrow="Daily · no equipment beyond a mini-band"
+    title="The daily hip block"
+    standfirst="6 minutes, 5–6 days a week for six weeks, then 3 days a week."
+  />
+
+  <dl class="statbar">
+    <div class="stat"><dt>Time</dt><dd>6 <small>min</small></dd></div>
+    <div class="stat"><dt>Frequency</dt><dd>5–6 <small>days / week</small></dd></div>
+    <div class="stat"><dt>Movements</dt><dd>5 <small>of 6 active</small></dd></div>
+    <div class="stat"><dt>Review</dt><dd>Week 4</dd></div>
+  </dl>
+
+  <section>
+    <div class="prose">
+      <p>This is the highest-value thing on this site and the easiest to skip. It needs no gym and no equipment beyond a mini-band. Do it in the evening, or after a run, or while something is cooking. <strong>Frequency beats intensity here</strong> — six honest minutes most days outperforms twenty minutes twice a week, because you are chasing a control and endurance quality, not a strength maximum.</p>
+      <p>Work the right side first and match the left to it, so the weak side sets the dose.</p>
+    </div>
+
+    <Scroller min="720px">
+      <thead>
+        <tr><th>Exercise</th><th>Weeks 1–2</th><th>Weeks 3–6</th><th>Week 7+</th><th class="num">Target</th></tr>
+      </thead>
+      <tbody>
+        {hip.map((r) => (
+          <tr>
+            <td class="wide lead">{r.name}</td>
+            <td set:html={r.early} />
+            <td>{r.mid}</td>
+            <td>{r.late}</td>
+            <td class="wide" set:html={r.why} />
+          </tr>
+        ))}
+      </tbody>
+    </Scroller>
+
+    <Why to="the-knee">Why hip abductors, and why not stretching</Why>
+
+    <p class="kicker">Watch each one</p>
+    <VideoGrid items={vids} />
+
+    <Note variant="accent" label="The step-down is out for now">
+      <p><strong>As of 22 August the step-down is removed from this block for two weeks.</strong> A single-leg semi-squat on the right sharpens the pain — a positive Renne test — and the step-down is that exact movement under control, so at present it is provocation rather than treatment. Reintroduce it around 5 September at a 10&nbsp;cm step; a 10&nbsp;cm step is not embarrassing, it's a starting load. From then on, if it hurts, drop the step height before you drop the exercise.</p>
+      <p><strong>The other five movements are knee-neutral and continue unchanged.</strong> They load the hip without taking the knee through flexion, and they are the actual treatment — the step-down is the transfer exercise, and transfer can wait until there is something to transfer.</p>
+    </Note>
+  </section>
+</BaseLayout>

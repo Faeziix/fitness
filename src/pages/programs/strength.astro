@@ -1,0 +1,168 @@
+---
+import { ordered } from '../../lib/data';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Masthead from '../../components/Masthead.astro';
+import Crumb from '../../components/Crumb.astro';
+import JumpList from '../../components/JumpList.astro';
+import Scroller from '../../components/Scroller.astro';
+import Zone from '../../components/Zone.astro';
+import Note from '../../components/Note.astro';
+import Why from '../../components/Why.astro';
+import VolumeChart from '../../components/VolumeChart.astro';
+import VideoGrid from '../../components/VideoGrid.astro';
+
+const weeks = await ordered('weeks');
+const dose = weeks.filter((w) => w.id !== 'onramp-a');
+const lifts = await ordered('strengthSessions');
+const exercises = await ordered('exercises');
+const baselines = await ordered('baselines');
+const phases = await ordered('dosePhases');
+
+const A = lifts.filter((l) => l.session === 'A');
+const B = lifts.filter((l) => l.session === 'B');
+const vids = (g: string) => exercises.filter((e) => e.group === g);
+
+const jump = [
+  { id: 'session-a', label: 'Session A' },
+  { id: 'session-b', label: 'Session B' },
+  { id: 'dose', label: 'The dose' },
+  { id: 'baseline', label: 'Baseline' },
+];
+---
+<BaseLayout title="Strength plan" section="programs" description="The strength companion to the marathon block.">
+  <Crumb trail={[{ href: '/', label: 'Today' }, { href: '/programs/', label: 'Programs' }, { label: 'Strength' }]} />
+  <Masthead
+    eyebrow="Companion to the marathon plan · 71 kg"
+    title="Strength inside a marathon block"
+    standfirst="Two sessions a week that make you harder to break, faster per step, and stronger than you are now — without ever costing you a run. Plus a six-minute daily block aimed straight at that knee."
+  />
+
+  <dl class="statbar">
+    <div class="stat"><dt>Sessions</dt><dd>2 <small>/ week in the block</small></dd></div>
+    <div class="stat"><dt>On-ramp</dt><dd>3 <small>/ week, 3 weeks</small></dd></div>
+    <div class="stat"><dt>Session length</dt><dd>40 <small>min, falling to 25</small></dd></div>
+    <div class="stat"><dt>Knee block</dt><dd>6 <small>min, most days</small></dd></div>
+    <div class="stat"><dt>Runway</dt><dd>{dose.length} <small>weeks to race day</small></dd></div>
+    <div class="stat"><dt>Last heavy lift</dt><dd>W14 <small>&asymp;12 days out</small></dd></div>
+  </dl>
+
+  <JumpList items={jump} />
+
+  <section id="session-a">
+    <h2>Session A — Wednesday</h2>
+    <p class="kicker">Lower + vertical pull · 40 min falling to 25</p>
+    <div class="prose">
+      <p>Warm up six minutes: five easy on the bike, then leg swings, bodyweight hinges, and the banded lateral walk from the hip block. Then, from block week 3 onward, the ankle plyometrics — they go first, while you're fresh, and they take two minutes.</p>
+    </div>
+    <Scroller min="760px">
+      <thead>
+        <tr><th>Exercise</th><th>Why it's here</th><th class="num">On-ramp + W1–4</th><th class="num">W5–8</th><th class="num">W9–13</th><th class="num">Rest</th></tr>
+      </thead>
+      <tbody>
+        {A.map((r) => (
+          <tr>
+            <td class="wide lead">{r.name}{r.intensity && <> <Zone zone={r.intensity} label={r.intensityLabel} /></>}</td>
+            <td class="wide" set:html={r.why} />
+            <td class="num">{r.early}</td>
+            <td class="num">{r.mid}</td>
+            <td class="num" set:html={r.late} />
+            <td class="num">{r.rest}</td>
+          </tr>
+        ))}
+      </tbody>
+    </Scroller>
+    <Why to="how-strength-fits">Why heavy legs land on Wednesday, never Friday</Why>
+    <p class="kicker">Session A, demonstrated</p>
+    <VideoGrid items={vids('session-a')} />
+    <Note label="Choosing the split squat variant">
+<p>Start with the <strong>step-up</strong> — a 30–40&nbsp;cm box, dumbbells at your sides, drive through the front heel and do not push off the back foot. It's the knee-friendlier option and it loads the glute hard. Move to the Bulgarian split squat once four weeks of step-ups have passed without lateral knee complaints. If either one provokes the knee, shorten the range before you lower the weight — a partial rep is a legitimate rep, as your old plan already told you.</p>
+    </Note>
+  </section>
+
+  <section id="session-b">
+    <h2>Session B — Friday</h2>
+    <p class="kicker">Upper + hips · 35 min falling to 22 · legs stay fresh for Saturday</p>
+    <Scroller min="760px">
+      <thead>
+        <tr><th>Exercise</th><th>Why it's here</th><th class="num">On-ramp + W1–4</th><th class="num">W5–8</th><th class="num">W9–13</th><th class="num">Rest</th></tr>
+      </thead>
+      <tbody>
+        {B.map((r) => (
+          <tr>
+            <td class="wide lead">{r.name}{r.intensity && <> <Zone zone={r.intensity} label={r.intensityLabel} /></>}</td>
+            <td class="wide" set:html={r.why} />
+            <td class="num">{r.early}</td>
+            <td class="num">{r.mid}</td>
+            <td class="num" set:html={r.late} />
+            <td class="num">{r.rest}</td>
+          </tr>
+        ))}
+      </tbody>
+    </Scroller>
+    <p class="kicker">Session B, demonstrated</p>
+    <VideoGrid items={vids('session-b')} />
+    <Note variant="go" label="The third session — on-ramp only">
+<p>You have three weeks of on-ramp left, running 22–28&nbsp;km a week. That is the only window in the next 19 weeks with genuine room for a third lift, and it is worth taking. Add a <strong>Session C</strong> on a non-running day: repeat Session A's RDL, step-up and both calf raises at the on-ramp set counts, plus bodyweight pull-ups and push-ups to two reps short of failure. Drop it the week you start block week 1. Do not try to keep three sessions once running passes 40&nbsp;km — that is the exact decision that turns this into an injury.</p>
+    </Note>
+  </section>
+
+  <section id="dose">
+    <h2>The dose across nineteen weeks</h2>
+    <p class="kicker">Strength falls as running rises · that inversion is the whole design</p>
+    <VolumeChart
+      weeks={dose}
+      colourBy="strength"
+      legend={[
+        { cls: 'b--accent', label: '3 sessions' },
+        { cls: 'b--go', label: '2 sessions' },
+        { cls: 'b--caution', label: '1 light session' },
+        { cls: 'b--muted', label: 'Hip block only' },
+      ]}
+    />
+    <p class="kicker">Bar height is running volume · colour is the strength dose · hover any bar</p>
+    <p class="legend"><span>Running volumes are read straight off the 16-week plan</span></p>
+    <Scroller min="820px">
+      <thead>
+        <tr><th>Phase</th><th class="num">Weeks</th><th class="num">Running</th><th class="num">Lifts</th><th>What you're doing</th><th>Eating</th></tr>
+      </thead>
+      <tbody>
+        {phases.map((f) => (
+          <tr>
+            <td class="wide lead">{f.phase}</td>
+            <td class="num">{f.weeks}</td>
+            <td class="num">{f.running}</td>
+            <td class="num">{f.lifts}</td>
+            <td class="wide" set:html={f.doing} />
+            <td class="wide" set:html={f.eating} />
+          </tr>
+        ))}
+      </tbody>
+    </Scroller>
+    <Why to="how-to-progress">The four rules that replace guessing</Why>
+  </section>
+
+  <section id="baseline">
+    <h2>Baseline, this week</h2>
+    <p class="kicker">Eight numbers · retest at weeks 4, 8 and 13</p>
+    <div class="prose">
+      <p>Take these before you start, because in eight weeks you will not remember what "annoying" felt like, and the knee work in particular is impossible to judge without a number.</p>
+    </div>
+    <Scroller min="700px">
+      <thead><tr><th>Test</th><th>How</th><th>What good looks like</th></tr></thead>
+      <tbody>
+        {baselines.map((b) => (
+          <tr>
+            <td class="wide lead">{b.test}</td>
+            <td class="wide" set:html={b.how} />
+            <td class="wide" set:html={b.good} />
+          </tr>
+        ))}
+      </tbody>
+    </Scroller>
+    <p class="kicker">The baseline tests, demonstrated</p>
+    <VideoGrid items={vids('baseline')} />
+    <Note variant="accent" label="On relative strength">
+<p>You said you feel heavy and not strong. Those are the same measurement. If you finish block 2 at 67–68&nbsp;kg still doing 8 pull-ups and a heavier RDL than today, you haven't held steady — you've made a substantial gain in the thing that actually matters for both a marathon and a strong athlete, which is force per kilogram. Track bodyweight and lifts on the same page so you can see it.</p>
+    </Note>
+  </section>
+</BaseLayout>

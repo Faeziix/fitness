@@ -1,0 +1,659 @@
+- id: onramp-a
+  seq: 0
+  label: A
+  phase: On-ramp
+  block: 0
+  isDown: false
+  km: 20
+  days:
+    mon:
+      km: 5
+      detail: []
+    tue:
+      rest: true
+    wed:
+      km: 5
+      detail: []
+    thu:
+      rest: true
+    fri:
+      rest: true
+    sat:
+      km: 7
+      detail: []
+    sun:
+      km: 3
+      detail: []
+  strength: 3
+- id: onramp-b
+  seq: 1
+  label: B
+  phase: On-ramp
+  block: 0
+  isDown: false
+  km: 24
+  days:
+    mon:
+      km: 6
+      detail: []
+    tue:
+      rest: true
+    wed:
+      km: 6
+      detail: []
+    thu:
+      rest: true
+    fri:
+      rest: true
+    sat:
+      km: 9
+      detail: []
+    sun:
+      km: 3
+      detail: []
+  strength: 3
+  strengthNote: 3 lifts
+- id: onramp-c
+  seq: 2
+  label: C
+  phase: On-ramp
+  block: 0
+  isDown: false
+  km: 28
+  days:
+    mon:
+      km: 6
+      detail: []
+    tue:
+      km: 5
+      detail: []
+    wed:
+      km: 6
+      detail: []
+    thu:
+      rest: true
+    fri:
+      rest: true
+    sat:
+      km: 11
+      detail: []
+    sun:
+      rest: true
+  strength: 3
+  strengthNote: 3 lifts
+- id: onramp-d
+  seq: 3
+  label: D
+  phase: On-ramp
+  block: 0
+  isDown: true
+  km: 22
+  days:
+    mon:
+      km: 5
+      detail: []
+    tue:
+      rest: true
+    wed:
+      km: 5
+      detail: []
+    thu:
+      rest: true
+    fri:
+      rest: true
+    sat:
+      km: 9
+      detail: []
+    sun:
+      km: 3
+      detail: []
+  strength: 3
+  strengthNote: 3 lifts
+- id: w1
+  seq: 4
+  label: '1'
+  phase: Base
+  block: 1
+  isDown: false
+  isMilestone: false
+  km: 34
+  kmLabel: '34'
+  days:
+    mon:
+      km: 6
+      detail: []
+    tue:
+      km: 6
+      detail:
+      - text: + 4 strides
+    wed:
+      rest: true
+    thu:
+      km: 7
+      detail: []
+    fri:
+      rest: true
+    sat:
+      km: 10
+      detail: []
+    sun:
+      km: 5
+      detail: []
+  strength: 2
+  strengthNote: 2 lifts
+- id: w2
+  seq: 5
+  label: '2'
+  phase: Base
+  block: 1
+  isDown: false
+  isMilestone: false
+  km: 38
+  kmLabel: '38'
+  days:
+    mon:
+      km: 6
+      detail: []
+    tue:
+      km: 7
+      detail:
+      - text: + 6 strides
+    wed:
+      rest: true
+    thu:
+      km: 8
+      detail: []
+    fri:
+      rest: true
+    sat:
+      km: 12
+      detail: []
+    sun:
+      km: 5
+      detail: []
+  strength: 2
+  strengthNote: 2 lifts
+- id: w3
+  seq: 6
+  label: '3'
+  phase: Base
+  block: 1
+  isDown: false
+  isMilestone: false
+  km: 42
+  kmLabel: '42'
+  days:
+    mon:
+      km: 7
+      detail: []
+    tue:
+      km: 7
+      detail:
+      - text: hills 6×45s
+    wed:
+      rest: true
+    thu:
+      km: 9
+      detail: []
+    fri:
+      rest: true
+    sat:
+      km: 14
+      detail: []
+    sun:
+      km: 5
+      detail: []
+  strength: 2
+  strengthNote: 2 lifts
+- id: w4
+  seq: 7
+  label: '4'
+  phase: Base
+  block: 1
+  isDown: true
+  isMilestone: false
+  km: 30
+  kmLabel: '30'
+  days:
+    mon:
+      km: 4
+      detail: []
+    tue:
+      km: 5
+      detail:
+      - text: + 4 strides
+    wed:
+      rest: true
+    thu:
+      km: 7
+      detail: []
+    fri:
+      rest: true
+    sat:
+      km: 11
+      detail: []
+    sun:
+      km: 3
+      detail: []
+  strength: 2
+  strengthNote: 2 lifts
+- id: w5
+  seq: 8
+  label: '5'
+  phase: Build
+  block: 2
+  isDown: false
+  isMilestone: false
+  km: 44
+  kmLabel: '44'
+  days:
+    mon:
+      km: 6
+      detail: []
+    tue:
+      km: 8
+      detail:
+      - text: hills 8×45s
+    wed:
+      rest: true
+    thu:
+      km: 9
+      detail: []
+    fri:
+      rest: true
+    sat:
+      km: 16
+      detail: []
+    sun:
+      km: 5
+      detail: []
+  strength: 2
+  strengthNote: 2 lifts
+- id: w6
+  seq: 9
+  label: '6'
+  phase: Build
+  block: 2
+  isDown: false
+  isMilestone: false
+  km: 48
+  kmLabel: '48'
+  days:
+    mon:
+      km: 7
+      detail: []
+    tue:
+      km: 8
+      detail:
+      - zone: threshold
+        label: T
+      - text: 2×8 min
+    wed:
+      rest: true
+    thu:
+      km: 10
+      detail: []
+    fri:
+      rest: true
+    sat:
+      km: 18
+      detail: []
+    sun:
+      km: 5
+      detail: []
+  strength: 2
+  strengthNote: 2 lifts
+- id: w7
+  seq: 10
+  label: '7'
+  phase: Build
+  block: 2
+  isDown: false
+  isMilestone: false
+  km: 52
+  kmLabel: '52'
+  days:
+    mon:
+      km: 8
+      detail: []
+    tue:
+      km: 8
+      detail:
+      - zone: threshold
+        label: T
+      - text: 2×10 min
+    wed:
+      rest: true
+    thu:
+      km: 10
+      detail: []
+    fri:
+      rest: true
+    sat:
+      km: 21
+      detail: []
+    sun:
+      km: 5
+      detail: []
+  strength: 2
+  strengthNote: 2 lifts
+- id: w8
+  seq: 11
+  label: '8'
+  phase: Build
+  block: 2
+  isDown: true
+  isMilestone: true
+  km: 38
+  kmLabel: '38'
+  days:
+    mon:
+      km: 6
+      detail: []
+    tue:
+      km: 6
+      detail:
+      - text: easy
+    wed:
+      rest: true
+    thu:
+      km: 8
+      detail: []
+    fri:
+      rest: true
+    sat:
+      km: 14
+      detail:
+      - zone: max
+        label: 10K TEST
+    sun:
+      km: 4
+      detail: []
+  strength: 2
+  strengthNote: 2 lifts · 10K test
+- id: w9
+  seq: 12
+  label: '9'
+  phase: Specific
+  block: 3
+  isDown: false
+  isMilestone: false
+  km: 55
+  kmLabel: '55'
+  days:
+    mon:
+      km: 7
+      detail: []
+    tue:
+      km: 9
+      detail:
+      - zone: threshold
+        label: T
+      - text: 3×8 min
+    wed:
+      rest: true
+    thu:
+      km: 11
+      detail: []
+    fri:
+      rest: true
+    sat:
+      km: 23
+      detail:
+      - text: last 5
+      - zone: mp
+        label: MP
+    sun:
+      km: 5
+      detail: []
+  strength: 2
+  strengthNote: 2 lifts, minimum dose
+- id: w10
+  seq: 13
+  label: '10'
+  phase: Specific
+  block: 3
+  isDown: false
+  isMilestone: false
+  km: 60
+  kmLabel: '60'
+  days:
+    mon:
+      km: 8
+      detail: []
+    tue:
+      km: 9
+      detail:
+      - zone: threshold
+        label: T
+      - text: 20 min cont.
+    wed:
+      rest: true
+    thu:
+      km: 12
+      detail: []
+    fri:
+      rest: true
+    sat:
+      km: 26
+      detail: []
+    sun:
+      km: 5
+      detail: []
+  strength: 2
+  strengthNote: 2 lifts, minimum dose
+- id: w11
+  seq: 14
+  label: '11'
+  phase: Specific
+  block: 3
+  isDown: false
+  isMilestone: false
+  km: 64
+  kmLabel: '64'
+  days:
+    mon:
+      km: 9
+      detail: []
+    tue:
+      km: 9
+      detail:
+      - zone: mp
+        label: MP
+      - text: 4×2 km
+    wed:
+      rest: true
+    thu:
+      km: 13
+      detail: []
+    fri:
+      rest: true
+    sat:
+      km: 28
+      detail:
+      - text: last 6
+      - zone: mp
+        label: MP
+    sun:
+      km: 5
+      detail: []
+  strength: 2
+  strengthNote: 2 lifts, minimum dose
+- id: w12
+  seq: 15
+  label: '12'
+  phase: Specific
+  block: 3
+  isDown: true
+  isMilestone: false
+  km: 46
+  kmLabel: '46'
+  days:
+    mon:
+      km: 6
+      detail: []
+    tue:
+      km: 7
+      detail:
+      - zone: threshold
+        label: T
+      - text: 2×8 min
+    wed:
+      rest: true
+    thu:
+      km: 10
+      detail: []
+    fri:
+      rest: true
+    sat:
+      km: 20
+      detail: []
+    sun:
+      km: 3
+      detail: []
+  strength: 2
+  strengthNote: 2 lifts, minimum dose
+- id: w13
+  seq: 16
+  label: '13'
+  phase: Peak and taper
+  block: 4
+  isDown: false
+  isMilestone: true
+  km: 66
+  kmLabel: '66'
+  days:
+    mon:
+      km: 9
+      detail: []
+    tue:
+      km: 9
+      detail:
+      - zone: mp
+        label: MP
+      - text: 3×3 km
+    wed:
+      rest: true
+    thu:
+      km: 13
+      detail: []
+    fri:
+      rest: true
+    sat:
+      km: 30
+      detail:
+      - text: last 8
+      - zone: mp
+        label: MP
+    sun:
+      km: 5
+      detail: []
+  strength: 2
+  strengthNote: 2 lifts, no plyos
+- id: w14
+  seq: 17
+  label: '14'
+  phase: Peak and taper
+  block: 4
+  isDown: false
+  isMilestone: false
+  km: 52
+  kmLabel: '52'
+  days:
+    mon:
+      km: 6
+      detail: []
+    tue:
+      km: 8
+      detail:
+      - zone: threshold
+        label: T
+      - text: 2×10 min
+    wed:
+      rest: true
+    thu:
+      km: 10
+      detail: []
+    fri:
+      rest: true
+    sat:
+      km: 24
+      detail:
+      - text: last 5
+      - zone: mp
+        label: MP
+    sun:
+      km: 4
+      detail: []
+  strength: 1
+  strengthNote: 1 light lift, the last one
+- id: w15
+  seq: 18
+  label: '15'
+  phase: Peak and taper
+  block: 4
+  isDown: false
+  isMilestone: false
+  km: 38
+  kmLabel: '38'
+  days:
+    mon:
+      km: 4
+      detail: []
+    tue:
+      km: 7
+      detail:
+      - zone: mp
+        label: MP
+      - text: 3×2 km
+    wed:
+      rest: true
+    thu:
+      km: 8
+      detail: []
+    fri:
+      rest: true
+    sat:
+      km: 16
+      detail: []
+    sun:
+      km: 3
+      detail: []
+  strength: 0
+  strengthNote: hip block only
+- id: w16
+  seq: 19
+  label: '16'
+  phase: Peak and taper
+  block: 4
+  isDown: false
+  isMilestone: true
+  km: 23
+  kmLabel: 23 + 42.2
+  days:
+    mon:
+      km: 8
+      detail:
+      - text: + 4 strides
+    tue:
+      km: 6
+      detail:
+      - text: easy
+    wed:
+      rest: true
+    thu:
+      km: 5
+      detail: []
+    fri:
+      rest: true
+    sat:
+      km: 4
+      detail:
+      - text: shakeout
+    sun:
+      detail:
+      - zone: max
+        label: RACE
+  strength: 0
+  strengthNote: hip block only
+  raceKm: 42.2

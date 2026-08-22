@@ -1,0 +1,31 @@
+---
+import { ordered } from '../../lib/data';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Masthead from '../../components/Masthead.astro';
+import Crumb from '../../components/Crumb.astro';
+import VideoGrid from '../../components/VideoGrid.astro';
+
+const all = await ordered('exercises');
+const GROUPS = [
+  { key: 'knee-tests', label: 'Knee tests', kicker: 'The three tests · five minutes', href: '/articles/the-knee/' },
+  { key: 'hip-block', label: 'The daily hip block', kicker: 'Six movements · one currently withdrawn', href: '/programs/hip-block/' },
+  { key: 'session-a', label: 'Session A — Wednesday', kicker: 'Lower + vertical pull', href: '/programs/strength/#session-a' },
+  { key: 'session-b', label: 'Session B — Friday', kicker: 'Upper + hips', href: '/programs/strength/#session-b' },
+  { key: 'baseline', label: 'Baseline tests', kicker: 'Retest at weeks 4, 8 and 13', href: '/programs/strength/#baseline' },
+];
+---
+<BaseLayout title="Video library" section="library" description="Every demonstration video in one place.">
+  <Crumb trail={[{ href: '/', label: 'Today' }, { label: 'Library' }]} />
+  <Masthead
+    eyebrow={`${all.length} demonstrations · all verified`}
+    title="Video library"
+    standfirst="Every movement on the site, in one place. The videos also sit beside the movement they demonstrate on each program page."
+  />
+  {GROUPS.map((g) => (
+    <section>
+      <h2>{g.label}</h2>
+      <p class="kicker">{g.kicker} · <a href={g.href}>go to the program</a></p>
+      <VideoGrid items={all.filter((e) => e.group === g.key)} />
+    </section>
+  ))}
+</BaseLayout>

@@ -1,0 +1,98 @@
+:root {
+  --ground: #EDEEEA;
+  --surface: #F8F9F6;
+  --surface-2: #E3E6E0;
+  --ink: #15191B;
+  --ink-2: #4E585B;
+  --ink-3: #7B858A;
+  --rule: #CFD3CD;
+  --rule-strong: #9DA5A2;
+  --accent: #23477E;
+  --accent-ink: #1B3A6B;
+  --accent-soft: #DCE3EF;
+  --caution: #8A6206;
+  --caution-soft: #F0E8CF;
+  --stop: #8E2318;
+  --stop-soft: #F3DFDA;
+  --go: #23604A;
+  --go-soft: #DBE9E2;
+
+  --easy: #2E7D57;
+  --easy-soft: #D9EBE2;
+  --mp: #B0851C;
+  --mp-soft: #F2E8CC;
+  --hard: #BF6320;
+  --hard-soft: #F5E1D2;
+  --max: #9E3226;
+  --max-soft: #F2DBD6;
+
+  --font-display: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: "Iowan Old Style", Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Consolas, monospace;
+
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: 1.5rem;
+  --step-3: 2rem;
+  --step-4: 3.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #0F1316;
+    --surface: #161B1F;
+    --surface-2: #1E252A;
+    --ink: #E6EAEC;
+    --ink-2: #9CA7AC;
+    --ink-3: #6E797E;
+    --rule: #2A3238;
+    --rule-strong: #48545B;
+    --accent: #86ABE8;
+    --accent-ink: #A6C4F2;
+    --accent-soft: #1A2740;
+    --caution: #D9AB4A;
+    --caution-soft: #2E2716;
+    --stop: #E28C7E;
+    --stop-soft: #33201C;
+    --go: #6FBF9B;
+    --go-soft: #163026;
+
+    --easy: #62BF92;
+    --easy-soft: #142C22;
+    --mp: #DDB44F;
+    --mp-soft: #2C2515;
+    --hard: #E8925A;
+    --hard-soft: #301F13;
+    --max: #E0776A;
+    --max-soft: #301A16;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ground: #0F1316;
+  --surface: #161B1F;
+  --surface-2: #1E252A;
+  --ink: #E6EAEC;
+  --ink-2: #9CA7AC;
+  --ink-3: #6E797E;
+  --rule: #2A3238;
+  --rule-strong: #48545B;
+  --accent: #86ABE8;
+  --accent-ink: #A6C4F2;
+  --accent-soft: #1A2740;
+  --caution: #D9AB4A;
+  --caution-soft: #2E2716;
+  --stop: #E28C7E;
+  --stop-soft: #33201C;
+  --go: #6FBF9B;
+  --go-soft: #163026;
+
+  --easy: #62BF92;
+  --easy-soft: #142C22;
+  --mp: #DDB44F;
+  --mp-soft: #2C2515;
+  --hard: #E8925A;
+  --hard-soft: #301F13;
+  --max: #E0776A;
+  --max-soft: #301A16;
+}

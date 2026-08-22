@@ -1,0 +1,30 @@
+---
+const { section } = Astro.props as { section?: string };
+const links = [
+  { href: '/', label: 'Today', key: 'today' },
+  { href: '/programs/', label: 'Programs', key: 'programs' },
+  { href: '/articles/', label: 'Articles', key: 'articles' },
+  { href: '/library/videos/', label: 'Library', key: 'library' },
+  { href: '/archive/', label: 'Archive', key: 'archive' },
+];
+---
+<nav class="sitenav" aria-label="Sections">
+  <div class="sitenav-in">
+    {links.map((l) => (
+      <a href={l.href} aria-current={section === l.key ? 'page' : undefined}>{l.label}</a>
+    ))}
+    <span class="spacer"></span>
+    <button class="themetoggle" type="button" data-theme-toggle aria-label="Switch colour theme">Theme</button>
+  </div>
+</nav>
+
+<script>
+  document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const current = root.getAttribute('data-theme') || (systemDark ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch {}
+  });
+</script>

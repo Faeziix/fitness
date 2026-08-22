@@ -1,0 +1,39 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Masthead from '../../components/Masthead.astro';
+import Crumb from '../../components/Crumb.astro';
+import Note from '../../components/Note.astro';
+import Zone from '../../components/Zone.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((a) => ({ params: { id: a.id }, props: { article: a } }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+
+const PROGRAM: Record<string, { href: string; label: string }> = {
+  marathon: { href: '/programs/marathon/', label: 'The marathon plan' },
+  strength: { href: '/programs/strength/', label: 'The strength plan' },
+  'hip-block': { href: '/programs/hip-block/', label: 'The daily hip block' },
+};
+const back = article.data.explains ? PROGRAM[article.data.explains] : undefined;
+---
+<BaseLayout title={article.data.title} section="articles" description={article.data.standfirst}>
+  <Crumb trail={[{ href: '/', label: 'Today' }, { href: '/articles/', label: 'Articles' }, { label: article.data.title }]} />
+  <Masthead eyebrow={article.data.eyebrow} title={article.data.title} standfirst={article.data.standfirst} />
+
+  {back && <a class="why" href={back.href}>Back to {back.label} &rarr;</a>}
+
+  <section class="prose">
+    <Content components={{ Note, Zone }} />
+  </section>
+
+  {back && (
+    <div class="closer">
+      <p>This explains <a href={back.href}>{back.label}</a>.</p>
+    </div>
+  )}
+</BaseLayout>

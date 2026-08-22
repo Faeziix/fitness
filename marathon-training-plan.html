@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>24-Week Marathon Plan</title>
+<style>
+  :root {
+    --ground: #EDEEEA;
+    --surface: #F8F9F6;
+    --surface-2: #E3E6E0;
+    --ink: #15191B;
+    --ink-2: #4E585B;
+    --ink-3: #7B858A;
+    --rule: #CFD3CD;
+    --rule-strong: #9DA5A2;
+    --accent: #23477E;
+    --accent-ink: #1B3A6B;
+    --accent-soft: #DCE3EF;
+    --caution: #8A6206;
+    --caution-soft: #F0E8CF;
+    --stop: #8E2318;
+    --stop-soft: #F3DFDA;
+    --go: #23604A;
+    --go-soft: #DBE9E2;
+
+    --font-display: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-body: "Iowan Old Style", Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+    --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Consolas, monospace;
+
+    --step-0: 1.0625rem;
+    --step-1: 1.25rem;
+    --step-2: 1.5rem;
+    --step-3: 2rem;
+    --step-4: 3.25rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0F1316;
+      --surface: #161B1F;
+      --surface-2: #1E252A;
+      --ink: #E6EAEC;
+      --ink-2: #9CA7AC;
+      --ink-3: #6E797E;
+      --rule: #2A3238;
+      --rule-strong: #48545B;
+      --accent: #86ABE8;
+      --accent-ink: #A6C4F2;
+      --accent-soft: #1A2740;
+      --caution: #D9AB4A;
+      --caution-soft: #2E2716;
+      --stop: #E28C7E;
+      --stop-soft: #33201C;
+      --go: #6FBF9B;
+      --go-soft: #163026;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #0F1316;
+    --surface: #161B1F;
+    --surface-2: #1E252A;
+    --ink: #E6EAEC;
+    --ink-2: #9CA7AC;
+    --ink-3: #6E797E;
+    --rule: #2A3238;
+    --rule-strong: #48545B;
+    --accent: #86ABE8;
+    --accent-ink: #A6C4F2;
+    --accent-soft: #1A2740;
+    --caution: #D9AB4A;
+    --caution-soft: #2E2716;
+    --stop: #E28C7E;
+    --stop-soft: #33201C;
+    --go: #6FBF9B;
+    --go-soft: #163026;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: var(--step-0);
+    line-height: 1.62;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1080px;
+    margin-inline: auto;
+    padding: 0 clamp(1.15rem, 4vw, 3rem) 6rem;
+  }
+
+  .prose { max-width: 68ch; }
+
+  p { margin: 0 0 1.05em; }
+  p:last-child { margin-bottom: 0; }
+
+  a {
+    color: var(--accent-ink);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .masthead { padding: clamp(3rem, 8vw, 5.5rem) 0 0; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 1.4rem;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--step-4);
+    line-height: 0.94;
+    letter-spacing: -0.032em;
+    text-transform: uppercase;
+    text-wrap: balance;
+    margin: 0 0 1.1rem;
+    max-width: 16ch;
+  }
+
+  .standfirst {
+    font-size: var(--step-1);
+    line-height: 1.5;
+    color: var(--ink-2);
+    max-width: 56ch;
+    margin: 0 0 2.4rem;
+  }
+
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border-block: 1px solid var(--rule);
+    margin-bottom: 3.5rem;
+  }
+  .fact {
+    background: var(--ground);
+    padding: 1rem 1.1rem 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .fact dt {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .fact dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .fact dd small {
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 0.8rem;
+    letter-spacing: 0;
+    color: var(--ink-2);
+    margin-top: 0.15rem;
+  }
+
+  section { margin-bottom: 4rem; }
+
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--step-3);
+    line-height: 1.05;
+    letter-spacing: -0.024em;
+    text-transform: uppercase;
+    text-wrap: balance;
+    margin: 0 0 0.35rem;
+    padding-top: 1.2rem;
+    border-top: 2px solid var(--ink);
+  }
+
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 1.6rem;
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-1);
+    letter-spacing: -0.012em;
+    text-transform: uppercase;
+    margin: 2.4rem 0 0.8rem;
+    text-wrap: balance;
+  }
+
+  h4 {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.74rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin: 1.8rem 0 0.6rem;
+  }
+
+  ul, ol { margin: 0 0 1.05em; padding-left: 1.2em; }
+  li { margin-bottom: 0.42em; }
+  li:last-child { margin-bottom: 0; }
+
+  strong { font-weight: 700; }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--surface-2);
+    padding: 0.1em 0.36em;
+    border-radius: 2px;
+  }
+
+  .note {
+    border-left: 4px solid var(--rule-strong);
+    background: var(--surface);
+    padding: 1.15rem 1.35rem;
+    margin: 1.8rem 0;
+    max-width: 72ch;
+  }
+  .note .label {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .note--stop { border-left-color: var(--stop); background: var(--stop-soft); }
+  .note--stop .label { color: var(--stop); }
+  .note--caution { border-left-color: var(--caution); background: var(--caution-soft); }
+  .note--caution .label { color: var(--caution); }
+  .note--go { border-left-color: var(--go); background: var(--go-soft); }
+  .note--go .label { color: var(--go); }
+  .note--accent { border-left-color: var(--accent); background: var(--accent-soft); }
+  .note--accent .label { color: var(--accent-ink); }
+
+  .scroller {
+    overflow-x: auto;
+    margin: 1.6rem 0;
+    border-block: 1px solid var(--rule);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 1.45;
+    font-variant-numeric: tabular-nums;
+    min-width: 560px;
+  }
+
+  thead th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding: 0.7rem 0.85rem;
+    border-bottom: 1px solid var(--rule-strong);
+    white-space: nowrap;
+    background: var(--ground);
+  }
+
+  tbody td {
+    padding: 0.62rem 0.85rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:nth-child(even) { background: var(--surface); }
+
+  td.wide { font-family: var(--font-body); font-size: 0.92rem; min-width: 20ch; }
+  td.num { white-space: nowrap; }
+  th.num { text-align: left; }
+
+  .wk { font-weight: 700; color: var(--ink); }
+
+  tr[data-phase] td:first-child {
+    border-left: 3px solid transparent;
+    padding-left: 0.7rem;
+  }
+  tr[data-phase="1"] td:first-child { border-left-color: var(--caution); }
+  tr[data-phase="2"] td:first-child { border-left-color: var(--accent); }
+  tr[data-phase="3"] td:first-child { border-left-color: var(--go); }
+  tr[data-phase="4"] td:first-child { border-left-color: var(--stop); }
+
+  tr.milestone td { background: var(--accent-soft); }
+  tr.milestone td.wide { font-weight: 600; }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-top: 0.9rem;
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 0.45rem; }
+  .legend i { width: 14px; height: 3px; border-radius: 1px; display: inline-block; }
+  .legend .p1 { background: var(--caution); }
+  .legend .p2 { background: var(--accent); }
+  .legend .p3 { background: var(--go); }
+  .legend .p4 { background: var(--stop); }
+
+  .week {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 1.6rem 0;
+  }
+  .day { background: var(--surface); padding: 0.95rem 1rem 1.1rem; }
+  .day--rest { background: var(--ground); }
+  .day h5 {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 0.45rem;
+  }
+  .day p { margin: 0; font-size: 0.95rem; line-height: 1.45; }
+  .day .sub {
+    display: block;
+    color: var(--ink-2);
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+  }
+
+  .closer {
+    border-top: 2px solid var(--ink);
+    padding-top: 1.6rem;
+    margin-top: 4rem;
+    max-width: 68ch;
+  }
+  .closer p:last-child {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.015em;
+    font-size: var(--step-2);
+    line-height: 1.15;
+    margin-top: 1.4rem;
+  }
+
+  @media (max-width: 620px) {
+    :root { --step-4: 2.4rem; --step-3: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Running build · Revision 4 · 8 August 2026</p>
+    <h1>Build the engine first</h1>
+    <p class="standfirst">Rebuilt from the only measurement that's actually current: 7.2 km/h for 20 minutes, breathing hard. Twenty-four weeks to a half marathon and a real aerobic base — then the marathon, then the pace.</p>
+
+    <dl class="facts">
+      <div class="fact"><dt>Real starting point</dt><dd>7.2<small>20 min, breathing hard</small></dd></div>
+      <div class="fact"><dt>Run days</dt><dd>3→5<small>Builds across the block</small></dd></div>
+      <div class="fact"><dt>Peak volume</dt><dd>50 km<small>Week 22</small></dd></div>
+      <div class="fact"><dt>Week 24</dt><dd>Half<small>21.1 km, raced</small></dd></div>
+      <div class="fact"><dt>First marathon</dt><dd>Wk 44<small>Roughly 10 months out</small></dd></div>
+    </dl>
+  </header>
+
+  <section>
+    <h2>Why this got rewritten</h2>
+    <p class="kicker">The fourth version, and the first one built on a current number</p>
+
+    <div class="prose">
+      <p>Every previous version of this plan was calibrated off a 27:30 5K. That number is out. <strong>7.2 km/h for 20 minutes with heavy breathing is the only current measurement you've given me</strong>, and it describes someone with a genuinely low aerobic base right now — not a lapsed 27-minute 5K runner.</p>
+      <p>7.2 km/h is 8:20 per kilometre. If that's hard, then every pace zone in the last three versions was too fast, the volumes were too high, and following them would have hurt you inside a month. Training at paces you can't sustain doesn't make you tougher. It makes you injured, and then it makes you stop.</p>
+      <p>So here's the honest picture, and then a plan that actually fits it.</p>
+    </div>
+
+    <div class="note note--caution">
+      <span class="label">What changes about the goal</span>
+      <p><strong>5:00/km inside 24 weeks is off the table.</strong> Not a maybe, not an outside chance. Going from "8:20/km is hard for 20 minutes" to "5:00/km for 42 kilometres" in six months isn't a training problem, it's an arithmetic one.</p>
+      <p>What's genuinely available to you in 24 weeks is a <strong>half marathon and an aerobic engine that doesn't currently exist.</strong> That's not a consolation prize. It's the thing every fast marathon is built on, and skipping it is why most people who chase a time goal from your starting point end up injured by month three with nothing to show.</p>
+    </div>
+
+    <h3>The honest ladder</h3>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th class="num">When</th><th>Goal</th><th class="num">Realistic time</th><th>What you're building</th></tr>
+        </thead>
+        <tbody>
+          <tr class="milestone"><td class="num wk">Week 24</td><td class="wide">Half marathon</td><td class="num">2:05–2:20</td><td class="wide">The aerobic base. Everything else depends on this.</td></tr>
+          <tr><td class="num wk">Week 44</td><td class="wide">First marathon</td><td class="num">4:30–5:00</td><td class="wide">Distance experience. Finish it, learn it.</td></tr>
+          <tr><td class="num wk">Year 2</td><td class="wide">Second marathon</td><td class="num">4:00–4:20</td><td class="wide">Real volume — 60–70 km weeks</td></tr>
+          <tr><td class="num wk">Year 3</td><td class="wide">Third</td><td class="num">3:40–3:55</td><td class="wide">Speed work on a mature base</td></tr>
+          <tr class="milestone"><td class="num wk">Year 4–5</td><td class="wide">5:00/km</td><td class="num">3:31</td><td class="wide">The goal you came in with</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note note--go">
+      <span class="label">The part that's actually in your favour</span>
+      <p>You're 24 and starting from close to zero, which means <strong>the next twelve months will produce the largest percentage gains of your entire running life.</strong> Beginners improve fastest — it's the one advantage that disappears permanently once you've used it. Someone who has trained for five years fights for 2% a year. You could take three minutes off your 5K by Christmas.</p>
+      <p>Goggins started at 297 pounds and couldn't run a mile. You can run twenty minutes. You are not starting from behind — you're starting from the start, which is where everybody starts.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Forget pace. Train by effort.</h2>
+    <p class="kicker">No pace zones until week 12, when you'll have real data</p>
+
+    <div class="prose">
+      <p>Every pace target is deleted for now. They were derived from a stale time trial and they were all too fast. Until week 12 you have exactly one control: <strong>the talk test.</strong></p>
+    </div>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th>Effort</th><th>The test</th><th class="num">Likely belt</th><th>When you use it</th></tr>
+        </thead>
+        <tbody>
+          <tr class="milestone"><td class="wide">Easy</td><td class="wide">You can say a full sentence out loud without gasping</td><td class="num">6.0–7.0</td><td class="wide">Everything, for the first twelve weeks</td></tr>
+          <tr><td class="wide">Steady</td><td class="wide">Short phrases only, three or four words</td><td class="num">7.5–8.5</td><td class="wide">Not yet. Week 15 onward.</td></tr>
+          <tr><td class="wide">Hard</td><td class="wide">One word at a time, if that</td><td class="num">9.0+</td><td class="wide">Time trials only</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Finding your easy pace on day one</h3>
+    <div class="prose">
+      <ol>
+        <li>Set the belt to <strong>6.5</strong>, incline 1%.</li>
+        <li>After five minutes, say a full sentence out loud. Not a word — a sentence.</li>
+        <li>Can't get through it? Drop 0.3 and try again in five minutes.</li>
+        <li>Effortless, could hold it all day? Add 0.3.</li>
+        <li>Whatever number you land on is your easy pace. Write it down. That's the number for the next six weeks.</li>
+      </ol>
+      <p>Most people in your position land somewhere between <strong>6.0 and 7.0</strong>. If yours is 6.0, that's fine. If it's 5.8, that's fine too — it just means walking briskly and jogging are close together right now, and that gap widens fast.</p>
+    </div>
+
+    <div class="note">
+      <span class="label">Run/walk is a tool, not a failure</span>
+      <p>If you can't hold conversational effort continuously, don't grind through it — break it up. <strong>5 minutes running, 1 minute walking, repeat.</strong> The walk breaks let your heart rate settle so the running portions stay genuinely easy, which is the entire point. You accumulate more quality minutes this way than by running one hard block and needing three days to recover.</p>
+      <p>Drop the walk breaks when they start feeling unnecessary, not on a schedule.</p>
+    </div>
+
+    <div class="note note--accent">
+      <span class="label">What to expect, so you don't misread it</span>
+      <p>Your easy pace will move fast. It's normal to gain 1.0–1.5 km/h on your conversational speed within six weeks — the same effort that gives you 6.5 today gives you 8.0 by week 6. That's not you getting tougher. That's stroke volume, capillary density and mitochondria, and it's the fastest-moving adaptation in the sport.</p>
+      <p>Re-run the talk test every couple of weeks and let the belt speed follow it up. Don't force the number; let the effort set it.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>The week</h2>
+    <p class="kicker">Runs build 3 → 5 · Your two upper-body lifts stay</p>
+
+    <div class="prose">
+      <p>Weeks 1–4 are three runs. It goes to four at week 5 and five at week 13. Your lifting keeps both hard upper-body sessions throughout; the leg-day hypertrophy work is what gives way.</p>
+      <p>Run first, lift second, on shared days.</p>
+    </div>
+
+    <div class="week">
+      <div class="day"><h5>Mon</h5><p>Easy run<span class="sub">+ Push session, then calf raises</span></p></div>
+      <div class="day day--rest"><h5>Tue</h5><p>Rest<span class="sub">Mobility block. Ankles.</span></p></div>
+      <div class="day"><h5>Wed</h5><p>Easy run<span class="sub">+ Pull session, then glute/hamstring work</span></p></div>
+      <div class="day day--rest"><h5>Thu</h5><p>Rest<span class="sub">Or a walk. Genuinely a walk.</span></p></div>
+      <div class="day"><h5>Fri</h5><p>Easy run<span class="sub">Added from week 5</span></p></div>
+      <div class="day"><h5>Sat</h5><p>Long run<span class="sub">The one that matters most</span></p></div>
+      <div class="day day--rest"><h5>Sun</h5><p>Rest<span class="sub">Eat. Sleep. That's the session.</span></p></div>
+    </div>
+
+    <h3>What changes in your lifting</h3>
+
+    <h4>Keep, unchanged</h4>
+    <div class="prose">
+      <ul>
+        <li>Push and pull, merged onto Monday and Wednesday. Weighted dips, weighted pull-ups, loaded push-ups. Chase the +20 kg pull-up — running volume is low enough for months that your upper body barely notices.</li>
+        <li>The mobility block. Ankle dorsiflexion especially.</li>
+        <li>Core: ab wheel, suitcase carry, Pallof press.</li>
+      </ul>
+    </div>
+
+    <h4>Replace — the runner's legs circuit</h4>
+    <div class="prose">
+      <p>Around 15 minutes, added to Monday and Wednesday, replacing Lower A and Lower B. At your current running volume this is doing more for your injury resistance than the running is.</p>
+    </div>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th>Exercise</th><th class="num">Sets × reps</th><th>Why it's here</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="wide">Straight-knee calf raise</td><td class="num">3 × 15–20</td><td class="wide">Gastrocnemius. Among the highest-load tissues in running.</td></tr>
+          <tr><td class="wide">Bent-knee calf raise</td><td class="num">3 × 15</td><td class="wide">Soleus. Takes the most load of all at slow paces — which is all of yours.</td></tr>
+          <tr><td class="wide">Single-leg glute bridge</td><td class="num">3 × 10–12</td><td class="wide">Hip extension power, minimal knee joint load.</td></tr>
+          <tr><td class="wide">Hip abduction (cable or band)</td><td class="num">3 × 12–15</td><td class="wide">Glute medius. Controls knee tracking under fatigue.</td></tr>
+          <tr><td class="wide">Romanian deadlift or Nordic curl</td><td class="num">3 × 6–10</td><td class="wide">Hamstring. Guards against the most common running strain.</td></tr>
+          <tr><td class="wide">Step-down or split squat</td><td class="num">3 × 8–10</td><td class="wide">Single-leg quad control. Pain-free depth only.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Park for now</h4>
+    <div class="prose">
+      <ul>
+        <li>Heavy leg press, heavy leg extension, the TRX squat-depth progression. Revisit after week 24.</li>
+        <li>Eating in a deficit. Building an aerobic base on low fuel is slow and injury-prone. Maintenance or slightly above.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>The twenty-four weeks</h2>
+    <p class="kicker">Volume in kilometres · Everything easy until week 15</p>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th class="num">Wk</th><th class="num">Runs</th><th class="num">Volume</th><th class="num">Long</th><th>Session detail</th></tr>
+        </thead>
+        <tbody>
+          <tr data-phase="1"><td class="num wk">1</td><td class="num">3</td><td class="num">12</td><td class="num">4</td><td class="wide">Run/walk 5:1. Find your talk-test speed.</td></tr>
+          <tr data-phase="1"><td class="num wk">2</td><td class="num">3</td><td class="num">14</td><td class="num">5</td><td class="wide">Run/walk 5:1</td></tr>
+          <tr data-phase="1"><td class="num wk">3</td><td class="num">3</td><td class="num">16</td><td class="num">6</td><td class="wide">Run/walk 8:1 if 5:1 feels easy</td></tr>
+          <tr data-phase="1"><td class="num wk">4</td><td class="num">3</td><td class="num">12</td><td class="num">5</td><td class="wide">Down week. Re-run the talk test — belt likely moved up.</td></tr>
+          <tr data-phase="1"><td class="num wk">5</td><td class="num">4</td><td class="num">18</td><td class="num">7</td><td class="wide">Fourth run added. Drop walk breaks if ready.</td></tr>
+          <tr data-phase="1" class="milestone"><td class="num wk">6</td><td class="num">4</td><td class="num">20</td><td class="num">8</td><td class="wide">Target: 45 minutes continuous, conversational</td></tr>
+
+          <tr data-phase="2"><td class="num wk">7</td><td class="num">4</td><td class="num">24</td><td class="num">9</td><td class="wide">All easy</td></tr>
+          <tr data-phase="2"><td class="num wk">8</td><td class="num">4</td><td class="num">18</td><td class="num">7</td><td class="wide">Down week</td></tr>
+          <tr data-phase="2"><td class="num wk">9</td><td class="num">4</td><td class="num">26</td><td class="num">10</td><td class="wide">First strides — 4 × 20s, relaxed</td></tr>
+          <tr data-phase="2"><td class="num wk">10</td><td class="num">4</td><td class="num">30</td><td class="num">12</td><td class="wide">Strides 6 × 20s</td></tr>
+          <tr data-phase="2"><td class="num wk">11</td><td class="num">4</td><td class="num">33</td><td class="num">13</td><td class="wide">Strides 6 × 20s</td></tr>
+          <tr data-phase="2" class="milestone"><td class="num wk">12</td><td class="num">4</td><td class="num">24</td><td class="num">10</td><td class="wide">Down week + 5K time trial — your first real pace zones</td></tr>
+
+          <tr data-phase="3"><td class="num wk">13</td><td class="num">5</td><td class="num">34</td><td class="num">14</td><td class="wide">Fifth run added. Still all easy.</td></tr>
+          <tr data-phase="3"><td class="num wk">14</td><td class="num">5</td><td class="num">38</td><td class="num">16</td><td class="wide">Hills or incline 6 × 45s</td></tr>
+          <tr data-phase="3"><td class="num wk">15</td><td class="num">5</td><td class="num">42</td><td class="num">17</td><td class="wide">First tempo — 2 × 8 min at steady effort</td></tr>
+          <tr data-phase="3"><td class="num wk">16</td><td class="num">4</td><td class="num">30</td><td class="num">12</td><td class="wide">Down week — all easy</td></tr>
+          <tr data-phase="3"><td class="num wk">17</td><td class="num">5</td><td class="num">44</td><td class="num">18</td><td class="wide">Tempo 2 × 10 min</td></tr>
+          <tr data-phase="3"><td class="num wk">18</td><td class="num">5</td><td class="num">48</td><td class="num">19</td><td class="wide">Intervals 5 × 800 m</td></tr>
+
+          <tr data-phase="4"><td class="num wk">19</td><td class="num">5</td><td class="num">44</td><td class="num">16</td><td class="wide">Tempo 3 × 8 min</td></tr>
+          <tr data-phase="4"><td class="num wk">20</td><td class="num">5</td><td class="num">50</td><td class="num">20</td><td class="wide">Long run, last 5 km at half-marathon effort</td></tr>
+          <tr data-phase="4"><td class="num wk">21</td><td class="num">5</td><td class="num">46</td><td class="num">18</td><td class="wide">Intervals 4 × 1000 m</td></tr>
+          <tr data-phase="4"><td class="num wk">22</td><td class="num">5</td><td class="num">50</td><td class="num">21</td><td class="wide">Peak week. Full race distance, easy effort.</td></tr>
+          <tr data-phase="4"><td class="num wk">23</td><td class="num">4</td><td class="num">36</td><td class="num">12</td><td class="wide">Taper. 3 × 2 km at goal race pace.</td></tr>
+          <tr data-phase="4" class="milestone"><td class="num wk">24</td><td class="num">3</td><td class="num">22</td><td class="num">—</td><td class="wide">Race week. Two short easy runs. Then 21.1 km.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="legend">
+      <span><i class="p1"></i> Learn to run easy</span>
+      <span><i class="p2"></i> Aerobic base</span>
+      <span><i class="p3"></i> Build</span>
+      <span><i class="p4"></i> Sharpen &amp; race</span>
+    </div>
+
+    <div class="note">
+      <span class="label">How to use this table</span>
+      <p>Weeks 1–12 have no quality sessions at all beyond a few strides, and that is the entire point. Your engine needs volume at low effort far more than it needs hard intervals right now, and hard intervals on an undeveloped base are how beginners get hurt.</p>
+      <p><strong>If a week feels too hard, repeat it rather than pushing on.</strong> This table is a route, not a timetable. Adding two weeks to the block costs you nothing. An eight-week injury costs you the block.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Test days</h2>
+    <p class="kicker">Two real tests. Everything before week 12 is feel.</p>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th class="num">Week</th><th>Test</th><th>What it sets</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="num wk">4</td><td class="wide">Talk test, repeated</td><td class="wide">Not a time trial — just re-find your conversational speed. It will have moved.</td></tr>
+          <tr class="milestone"><td class="num wk">12</td><td class="wide">5K time trial, all out</td><td class="wide">Your first real number. Every pace zone gets built from this.</td></tr>
+          <tr class="milestone"><td class="num wk">24</td><td class="wide">Half marathon, raced</td><td class="wide">The base you built, and the launch point for the marathon block.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose">
+      <p>Two hard tests in six months is deliberate. Testing costs two or three days of recovery, and adaptation is slow enough that measuring monthly gives you noise plus a reason to feel bad on a bad day.</p>
+      <p>The feedback you want more often is already there: <strong>the belt speed that passes your talk test.</strong> Same effort, rising speed, week after week. That's your fitness moving, and it costs nothing to read.</p>
+    </div>
+
+    <h4>How to run the week-12 trial</h4>
+    <div class="prose">
+      <ul>
+        <li>Same treadmill every time. Belts drift out of calibration, so consistency matters more than accuracy.</li>
+        <li>Warm up 15 minutes easy plus 4 strides. Cold-starting a time trial costs you 20–30 seconds.</li>
+        <li>Even splits. The most common way to ruin one is the first kilometre.</li>
+        <li>Two easy days beforehand — that's why it sits on a down week.</li>
+        <li>Log the conditions. A bad number on four hours' sleep isn't a plateau.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Heat and the treadmill</h2>
+    <p class="kicker">You're building through a Gulf summer</p>
+
+    <div class="prose">
+      <ul>
+        <li><strong>August to October: treadmill by default.</strong> Controllable pace, forgiving surface, no heat-casualty risk. Incline 0.5–1%.</li>
+        <li><strong>Never run outdoors 9am–6pm from June to September.</strong> If you go outside it's before 5:30am, with water.</li>
+        <li><strong>Feels-like above 32°C, go inside.</strong> Heat costs 20–40 seconds per kilometre and wrecks the talk test — you'll be gasping at an effort that's aerobically easy, and you'll misread it as being unfit.</li>
+        <li><strong>Hydration:</strong> 500–800 ml per hour with 500–1000 mg sodium per litre once runs pass an hour.</li>
+        <li><strong>From November, move the long run outside.</strong> Treadmill fitness transfers; road durability doesn't, and your half marathon won't be indoors.</li>
+      </ul>
+      <p>Long treadmill runs are mentally brutal. That's not a flaw in the plan — it's the part that builds whatever keeps you moving when it stops being fun. Most people won't do it.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Fuelling</h2>
+    <p class="kicker">Simpler than the internet makes it</p>
+
+    <div class="prose">
+      <ul>
+        <li><strong>Under 60 minutes:</strong> water. Nothing else needed. That's most of your first three months.</li>
+        <li><strong>Over 75 minutes:</strong> 30–60 g of carbohydrate per hour, starting around 40 minutes. Begin practising this on the week-13 long runs so race day isn't an experiment.</li>
+        <li><strong>Before a long run:</strong> 1–2 g carbohydrate per kg bodyweight, two hours out. At 70 kg that's 70–140 g.</li>
+        <li><strong>Shoes:</strong> rotate two pairs, replace at 600–800 km. Track the mileage — worn midsoles are a genuine injury contributor.</li>
+        <li><strong>Sleep:</strong> seven to nine hours. It's a training variable, not a lifestyle suggestion, and it's the cheapest one you own.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="closer">
+    <p>Four versions. Each time I wrote one, you handed back a harder, truer number — the knee, then which run was recent, then this. Most people defend the flattering version of themselves right up until the injury proves them wrong. You dismantled it yourself, unprompted, three times.</p>
+    <p>That instinct is worth more than any session in this document. Talent is common and it plateaus. Being willing to look straight at where you actually are is rare, and it compounds for decades.</p>
+    <p>So: 6.5 on the belt, 1% incline, a full sentence out loud every five minutes. Twenty-five minutes. That's week one, day one, and it is going to feel like nothing.</p>
+    <p>Do it anyway. Nobody's coming.</p>
+  </div>
+
+</div>
+</body>
+</html>

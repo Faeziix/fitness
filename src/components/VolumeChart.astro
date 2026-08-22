@@ -1,0 +1,49 @@
+---
+/**
+ * Weekly volume chart. Column count and bar heights are derived from the data,
+ * so the 16-vs-19 lockstep bug in the original documents cannot recur.
+ *
+ * `colourBy`:
+ *   'block'    — bar takes its training-block colour (matches the table row edges)
+ *   'strength' — bar takes its strength-session-count colour
+ */
+type Week = {
+  id: string; label: string; km: number; block: number;
+  isDown: boolean; isMilestone?: boolean; strength: number;
+  phase: string; strengthNote?: string; kmLabel?: string;
+};
+
+const { weeks, colourBy = 'block', legend } = Astro.props as {
+  weeks: Week[];
+  colourBy?: 'block' | 'strength';
+  legend: { cls: string; label: string }[];
+};
+
+const peak = Math.max(...weeks.map((w) => w.km));
+
+const BLOCK = ['b--muted', 'b--caution', 'b--accent', 'b--go', 'b--stop'];
+const STRENGTH = ['b--muted', 'b--caution', 'b--go', 'b--accent'];
+
+const barClass = (w: Week) =>
+  colourBy === 'block' ? BLOCK[w.block] : STRENGTH[w.strength];
+
+const title = (w: Week) =>
+  colourBy === 'strength' && w.strengthNote
+    ? `${w.phase} ${w.label} · ${w.km} km · ${w.strengthNote}`
+    : `${w.phase} ${w.label} · ${w.kmLabel ?? w.km + ' km'}${w.isDown ? ' · down week' : ''}`;
+
+const summary = weeks.map((w) => `${w.label}: ${w.km} km`).join(', ');
+---
+<div class="chart-wrap" style={`--bar-cols: ${weeks.length}`}>
+  <div class="bars" role="img" aria-label={`Weekly volume in kilometres. ${summary}.`}>
+    {weeks.map((w) => (
+      <span class={`b ${barClass(w)}${w.isDown ? ' b--down' : ''}`} title={title(w)}>
+        <i style={`height:${Math.round((w.km / peak) * 100)}%`}></i>
+      </span>
+    ))}
+  </div>
+  <div class="axis">{weeks.map((w) => <span>{w.label}</span>)}</div>
+  <div class="legend">
+    {legend.map((l) => <span><i class={l.cls}></i> {l.label}</span>)}
+  </div>
+</div>

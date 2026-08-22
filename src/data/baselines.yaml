@@ -1,0 +1,42 @@
+- id: b0
+  seq: 0
+  test: Single-leg calf raise, max reps
+  how: Standing, straight knee, full range, one every two seconds until form breaks. Both legs.
+  good: 25+ reps. <strong>A gap of more than 10% between legs is a flag</strong> — and at 66 km a week, the weaker calf is where the Achilles goes.
+- id: b1
+  seq: 1
+  test: Side plank hold
+  how: Full side plank to failure, both sides.
+  good: 45–60 s, symmetrical. The right side being clearly weaker fits the knee picture.
+- id: b2
+  seq: 2
+  test: Single-leg squat, filmed
+  how: Five slow reps each leg, phone on the floor in front of you.
+  good: Hips level, knee tracking over the second toe. Keep the video — the week-8 comparison is the most convincing evidence you'll get.
+- id: b3
+  seq: 3
+  test: Knee-to-wall
+  how: Kneel, front foot flat, drive the knee past the toes without the heel lifting. Measure toe to wall.
+  good: 10 cm+ both sides. Under 10 cm is a genuine ankle restriction and it changes how the leg above it loads — the one "mobility" measure with a defensible link to running injury.
+- id: b4
+  seq: 4
+  test: Hip extension
+  how: Lie on your back at the edge of a table, pull one knee to your chest, let the other leg hang. Both sides.
+  good: The hanging thigh should reach horizontal. If it doesn't, the TFL works harder and band tension rises. <strong>A secondary contributor, not the cause</strong> — measure it, don't build a routine
+    around it.
+- id: b5
+  seq: 5
+  test: Bodyweight pull-ups, max
+  how: Strict, one set, honest.
+  good: Baseline was 7–8. Holding 8 through a marathon block is a win; you're stronger relative to bodyweight if you also lose 3 kg.
+- id: b6
+  seq: 6
+  test: Single-leg semi-squat, 0–10
+  how: Five slow reps on the right, quarter-depth. Score the sharpest moment. Fifteen seconds, every morning.
+  good: <strong>The short-cycle marker.</strong> It was positive on 22 August, so there is a number to beat. This moves before the after-run ache does. Note whether the pain spikes at a specific depth or
+    builds throughout — the former fits ITB, the latter needs assessing.
+- id: b7
+  seq: 7
+  test: Knee pain, 0–10
+  how: 'Three numbers each week: worst during a run, worst in the two hours after, and the distance at which it first showed up.'
+  good: The after-run number should fall first, and the onset distance should push further out. Log it weekly — it's the only way to know whether four weeks of hip work did anything.

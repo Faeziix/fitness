@@ -1,0 +1,94 @@
+---
+import { ordered } from '../lib/data';
+import { current } from '../data/current';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Masthead from '../components/Masthead.astro';
+import CardGrid from '../components/CardGrid.astro';
+import WeekGrid from '../components/WeekGrid.astro';
+import Detail from '../components/Detail.astro';
+
+const weeks = await ordered('weeks');
+const week = weeks.find((w) => w.id === current.week)!;
+const onramp = week.block === 0;
+
+const raceWeeks = weeks.length - week.seq - 1;
+
+const DAY_KEYS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'] as const;
+const DAY_NAME = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const ROLE: Record<string, string> = onramp
+  ? { mon: 'Easy', tue: 'Easy', wed: 'Easy', thu: 'Rest', fri: 'Rest', sat: 'Long run', sun: 'Recovery' }
+  : { mon: 'Easy', tue: 'Quality', wed: 'Rest', thu: 'Medium-long', fri: 'Rest', sat: 'Long run', sun: 'Recovery' };
+
+const liftDays = week.strength >= 2 ? ['wed', 'fri'] : week.strength === 1 ? ['wed'] : [];
+
+/** Every day rendered statically so the page reads correctly with JS off. */
+const todayCards = DAY_KEYS.map((key, i) => {
+  const d = week.days[key];
+  return {
+    key, i,
+    name: DAY_NAME[i],
+    headline: d.rest ? (liftDays.includes(key) ? 'Strength session' : 'Rest') : `${d.km} km`,
+    role: d.rest ? (liftDays.includes(key) ? (key === 'wed' ? 'Session A — lower + pull' : 'Session B — upper + hips') : 'No running today') : ROLE[key],
+    detail: d.rest ? [] : (d.detail ?? []),
+  };
+});
+
+const sections = [
+  { href: '/programs/hip-block/', meta: 'Daily · 6 minutes', title: 'The hip block', desc: 'Five movements for the lateral knee. The highest-value thing here.' },
+  { href: '/programs/marathon/', meta: '16 weeks', title: 'The marathon plan', desc: 'Every run, every week, in kilometres.' },
+  { href: '/programs/strength/', meta: '2 sessions / week', title: 'The strength plan', desc: 'Session A, Session B, the dose, and the baselines.' },
+  { href: '/articles/', meta: '8 pieces', title: 'Articles', desc: 'The reasoning. None of it is needed to train today.' },
+];
+---
+<BaseLayout title="Today" section="today" description="What you are doing today.">
+  <Masthead eyebrow={`${week.phase} ${week.label}${current.repeating ? ' · repeating' : ''}`} title="Today" standfirst={current.note} />
+
+  <dl class="statbar">
+    <div class="stat"><dt>Current week</dt><dd>{week.label} <small>{week.phase}</small></dd></div>
+    <div class="stat"><dt>This week</dt><dd>{week.km} <small>km</small></dd></div>
+    <div class="stat"><dt>Long run</dt><dd>{week.days.sat.km ?? '—'} <small>km</small></dd></div>
+    <div class="stat"><dt>Weeks to race</dt><dd>{raceWeeks}</dd></div>
+  </dl>
+
+  <section>
+    {todayCards.map((c) => (
+      <div class="todaycard" data-today={c.key} hidden={c.i !== 0}>
+        <p class="m">{c.name}</p>
+        <h3>{c.headline}</h3>
+        <p class="sub">{c.role}{c.detail.length ? <> · <Detail tokens={c.detail} /></> : null}</p>
+      </div>
+    ))}
+    <noscript>
+      <p class="kicker">Today's card is picked in the browser — the full week is below.</p>
+    </noscript>
+  </section>
+
+  <section>
+    <h2>This week</h2>
+    <p class="kicker">{week.phase} {week.label}{current.repeating ? ' · repeating rather than progressing' : ''}</p>
+    <WeekGrid days={week.days} onramp={onramp} strength={week.strength} markToday />
+  </section>
+
+  <section>
+    <h2>Open flags</h2>
+    <p class="kicker">Carried forward until closed · {current.flags.length} open</p>
+    <ul class="flags">
+      {current.flags.map((f) => (
+        <li>{f.text} <a href={`/articles/${f.article}/`}>Read &rarr;</a></li>
+      ))}
+    </ul>
+  </section>
+
+  <section>
+    <h2>Everything else</h2>
+    <CardGrid items={sections} />
+  </section>
+</BaseLayout>
+
+<script>
+  // Promote the real today. Every day is already in the DOM; this only picks one.
+  const key = ['sun','mon','tue','wed','thu','fri','sat'][new Date().getDay()];
+  document.querySelectorAll('.todaycard').forEach((c) => {
+    (c as HTMLElement).hidden = (c as HTMLElement).dataset.today !== key;
+  });
+</script>

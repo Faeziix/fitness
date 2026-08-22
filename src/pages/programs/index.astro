@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Masthead from '../../components/Masthead.astro';
+import Crumb from '../../components/Crumb.astro';
+import CardGrid from '../../components/CardGrid.astro';
+
+const items = [
+  { href: '/programs/marathon/', meta: '16 weeks · 5 runs / week', title: 'The marathon plan',
+    desc: 'Every run, every week, in kilometres. Paces, the weekly shape, volume, and all four blocks.' },
+  { href: '/programs/strength/', meta: '2 sessions / week, falling to 1', title: 'The strength plan',
+    desc: 'Session A on Wednesday, Session B on Friday, the dose across nineteen weeks, and the eight baseline tests.' },
+  { href: '/programs/hip-block/', meta: 'Daily · 6 minutes', title: 'The daily hip block',
+    desc: 'The highest-value thing here and the easiest to skip. Five active movements for the lateral knee.' },
+];
+---
+<BaseLayout title="Programs" section="programs" description="Everything actionable.">
+  <Crumb trail={[{ href: '/', label: 'Today' }, { label: 'Programs' }]} />
+  <Masthead eyebrow="Everything actionable" title="Programs" standfirst="Tables, sessions and numbers. The reasoning lives in Articles." />
+  <CardGrid items={items} />
+</BaseLayout>

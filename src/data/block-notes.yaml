@@ -1,0 +1,21 @@
+- id: block-1
+  seq: 1
+  block: 1
+  body: <p>No threshold work yet. The job of block 1 is to absorb five runs a week and a Thursday medium-long without accumulating damage. If anything hurts in these four weeks, the rest of the plan is not going to fix it.</p>
+- id: block-2
+  seq: 2
+  block: 2
+  body: '<p><strong>Week 8 is the calibration point of the whole block.</strong> Saturday replaces the long run with a 10 km time trial or, better, an actual 10 km race: 3 km warm-up, 10 km all out and evenly paced, 1 km cool-down. Every pace from week
+    9 onward comes off this number. Keep Tuesday and Thursday genuinely easy that week so the result measures your fitness rather than your fatigue.</p>'
+- id: block-3
+  seq: 3
+  block: 3
+  body: <p>This is where the plan stops being generic endurance work and starts being marathon training. Marathon pace appears in two places at once — as its own session on Tuesday, and as a finish to the long run on Saturday. <strong>Running MP on already-tired
+    legs is the specific adaptation the race demands</strong>, and it's the thing most first-timers have never practised.</p>
+- id: block-4
+  seq: 4
+  block: 4
+  body: '<p><strong>Week 13 is the hardest week of your life so far and week 14 starts giving it back.</strong> The taper is not a reward and it is not optional — the fitness is built by the end of week 13, and the last three weeks exist purely to shed
+    fatigue. You will feel sluggish, heavy and undertrained through weeks 15 and 16. That is what a working taper feels like. It is not a signal to add anything.</p>
+
+    <p>Week 16: Monday 8 km easy with 4 strides, Tuesday 6 km easy, Wednesday rest, Thursday 5 km easy, Friday rest, Saturday 4 km shakeout, Sunday race.</p>'

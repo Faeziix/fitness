@@ -1,0 +1,121 @@
+- id: q0
+  seq: 0
+  weeks: 1–2
+  session: Strides
+  work:
+  - text: 4–6 × 20s fast and relaxed, 60s walk between
+  why: Mechanics and leg speed. Too short to fatigue you.
+- id: q1
+  seq: 1
+  weeks: '3'
+  session: Hills
+  work:
+  - text: 6 × 45s uphill
+  - zone: threshold
+    label: hard
+  - text: ', 4–6% grade, walk down'
+  why: Strength at lower impact cost than flat speed. Always comes first.
+- id: q2
+  seq: 2
+  weeks: '5'
+  session: Hills
+  work:
+  - text: 8 × 45s uphill
+  - zone: threshold
+    label: hard
+  - text: ', walk down'
+  why: Same, more of it.
+- id: q3
+  seq: 3
+  weeks: '6'
+  session: Threshold
+  work:
+  - text: 2 × 8 min at
+  - zone: threshold
+    label: T
+  - text: ', 3 min easy jog between'
+  why: First real lactate work. Controlled and unpleasant, not desperate.
+- id: q4
+  seq: 4
+  weeks: '7'
+  session: Threshold
+  work:
+  - text: 2 × 10 min at
+  - zone: threshold
+    label: T
+  - text: ', 3 min between'
+  why: Extending time at threshold.
+- id: q5
+  seq: 5
+  weeks: '9'
+  session: Threshold
+  work:
+  - text: 3 × 8 min at
+  - zone: threshold
+    label: T
+  - text: ', 2 min between'
+  why: 24 minutes of threshold — a real dose.
+- id: q6
+  seq: 6
+  weeks: '10'
+  session: Threshold
+  work:
+  - text: 20 min continuous at
+  - zone: threshold
+    label: T
+  why: Unbroken. Harder mentally than 3×8, same physiology.
+- id: q7
+  seq: 7
+  weeks: '11'
+  session: Marathon pace
+  work:
+  - text: 4 × 2 km at
+  - zone: mp
+    label: MP
+  - text: ', 2 min easy between'
+  why: Grooving race pace so it feels automatic.
+- id: q8
+  seq: 8
+  weeks: '12'
+  session: Threshold
+  work:
+  - text: 2 × 8 min at
+  - zone: threshold
+    label: T
+  - text: — down week
+  why: Maintenance, not development.
+- id: q9
+  seq: 9
+  weeks: '13'
+  session: Marathon pace
+  work:
+  - text: 3 × 3 km at
+  - zone: mp
+    label: MP
+  - text: ', 3 min easy between'
+  why: 9 km at race pace mid-week, before a 30 km Saturday.
+- id: q10
+  seq: 10
+  weeks: '14'
+  session: Threshold
+  work:
+  - text: 2 × 10 min at
+  - zone: threshold
+    label: T
+  why: Last hard session. Sharpness, not fitness.
+- id: q11
+  seq: 11
+  weeks: '15'
+  session: Marathon pace
+  work:
+  - text: 3 × 2 km at
+  - zone: mp
+    label: MP
+  why: Rehearsal. Should feel easy — you're rested.
+- id: q12
+  seq: 12
+  weeks: '16'
+  session: Strides
+  work:
+  - text: 4 × 20s
+  why: Keeping the legs awake. Nothing more.

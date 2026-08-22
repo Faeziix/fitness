@@ -1,0 +1,41 @@
+---
+import SiteNav from '../components/SiteNav.astro';
+import { pwaInfo } from 'virtual:pwa-info';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/shell.css';
+
+const { title, description, section } = Astro.props as {
+  title: string;
+  description?: string;
+  section?: string;
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#0F1316" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <script is:inline>
+      // Applied before first paint so a dark reader never sees a flash of light.
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored) document.documentElement.setAttribute('data-theme', stored);
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <SiteNav section={section} />
+    <div class="wrap">
+      <slot />
+    </div>
+    <script is:inline src="/registerSW.js"></script>
+  </body>
+</html>

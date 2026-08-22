@@ -1,0 +1,261 @@
+- id: noble-compression-test
+  seq: 0
+  group: knee-tests
+  groupLabel: The knee
+  youtube: PmUGl7ryQOo
+  name: Noble compression test
+  channel: Physiotutors
+  cue: Press the epicondyle, then straighten the leg. Pain reproducing at about 30° is positive.
+  withdrawn: false
+- id: renne-s-test
+  seq: 1
+  group: knee-tests
+  groupLabel: The knee
+  youtube: fEVx6bzUWrM
+  name: Renne's test
+  channel: Physiotutors
+  cue: Single-leg semi-squat to about 30°. Pain sharpening at that depth is positive — <strong>yours is.</strong>
+  withdrawn: false
+- id: what-to-look-for-in-a-single-leg-bend
+  seq: 2
+  group: knee-tests
+  groupLabel: The knee
+  youtube: y-v4seZ7eZ8
+  name: What to look for in a single-leg bend
+  channel: Physiotutors
+  cue: The hip drop and inward knee drift you are filming for. This is the cause, not the symptom.
+  withdrawn: false
+- id: side-lying-hip-abduction
+  seq: 3
+  group: hip-block
+  groupLabel: The daily hip block
+  youtube: BSGho5DuaR0
+  name: Side-lying hip abduction
+  channel: Muscle Motion
+  cue: Top leg slightly behind the body, toe turned <em>down</em> — that is what takes the TFL out of it.
+  withdrawn: false
+- id: side-plank-top-leg-raise
+  seq: 4
+  group: hip-block
+  groupLabel: The daily hip block
+  youtube: aNcJx1OCnJc
+  name: Side plank, top-leg raise
+  channel: Andrea Claassen
+  cue: Hips stacked and lifted throughout. From the knees if the full version breaks form.
+  withdrawn: false
+- id: single-leg-glute-bridge
+  seq: 5
+  group: hip-block
+  groupLabel: The daily hip block
+  youtube: fUOB9VcyvYo
+  name: Single-leg glute bridge
+  channel: Hinge Health · physiotherapist-led
+  cue: Hips level throughout — if the free-side hip drops, the set is over.
+  withdrawn: false
+- id: banded-lateral-walk
+  seq: 6
+  group: hip-block
+  groupLabel: The daily hip block
+  youtube: h8LJktRKl5U
+  name: Banded lateral walk
+  channel: Vo2maxProductions · for runners
+  cue: Quarter-squat, feet never touching. Burn on the outside of the hip, not the thigh.
+  withdrawn: false
+- id: copenhagen-plank
+  seq: 7
+  group: hip-block
+  groupLabel: The daily hip block
+  youtube: ZvVTPLX3l60
+  name: Copenhagen plank
+  channel: Revo Physiotherapy
+  cue: <strong>This is the knee version</strong> — the one you start with, not the full-length one.
+  withdrawn: false
+- id: single-leg-step-down
+  seq: 8
+  group: hip-block
+  groupLabel: The daily hip block
+  youtube: rvI7OxBQqS4
+  name: Single-leg step-down
+  channel: Physio REHAB · Tim Keeley
+  cue: <strong>Currently out of the block until ~5 September.</strong> Watch the regressions — that is how you reintroduce it.
+  withdrawn: true
+- id: pogo-hops
+  seq: 9
+  group: session-a
+  groupLabel: Session A — Wednesday
+  youtube: 7SIfCcfP4g0
+  name: Pogo hops
+  channel: The Irish Physio TV
+  cue: Knees barely bend. Small, fast and quiet — ankle stiffness, not height.
+  withdrawn: false
+- id: dumbbell-rdl
+  seq: 10
+  group: session-a
+  groupLabel: Session A — Wednesday
+  youtube: aa57T45iFSE
+  name: Dumbbell RDL
+  channel: NASM
+  cue: Hinge, not squat. Hips back, bar close, almost no knee bend.
+  withdrawn: false
+- id: step-up
+  seq: 11
+  group: session-a
+  groupLabel: Session A — Wednesday
+  youtube: tqECKZxlCKE
+  name: Step-up
+  channel: Overtime Athletes
+  cue: Drive through the front heel and do not push off the back foot. Lower box than prescribed until the knee is quiet.
+  withdrawn: false
+- id: seated-calf-raise-bent-knee
+  seq: 12
+  group: session-a
+  groupLabel: Session A — Wednesday
+  youtube: pYs6drHFySs
+  name: Seated calf raise, bent knee
+  channel: Alpha Project Phyzio
+  cue: <strong>The most important lift on this page.</strong> Bent knee targets the soleus.
+  withdrawn: false
+- id: standing-calf-raise
+  seq: 13
+  group: session-a
+  groupLabel: Session A — Wednesday
+  youtube: ndQc4mz4mBU
+  name: Standing calf raise
+  channel: Steev
+  cue: Straight knee targets the gastrocnemius. Full range off a step, slow down.
+  withdrawn: false
+- id: weighted-pull-up
+  seq: 14
+  group: session-a
+  groupLabel: Session A — Wednesday
+  youtube: HuuyDNGrCI8
+  name: Weighted pull-up
+  channel: ScottHermanFitness
+  cue: Strict, full hang to chin over the bar. Add a belt only once bodyweight sets are clean.
+  withdrawn: false
+- id: suitcase-carry
+  seq: 15
+  group: session-a
+  groupLabel: Session A — Wednesday
+  youtube: 1OyY036lYRM
+  name: Suitcase carry
+  channel: Limitless Power Tennis
+  cue: One side only. Stay tall — the work is the anti-lean, not the walking.
+  withdrawn: false
+- id: weighted-dip
+  seq: 16
+  group: session-b
+  groupLabel: Session B — Friday
+  youtube: JannOlicL4w
+  name: Weighted dip
+  channel: FIT.nl
+  cue: Slight forward lean for the chest, upright for the triceps. No bouncing out of the bottom.
+  withdrawn: false
+- id: chest-supported-row
+  seq: 17
+  group: session-b
+  groupLabel: Session B — Friday
+  youtube: _b6ch2nIchk
+  name: Chest-supported row
+  channel: Fit Father Project
+  cue: Chest on the pad so the low back does nothing. Pull to the ribs.
+  withdrawn: false
+- id: overhead-press
+  seq: 18
+  group: session-b
+  groupLabel: Session B — Friday
+  youtube: Did01dFR3Lk
+  name: Overhead press
+  channel: Bobby Maximus
+  cue: Ribs down, do not arch. Dumbbells so the shoulders pick their own path.
+  withdrawn: false
+- id: weighted-push-up
+  seq: 19
+  group: session-b
+  groupLabel: Session B — Friday
+  youtube: Q_FnrwhkdpU
+  name: Weighted push-up
+  channel: Live Lean TV
+  cue: Plate on the upper back. One straight line from head to heels.
+  withdrawn: false
+- id: hip-thrust
+  seq: 20
+  group: session-b
+  groupLabel: Session B — Friday
+  youtube: pF17m_CXfL0
+  name: Hip thrust
+  channel: Runna · for runners
+  cue: Heavy glutes with essentially no knee flexion — safe this close to Saturday.
+  withdrawn: false
+- id: face-pull
+  seq: 21
+  group: session-b
+  groupLabel: Session B — Friday
+  youtube: 3pToT5_DUiY
+  name: Face pull
+  channel: Colossus Fitness
+  cue: Elbows high. This is what balances all the pressing.
+  withdrawn: false
+- id: ez-bar-curl
+  seq: 22
+  group: session-b
+  groupLabel: Session B — Friday
+  youtube: 5NsFLGUf0Fo
+  name: EZ bar curl
+  channel: Colossus Fitness
+  cue: Elbows pinned. Half of the superset.
+  withdrawn: false
+- id: overhead-triceps-extension
+  seq: 23
+  group: session-b
+  groupLabel: Session B — Friday
+  youtube: X-iV-cG8cYs
+  name: Overhead triceps extension
+  channel: Colossus Fitness
+  cue: The other half. Three rounds and you are done.
+  withdrawn: false
+- id: ab-wheel-rollout
+  seq: 24
+  group: session-b
+  groupLabel: Session B — Friday
+  youtube: ikkOq5mHaho
+  name: Ab wheel rollout
+  channel: K’s Perfect Fitness TV
+  cue: Roll out only as far as the ribs stay down. That distance is the exercise.
+  withdrawn: false
+- id: single-leg-calf-raise-test
+  seq: 25
+  group: baseline
+  groupLabel: Baseline, this week
+  youtube: TbXGtsx3Y3Y
+  name: Single-leg calf raise test
+  channel: Evolution Physical Therapy
+  cue: Straight knee, full range, one every two seconds until form breaks.
+  withdrawn: false
+- id: knee-to-wall-test
+  seq: 26
+  group: baseline
+  groupLabel: Baseline, this week
+  youtube: wdsxep1BeMY
+  name: Knee-to-wall test
+  channel: Catalyst University
+  cue: Heel stays down. Measure toe to wall — <strong>under 10&nbsp;cm is a genuine restriction.</strong>
+  withdrawn: false
+- id: modified-thomas-test
+  seq: 27
+  group: baseline
+  groupLabel: Baseline, this week
+  youtube: vk5GnoRf4xM
+  name: Modified Thomas test
+  channel: Clinical Physio
+  cue: For hip extension. The hanging thigh should reach horizontal.
+  withdrawn: false
+- id: single-leg-squat-assessment
+  seq: 28
+  group: baseline
+  groupLabel: Baseline, this week
+  youtube: rmsoDEMMPBw
+  name: Single-leg squat assessment
+  channel: Axiom Academy · NASM
+  cue: What a clinician looks for, so you know what you are filming.
+  withdrawn: false

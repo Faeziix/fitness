@@ -1,0 +1,5 @@
+---
+const { zone, label } = Astro.props as { zone: 'easy'|'mp'|'threshold'|'max'; label: string };
+const cls = { easy: 'ze', mp: 'zm', threshold: 'zh', max: 'zx' }[zone];
+---
+<span class={`z ${cls}`}>{label}</span>

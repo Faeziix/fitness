@@ -1,0 +1,4 @@
+---
+const { min } = Astro.props as { min?: string };
+---
+<div class="scroller"><table style={min ? `min-width:${min}` : undefined}><slot /></table></div>

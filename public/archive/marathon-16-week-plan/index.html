@@ -1,0 +1,787 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>16-Week Marathon Plan — Distance Based</title>
+<style>
+  :root {
+    --ground: #EDEEEA;
+    --surface: #F8F9F6;
+    --surface-2: #E3E6E0;
+    --ink: #15191B;
+    --ink-2: #4E585B;
+    --ink-3: #7B858A;
+    --rule: #CFD3CD;
+    --rule-strong: #9DA5A2;
+    --accent: #23477E;
+    --accent-ink: #1B3A6B;
+    --accent-soft: #DCE3EF;
+    --caution: #8A6206;
+    --caution-soft: #F0E8CF;
+    --stop: #8E2318;
+    --stop-soft: #F3DFDA;
+    --go: #23604A;
+    --go-soft: #DBE9E2;
+
+    --easy: #2E7D57;
+    --easy-soft: #D9EBE2;
+    --mp: #B0851C;
+    --mp-soft: #F2E8CC;
+    --hard: #BF6320;
+    --hard-soft: #F5E1D2;
+    --max: #9E3226;
+    --max-soft: #F2DBD6;
+
+    --font-display: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-body: "Iowan Old Style", Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+    --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Consolas, monospace;
+
+    --step-0: 1.0625rem;
+    --step-1: 1.25rem;
+    --step-2: 1.5rem;
+    --step-3: 2rem;
+    --step-4: 3.25rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0F1316;
+      --surface: #161B1F;
+      --surface-2: #1E252A;
+      --ink: #E6EAEC;
+      --ink-2: #9CA7AC;
+      --ink-3: #6E797E;
+      --rule: #2A3238;
+      --rule-strong: #48545B;
+      --accent: #86ABE8;
+      --accent-ink: #A6C4F2;
+      --accent-soft: #1A2740;
+      --caution: #D9AB4A;
+      --caution-soft: #2E2716;
+      --stop: #E28C7E;
+      --stop-soft: #33201C;
+      --go: #6FBF9B;
+      --go-soft: #163026;
+
+      --easy: #62BF92;
+      --easy-soft: #142C22;
+      --mp: #DDB44F;
+      --mp-soft: #2C2515;
+      --hard: #E8925A;
+      --hard-soft: #301F13;
+      --max: #E0776A;
+      --max-soft: #301A16;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #0F1316;
+    --surface: #161B1F;
+    --surface-2: #1E252A;
+    --ink: #E6EAEC;
+    --ink-2: #9CA7AC;
+    --ink-3: #6E797E;
+    --rule: #2A3238;
+    --rule-strong: #48545B;
+    --accent: #86ABE8;
+    --accent-ink: #A6C4F2;
+    --accent-soft: #1A2740;
+    --caution: #D9AB4A;
+    --caution-soft: #2E2716;
+    --stop: #E28C7E;
+    --stop-soft: #33201C;
+    --go: #6FBF9B;
+    --go-soft: #163026;
+
+    --easy: #62BF92;
+    --easy-soft: #142C22;
+    --mp: #DDB44F;
+    --mp-soft: #2C2515;
+    --hard: #E8925A;
+    --hard-soft: #301F13;
+    --max: #E0776A;
+    --max-soft: #301A16;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: var(--step-0);
+    line-height: 1.62;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1080px; margin-inline: auto; padding: 0 clamp(1.15rem, 4vw, 3rem) 6rem; }
+  .prose { max-width: 68ch; }
+
+  p { margin: 0 0 1.05em; }
+  p:last-child { margin-bottom: 0; }
+  a { color: var(--accent-ink); text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .masthead { padding: clamp(3rem, 8vw, 5.5rem) 0 0; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 1.4rem;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--step-4);
+    line-height: 0.94;
+    letter-spacing: -0.032em;
+    text-transform: uppercase;
+    text-wrap: balance;
+    margin: 0 0 1.1rem;
+    max-width: 15ch;
+  }
+
+  .standfirst { font-size: var(--step-1); line-height: 1.5; color: var(--ink-2); max-width: 58ch; margin: 0 0 2.4rem; }
+
+  .statbar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 0 0 3.5rem;
+  }
+  .stat { background: var(--surface); padding: 0.95rem 1rem 1.05rem; }
+  .stat dt {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 0.35rem;
+  }
+  .stat dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat dd small { font-size: 0.72rem; font-weight: 600; color: var(--ink-2); letter-spacing: 0; }
+
+  section { margin-bottom: 4rem; }
+
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--step-3);
+    line-height: 1.05;
+    letter-spacing: -0.024em;
+    text-transform: uppercase;
+    text-wrap: balance;
+    margin: 0 0 0.35rem;
+    padding-top: 1.2rem;
+    border-top: 2px solid var(--ink);
+  }
+
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 1.6rem;
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-1);
+    letter-spacing: -0.012em;
+    text-transform: uppercase;
+    margin: 2.4rem 0 0.8rem;
+    text-wrap: balance;
+  }
+
+  h4 {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.74rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin: 1.8rem 0 0.6rem;
+  }
+
+  ul, ol { margin: 0 0 1.05em; padding-left: 1.2em; }
+  li { margin-bottom: 0.42em; }
+  li:last-child { margin-bottom: 0; }
+  strong { font-weight: 700; }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--surface-2);
+    padding: 0.1em 0.36em;
+    border-radius: 2px;
+  }
+
+  .note {
+    border-left: 4px solid var(--rule-strong);
+    background: var(--surface);
+    padding: 1.15rem 1.35rem;
+    margin: 1.8rem 0;
+    max-width: 72ch;
+  }
+  .note .label {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .note--stop { border-left-color: var(--stop); background: var(--stop-soft); }
+  .note--stop .label { color: var(--stop); }
+  .note--caution { border-left-color: var(--caution); background: var(--caution-soft); }
+  .note--caution .label { color: var(--caution); }
+  .note--go { border-left-color: var(--go); background: var(--go-soft); }
+  .note--go .label { color: var(--go); }
+  .note--accent { border-left-color: var(--accent); background: var(--accent-soft); }
+  .note--accent .label { color: var(--accent-ink); }
+
+  .scroller { overflow-x: auto; margin: 1.6rem 0; border-block: 1px solid var(--rule); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 1.45;
+    font-variant-numeric: tabular-nums;
+    min-width: 620px;
+  }
+
+  thead th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding: 0.7rem 0.7rem;
+    border-bottom: 1px solid var(--rule-strong);
+    white-space: nowrap;
+    background: var(--ground);
+  }
+
+  tbody td { padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:nth-child(even) { background: var(--surface); }
+
+  td.wide { font-family: var(--font-body); font-size: 0.92rem; min-width: 18ch; }
+  td.num { white-space: nowrap; }
+  th.num { text-align: left; }
+  .wk { font-weight: 700; color: var(--ink); }
+  .dash { color: var(--ink-3); }
+  .tot { font-weight: 700; }
+
+  .z {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 0.1em 0.4em;
+    border-radius: 2px;
+    white-space: nowrap;
+    border: 1px solid;
+  }
+  .ze { color: var(--easy); border-color: var(--easy); background: var(--easy-soft); }
+  .zm { color: var(--mp); border-color: var(--mp); background: var(--mp-soft); }
+  .zh { color: var(--hard); border-color: var(--hard); background: var(--hard-soft); }
+  .zx { color: var(--max); border-color: var(--max); background: var(--max-soft); }
+
+  tr[data-block] td:first-child { border-left: 3px solid transparent; padding-left: 0.55rem; }
+  tr[data-block="1"] td:first-child { border-left-color: var(--caution); }
+  tr[data-block="2"] td:first-child { border-left-color: var(--accent); }
+  tr[data-block="3"] td:first-child { border-left-color: var(--go); }
+  tr[data-block="4"] td:first-child { border-left-color: var(--stop); }
+
+  tr.down td { color: var(--ink-2); font-style: italic; }
+  tr.down td.wk { font-style: normal; }
+  tr.milestone td { background: var(--accent-soft); }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-top: 0.9rem;
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 0.45rem; }
+  .legend i { width: 14px; height: 3px; border-radius: 1px; display: inline-block; }
+  .legend .b1 { background: var(--caution); }
+  .legend .b2 { background: var(--accent); }
+  .legend .b3 { background: var(--go); }
+  .legend .b4 { background: var(--stop); }
+
+  .week {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 1.6rem 0;
+  }
+  .day { background: var(--surface); padding: 0.95rem 1rem 1.1rem; }
+  .day--rest { background: var(--ground); }
+  .day h5 {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 0.45rem;
+  }
+  .day p { margin: 0; font-size: 0.95rem; line-height: 1.45; }
+  .day .sub { display: block; color: var(--ink-2); font-size: 0.85rem; margin-top: 0.3rem; }
+
+  .chart-wrap { margin: 1.8rem 0; }
+  .bars {
+    display: grid;
+    grid-template-columns: repeat(16, minmax(16px, 1fr));
+    align-items: end;
+    gap: 3px;
+    height: 150px;
+  }
+  .bars .b { display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
+  .bars .b i { display: block; background: var(--accent); border-radius: 1px 1px 0 0; }
+  .bars .b.dn i { background: var(--surface-2); border: 1px solid var(--rule-strong); border-bottom: 0; }
+  .bars .b.pk i { background: var(--go); }
+  .bars .b.rc i { background: var(--stop); }
+  .axis {
+    display: grid;
+    grid-template-columns: repeat(16, minmax(16px, 1fr));
+    gap: 3px;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--ink-3);
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.4rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .steps { counter-reset: step; list-style: none; padding-left: 0; max-width: 68ch; }
+  .steps li { counter-increment: step; position: relative; padding-left: 2.6rem; margin-bottom: 0.9rem; }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0; top: 0.05em;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent-ink);
+    border: 1px solid var(--accent);
+    width: 1.7rem; height: 1.7rem;
+    display: grid; place-items: center;
+    border-radius: 50%;
+  }
+
+  .closer {
+    border-top: 2px solid var(--ink);
+    padding-top: 1.6rem;
+    margin-top: 4rem;
+    max-width: 68ch;
+  }
+  .closer p:last-child {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.015em;
+    font-size: var(--step-2);
+    line-height: 1.15;
+    margin-top: 1.4rem;
+  }
+
+  @media (max-width: 620px) {
+    :root { --step-4: 2.4rem; --step-3: 1.6rem; --step-1: 1.1rem; }
+
+    .scroller {
+      margin-inline: calc(-1 * clamp(1.15rem, 4vw, 3rem));
+      padding-inline: clamp(1.15rem, 4vw, 3rem);
+    }
+    table { min-width: 560px; font-size: 0.74rem; }
+    thead th { padding: 0.6rem 0.5rem; }
+    tbody td { padding: 0.5rem 0.5rem; }
+    td.wide { font-size: 0.85rem; min-width: 14ch; }
+
+    .stat { padding: 0.75rem 0.8rem 0.85rem; }
+    .stat dd { font-size: 1.25rem; }
+
+    .day { padding: 0.8rem 0.85rem 0.9rem; }
+
+    .bars { gap: 2px; height: 120px; }
+    .axis { gap: 2px; font-size: 0.52rem; }
+
+    .note { padding: 0.95rem 1.05rem; }
+    .steps li { padding-left: 2.3rem; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">16 weeks · distance-based · 9 August 2026</p>
+    <h1>Sixteen weeks to the start line</h1>
+    <p class="standfirst">A marathon block written in kilometres, built at the aggressive end of what a fit beginner can absorb. Peak 66 km a week. Real quality work. Marathon pace trained, not hoped for.</p>
+
+    <dl class="statbar">
+      <div class="stat"><dt>Length</dt><dd>16 <small>weeks</small></dd></div>
+      <div class="stat"><dt>Runs / week</dt><dd>5</dd></div>
+      <div class="stat"><dt>Peak week</dt><dd>66 <small>km</small></dd></div>
+      <div class="stat"><dt>Longest run</dt><dd>30 <small>km</small></dd></div>
+      <div class="stat"><dt>Total volume</dt><dd>772 <small>km</small></dd></div>
+    </dl>
+  </header>
+
+  <section>
+    <h2>What this plan is honest about</h2>
+    <p class="kicker">Read this once, then don't think about it again</p>
+
+    <div class="prose">
+      <p><strong>This plan gets you to the marathon start line genuinely fit, and it puts you on the sub-3 track rather than the just-finish track.</strong> That's a real distinction. A typical first-marathon plan peaks at 45 km a week with no pace work and produces someone who survives 42 km. This one peaks at 66, trains marathon pace directly, and produces someone who races it.</p>
+      <p>What it will not do is deliver sub-3. Sub-3 is 4:16 per kilometre held for 42.2 km, and the people who run it are training 70–100 km a week for years, not one block. Your realistic finish here depends almost entirely on the week-8 10K test, and the plan tells you how to convert that into a target when you have it.</p>
+      <p>Treat this as marathon number one of three or four. The sub-3 attempt is the one at the end of that sequence, and the fastest honest route to it runs straight through this block.</p>
+    </div>
+
+    <div class="note note--caution">
+      <span class="label">The one hard gate</span>
+      <p>Week 1 opens at 34 km across five runs with a 10 km long run. <strong>That is not a beginner's week one — it is week one of a plan that assumes you already run.</strong> Before you start, you need to be able to run 8 km continuously at conversational effort, and to have run 20–25 km a week for at least three consecutive weeks without pain.</p>
+      <p>If that's you, start at week 1. If it isn't, the four-week on-ramp below gets you there, and skipping it is the single most reliable way to turn this into a stress fracture instead of a marathon.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>The on-ramp</h2>
+    <p class="kicker">Only if you can't clear the gate · 4 weeks · 4 runs</p>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th class="num">Wk</th><th class="num">Mon</th><th class="num">Tue</th><th class="num">Wed</th><th class="num">Sat — long</th><th class="num">Sun</th><th class="num">Total</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="num wk">A</td><td class="num">5</td><td class="num dash">—</td><td class="num">5</td><td class="num">7</td><td class="num">3</td><td class="num tot">20</td></tr>
+          <tr><td class="num wk">B</td><td class="num">6</td><td class="num dash">—</td><td class="num">6</td><td class="num">9</td><td class="num">3</td><td class="num tot">24</td></tr>
+          <tr><td class="num wk">C</td><td class="num">6</td><td class="num">5</td><td class="num">6</td><td class="num">11</td><td class="num dash">—</td><td class="num tot">28</td></tr>
+          <tr class="down"><td class="num wk">D</td><td class="num">5</td><td class="num dash">—</td><td class="num">5</td><td class="num">9</td><td class="num">3</td><td class="num tot">22</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose">
+      <p>All of it <span class="z ze">easy</span>. Run/walk it if you need to — 8 minutes running, 1 walking, and the walk counts toward the distance. At the end of week D, run 8 km continuously. If it's conversational, start week 1. If it isn't, repeat weeks C and D. Nothing is lost by taking four extra weeks; a lot is lost by breaking in week 6.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Your paces</h2>
+    <p class="kicker">Pick a target row · recalibrate after the week-8 test</p>
+
+    <div class="prose">
+      <p>Every run in this plan has both a distance and a pace band. Find the marathon time you're aiming at, and read across. Until the week-8 10K test gives you real data, aim at the row you think is plausible and <strong>err one row slower</strong>.</p>
+    </div>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr>
+            <th>Goal marathon</th>
+            <th class="num">Marathon pace <span class="z zm">MP</span></th>
+            <th class="num">Easy <span class="z ze">E</span></th>
+            <th class="num">Threshold <span class="z zh">T</span></th>
+            <th class="num">Predicted 10K</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="wide">4:30</td><td class="num">6:24 /km</td><td class="num">7:25–8:05</td><td class="num">6:05</td><td class="num">57:00</td></tr>
+          <tr><td class="wide">4:00</td><td class="num">5:41 /km</td><td class="num">6:40–7:20</td><td class="num">5:22</td><td class="num">51:00</td></tr>
+          <tr><td class="wide">3:45</td><td class="num">5:20 /km</td><td class="num">6:20–7:00</td><td class="num">5:02</td><td class="num">47:30</td></tr>
+          <tr><td class="wide">3:30</td><td class="num">4:59 /km</td><td class="num">6:00–6:40</td><td class="num">4:42</td><td class="num">44:30</td></tr>
+          <tr><td class="wide">3:15</td><td class="num">4:37 /km</td><td class="num">5:35–6:15</td><td class="num">4:20</td><td class="num">41:15</td></tr>
+          <tr class="milestone"><td class="wide">3:00</td><td class="num">4:16 /km</td><td class="num">5:15–5:55</td><td class="num">4:00</td><td class="num">38:00</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Converting the week-8 10K into a target</h4>
+    <div class="prose">
+      <p>Take your 10K time and <strong>multiply by 4.7</strong>. A 45:00 10K predicts 3:32; a 40:00 predicts 3:08.</p>
+      <p>Then add 5–10% back on, because that formula assumes marathon-specific endurance you won't have yet in your first block. A 45:00 10K realistically means <strong>3:40–3:55</strong> on the day. Set your MP from the <em>realistic</em> number, not the predicted one. Training at a pace your endurance can't support is how first marathons blow up at 32 km.</p>
+    </div>
+
+    <div class="note note--accent">
+      <span class="label">Keep the effort check — it costs nothing</span>
+      <p>The pace band tells you what to run. The talk test tells you whether today is a day where that band is honest. On easy runs you should be able to say a full sentence out loud; if you can't, the pace is wrong for today regardless of what the plan says — heat, sleep and accumulated fatigue all move it. <strong>Distance is non-negotiable, pace is a target, effort is the veto.</strong></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>The week</h2>
+    <p class="kicker">Same seven days for sixteen weeks</p>
+
+    <div class="week">
+      <div class="day"><h5>Mon</h5><p>Easy<span class="sub">Start the week moving · + strides most weeks</span></p></div>
+      <div class="day"><h5>Tue</h5><p>Quality<span class="sub">Hills → threshold → marathon pace</span></p></div>
+      <div class="day day--rest"><h5>Wed</h5><p>Rest<span class="sub">+ strength · upper &amp; legs circuit</span></p></div>
+      <div class="day"><h5>Thu</h5><p>Medium-long<span class="sub">The session that separates this plan from a novice one</span></p></div>
+      <div class="day day--rest"><h5>Fri</h5><p>Rest<span class="sub">+ strength</span></p></div>
+      <div class="day"><h5>Sat</h5><p>Long run<span class="sub">Capped at 3 hours regardless of km</span></p></div>
+      <div class="day"><h5>Sun</h5><p>Recovery<span class="sub">Slowest run of the week. Genuinely.</span></p></div>
+    </div>
+
+    <div class="prose">
+      <p><strong>The Thursday medium-long run is the most important addition here.</strong> It's Pfitzinger's signature session and it's what makes this a marathon plan rather than a long-run-plus-filler plan. It builds mitochondrial density and capillary growth without the recovery cost of a second long run, and it's the main reason this block peaks at 66 km instead of 45.</p>
+      <p><strong>The week opening with a run means four run days in a row</strong> — Saturday long, Sunday recovery, Monday easy, Tuesday quality. That's deliberate and safe, because Sunday and Monday are the two easiest runs of the week, and the mid-week rest now lands on Wednesday, straight after the quality day, which is exactly where you want it.</p>
+      <p>One quality day, four easy days. That ratio is Patrick Sang's, and it's not up for improvement. The failure mode of every ambitious amateur is that the easy days creep up to medium and the hard day gets softer, until you're running five identical medium runs and plateauing for years.</p>
+    </div>
+
+    <div class="note">
+      <span class="label">The three-hour cap</span>
+      <p>Long runs are given in km, but <strong>stop at 3 hours whatever the distance says.</strong> Maximum aerobic adaptation from a long run lands around 2.5–3 hours; past that you add recovery cost and injury risk without much return. If 30 km takes you longer than 3 hours, run 3 hours. The number in the table is the goal, not the instruction.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Volume, all sixteen weeks</h2>
+    <p class="kicker">Kilometres per week · three build weeks, one down week</p>
+
+    <div class="chart-wrap">
+      <div class="bars" role="img" aria-label="Weekly volume in kilometres across 16 weeks: 34, 38, 42, 30, 44, 48, 52, 38, 55, 60, 64, 46, 66, 52, 38, then race week at 23 plus the marathon. Weeks 4, 8 and 12 are down weeks; week 13 is the peak; week 16 is race week.">
+        <span class="b"><i style="height:52%"></i></span>
+        <span class="b"><i style="height:58%"></i></span>
+        <span class="b"><i style="height:64%"></i></span>
+        <span class="b dn"><i style="height:45%"></i></span>
+        <span class="b"><i style="height:67%"></i></span>
+        <span class="b"><i style="height:73%"></i></span>
+        <span class="b"><i style="height:79%"></i></span>
+        <span class="b dn"><i style="height:58%"></i></span>
+        <span class="b"><i style="height:83%"></i></span>
+        <span class="b"><i style="height:91%"></i></span>
+        <span class="b"><i style="height:97%"></i></span>
+        <span class="b dn"><i style="height:70%"></i></span>
+        <span class="b pk"><i style="height:100%"></i></span>
+        <span class="b"><i style="height:79%"></i></span>
+        <span class="b"><i style="height:58%"></i></span>
+        <span class="b rc"><i style="height:35%"></i></span>
+      </div>
+      <div class="axis">
+        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span>
+        <span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
+      </div>
+      <div class="legend">
+        <span><i class="b1"></i> Block 1 · base</span>
+        <span><i class="b2"></i> Block 2 · build</span>
+        <span><i class="b3"></i> Block 3 · specific</span>
+        <span><i class="b4"></i> Block 4 · peak &amp; taper</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The plan</h2>
+    <p class="kicker">Every run, every week, in kilometres</p>
+
+    <div class="prose">
+      <p>Numbers are kilometres. Warm-up and cool-down are included in the quality-day figure. <strong>Unless a cell says otherwise, the run is <span class="z ze">easy</span> throughout.</strong> Wednesday and Friday are always rest.</p>
+    </div>
+
+    <h3>Block 1 · Base · weeks 1–4</h3>
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th class="num">Wk</th><th class="num">Mon</th><th class="num">Tue — quality</th><th class="num">Thu — med-long</th><th class="num">Sat — long</th><th class="num">Sun</th><th class="num">Total</th></tr>
+        </thead>
+        <tbody>
+          <tr data-block="1"><td class="num wk">1</td><td class="num">6</td><td class="num">6 + 4 strides</td><td class="num">7</td><td class="num">10</td><td class="num">5</td><td class="num tot">34</td></tr>
+          <tr data-block="1"><td class="num wk">2</td><td class="num">6</td><td class="num">7 + 6 strides</td><td class="num">8</td><td class="num">12</td><td class="num">5</td><td class="num tot">38</td></tr>
+          <tr data-block="1"><td class="num wk">3</td><td class="num">7</td><td class="num">7 · hills 6×45s</td><td class="num">9</td><td class="num">14</td><td class="num">5</td><td class="num tot">42</td></tr>
+          <tr data-block="1" class="down"><td class="num wk">4</td><td class="num">4</td><td class="num">5 + 4 strides</td><td class="num">7</td><td class="num">11</td><td class="num">3</td><td class="num tot">30</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose">
+      <p>No threshold work yet. The job of block 1 is to absorb five runs a week and a Thursday medium-long without accumulating damage. If anything hurts in these four weeks, the rest of the plan is not going to fix it.</p>
+    </div>
+
+    <h3>Block 2 · Build · weeks 5–8</h3>
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th class="num">Wk</th><th class="num">Mon</th><th class="num">Tue — quality</th><th class="num">Thu — med-long</th><th class="num">Sat — long</th><th class="num">Sun</th><th class="num">Total</th></tr>
+        </thead>
+        <tbody>
+          <tr data-block="2"><td class="num wk">5</td><td class="num">6</td><td class="num">8 · hills 8×45s</td><td class="num">9</td><td class="num">16</td><td class="num">5</td><td class="num tot">44</td></tr>
+          <tr data-block="2"><td class="num wk">6</td><td class="num">7</td><td class="num">8 · <span class="z zh">T</span> 2×8 min</td><td class="num">10</td><td class="num">18</td><td class="num">5</td><td class="num tot">48</td></tr>
+          <tr data-block="2"><td class="num wk">7</td><td class="num">8</td><td class="num">8 · <span class="z zh">T</span> 2×10 min</td><td class="num">10</td><td class="num">21</td><td class="num">5</td><td class="num tot">52</td></tr>
+          <tr data-block="2" class="down milestone"><td class="num wk">8</td><td class="num">6</td><td class="num">6 easy</td><td class="num">8</td><td class="num">14 · <span class="z zx">10K TEST</span></td><td class="num">4</td><td class="num tot">38</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose">
+      <p><strong>Week 8 is the calibration point of the whole block.</strong> Saturday replaces the long run with a 10 km time trial or, better, an actual 10 km race: 3 km warm-up, 10 km all out and evenly paced, 1 km cool-down. Every pace from week 9 onward comes off this number. Keep Tuesday and Thursday genuinely easy that week so the result measures your fitness rather than your fatigue.</p>
+    </div>
+
+    <h3>Block 3 · Specific · weeks 9–12</h3>
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th class="num">Wk</th><th class="num">Mon</th><th class="num">Tue — quality</th><th class="num">Thu — med-long</th><th class="num">Sat — long</th><th class="num">Sun</th><th class="num">Total</th></tr>
+        </thead>
+        <tbody>
+          <tr data-block="3"><td class="num wk">9</td><td class="num">7</td><td class="num">9 · <span class="z zh">T</span> 3×8 min</td><td class="num">11</td><td class="num">23 · last 5 <span class="z zm">MP</span></td><td class="num">5</td><td class="num tot">55</td></tr>
+          <tr data-block="3"><td class="num wk">10</td><td class="num">8</td><td class="num">9 · <span class="z zh">T</span> 20 min cont.</td><td class="num">12</td><td class="num">26</td><td class="num">5</td><td class="num tot">60</td></tr>
+          <tr data-block="3"><td class="num wk">11</td><td class="num">9</td><td class="num">9 · <span class="z zm">MP</span> 4×2 km</td><td class="num">13</td><td class="num">28 · last 6 <span class="z zm">MP</span></td><td class="num">5</td><td class="num tot">64</td></tr>
+          <tr data-block="3" class="down"><td class="num wk">12</td><td class="num">6</td><td class="num">7 · <span class="z zh">T</span> 2×8 min</td><td class="num">10</td><td class="num">20</td><td class="num">3</td><td class="num tot">46</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose">
+      <p>This is where the plan stops being generic endurance work and starts being marathon training. Marathon pace appears in two places at once — as its own session on Tuesday, and as a finish to the long run on Saturday. <strong>Running MP on already-tired legs is the specific adaptation the race demands</strong>, and it's the thing most first-timers have never practised.</p>
+    </div>
+
+    <h3>Block 4 · Peak and taper · weeks 13–16</h3>
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th class="num">Wk</th><th class="num">Mon</th><th class="num">Tue — quality</th><th class="num">Thu — med-long</th><th class="num">Sat — long</th><th class="num">Sun</th><th class="num">Total</th></tr>
+        </thead>
+        <tbody>
+          <tr data-block="4" class="milestone"><td class="num wk">13</td><td class="num">9</td><td class="num">9 · <span class="z zm">MP</span> 3×3 km</td><td class="num">13</td><td class="num">30 · last 8 <span class="z zm">MP</span></td><td class="num">5</td><td class="num tot">66</td></tr>
+          <tr data-block="4"><td class="num wk">14</td><td class="num">6</td><td class="num">8 · <span class="z zh">T</span> 2×10 min</td><td class="num">10</td><td class="num">24 · last 5 <span class="z zm">MP</span></td><td class="num">4</td><td class="num tot">52</td></tr>
+          <tr data-block="4"><td class="num wk">15</td><td class="num">4</td><td class="num">7 · <span class="z zm">MP</span> 3×2 km</td><td class="num">8</td><td class="num">16</td><td class="num">3</td><td class="num tot">38</td></tr>
+          <tr data-block="4" class="milestone"><td class="num wk">16</td><td class="num">8 + 4 strides</td><td class="num">6 easy</td><td class="num">5</td><td class="num">4 shakeout</td><td class="num"><span class="z zx">RACE</span></td><td class="num tot">23 + 42.2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose">
+      <p><strong>Week 13 is the hardest week of your life so far and week 14 starts giving it back.</strong> The taper is not a reward and it is not optional — the fitness is built by the end of week 13, and the last three weeks exist purely to shed fatigue. You will feel sluggish, heavy and undertrained through weeks 15 and 16. That is what a working taper feels like. It is not a signal to add anything.</p>
+      <p>Week 16: Monday 8 km easy with 4 strides, Tuesday 6 km easy, Wednesday rest, Thursday 5 km easy, Friday rest, Saturday 4 km shakeout, Sunday race.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>The quality sessions in full</h2>
+    <p class="kicker">Every quality session, spelled out · Tuesdays, except race-week Monday</p>
+
+    <div class="prose">
+      <p>All of them are built the same way: <strong>2–3 km warm-up → the work → 1–2 km cool-down.</strong> Recovery between blocks is easy jogging, not standing still. The warm-up and cool-down are inside the distance shown in the table.</p>
+    </div>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th class="num">Wk</th><th>Session</th><th>The work</th><th>Why it's there</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="num wk">1–2</td><td class="wide">Strides</td><td class="wide">4–6 × 20s fast and relaxed, 60s walk between</td><td class="wide">Mechanics and leg speed. Too short to fatigue you.</td></tr>
+          <tr><td class="num wk">3</td><td class="wide">Hills</td><td class="wide">6 × 45s uphill <span class="z zh">hard</span>, 4–6% grade, walk down</td><td class="wide">Strength at lower impact cost than flat speed. Always comes first.</td></tr>
+          <tr><td class="num wk">5</td><td class="wide">Hills</td><td class="wide">8 × 45s uphill <span class="z zh">hard</span>, walk down</td><td class="wide">Same, more of it.</td></tr>
+          <tr><td class="num wk">6</td><td class="wide">Threshold</td><td class="wide">2 × 8 min at <span class="z zh">T</span>, 3 min easy jog between</td><td class="wide">First real lactate work. Controlled and unpleasant, not desperate.</td></tr>
+          <tr><td class="num wk">7</td><td class="wide">Threshold</td><td class="wide">2 × 10 min at <span class="z zh">T</span>, 3 min between</td><td class="wide">Extending time at threshold.</td></tr>
+          <tr><td class="num wk">9</td><td class="wide">Threshold</td><td class="wide">3 × 8 min at <span class="z zh">T</span>, 2 min between</td><td class="wide">24 minutes of threshold — a real dose.</td></tr>
+          <tr><td class="num wk">10</td><td class="wide">Threshold</td><td class="wide">20 min continuous at <span class="z zh">T</span></td><td class="wide">Unbroken. Harder mentally than 3×8, same physiology.</td></tr>
+          <tr><td class="num wk">11</td><td class="wide">Marathon pace</td><td class="wide">4 × 2 km at <span class="z zm">MP</span>, 2 min easy between</td><td class="wide">Grooving race pace so it feels automatic.</td></tr>
+          <tr><td class="num wk">12</td><td class="wide">Threshold</td><td class="wide">2 × 8 min at <span class="z zh">T</span> — down week</td><td class="wide">Maintenance, not development.</td></tr>
+          <tr><td class="num wk">13</td><td class="wide">Marathon pace</td><td class="wide">3 × 3 km at <span class="z zm">MP</span>, 3 min easy between</td><td class="wide">9 km at race pace mid-week, before a 30 km Saturday.</td></tr>
+          <tr><td class="num wk">14</td><td class="wide">Threshold</td><td class="wide">2 × 10 min at <span class="z zh">T</span></td><td class="wide">Last hard session. Sharpness, not fitness.</td></tr>
+          <tr><td class="num wk">15</td><td class="wide">Marathon pace</td><td class="wide">3 × 2 km at <span class="z zm">MP</span></td><td class="wide">Rehearsal. Should feel easy — you're rested.</td></tr>
+          <tr><td class="num wk">16</td><td class="wide">Strides</td><td class="wide">4 × 20s</td><td class="wide">Keeping the legs awake. Nothing more.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note note--caution">
+      <span class="label">The trap</span>
+      <p>Once Tuesday gets hard, Wednesday and Thursday want to creep up too — you feel fit, and easy starts to feel insulting. <strong>Four easy runs and one hard one beats five medium ones by a distance.</strong> Elite Kenyan marathoners run roughly 80% of their kilometres <em>below</em> marathon pace. The analysis of 119,000 marathon runners found easy-pace volume is the single strongest thing separating fast marathoners from average ones — the fastest run ~80% easy, everyone else 50–60%.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Fuel</h2>
+    <p class="kicker">The part that decides the last 10 km</p>
+
+    <div class="prose">
+      <ul>
+        <li><strong>Under 60 minutes:</strong> water only.</li>
+        <li><strong>Over 75 minutes:</strong> start fuelling. Begin at 30–40 g of carbohydrate per hour from week 5, taking the first one at 30 minutes rather than when you feel empty.</li>
+        <li><strong>From week 9:</strong> build toward <strong>60–90 g/hour</strong> on every long run. Use a 2:1 glucose-to-fructose product — glucose transport saturates around 60 g/h, and fructose opens a second pathway that gets you past it.</li>
+        <li><strong>The gut is trainable and it needs training.</strong> Untrained, most people tolerate about 60 g/h. Two weeks of deliberate practice measurably improves absorption and reduces stomach trouble. The best predictor of race-day GI problems is not having rehearsed.</li>
+        <li><strong>Fluid:</strong> 400–800 ml/hour with 300–600 mg sodium per hour, more in heat.</li>
+        <li><strong>Before long runs:</strong> 1–2 g carbohydrate per kg bodyweight two hours out. At 70 kg that's 70–140 g.</li>
+        <li><strong>Use exactly what the race hands out</strong>, or carry your own for the whole race. Race day is not the day to discover a new gel.</li>
+      </ul>
+    </div>
+
+    <div class="note">
+      <span class="label">Heat, and where you live</span>
+      <p>August to October, default to the treadmill at 0.5–1% incline or run before 5:30am. Heat inflates effort at any given pace — the same speed that's easy in the gym is threshold outdoors in August. Trust the effort and let the pace collapse; the distance still counts. <strong>From November, move the long run and all MP work outdoors.</strong> Your race isn't on a treadmill, and pacing on a belt teaches you nothing about pacing yourself.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>When it doesn't go to plan</h2>
+    <p class="kicker">It won't, and that's accounted for</p>
+
+    <ol class="steps">
+      <li><strong>Missed one run.</strong> Let it go. Don't make it up, don't add it to another day.</li>
+      <li><strong>Missed most of a week.</strong> Repeat that week. Don't jump ahead to stay on schedule.</li>
+      <li><strong>Missed two weeks or more.</strong> Drop back to the start of the current block and rebuild.</li>
+      <li><strong>A week feels genuinely too hard</strong> — not unpleasant, but leaving you flat for days. Repeat it at 80% of the listed distances before moving on.</li>
+      <li><strong>Forced to choose which run to protect:</strong> long run first, medium-long second, quality last. Volume is what makes the marathon; the Tuesday session is what makes it fast, and fast is the thing you can afford to lose.</li>
+    </ol>
+
+    <div class="note note--stop">
+      <span class="label">Stop the session</span>
+      <p>Sharp or pinching pain anywhere. Pain that grows as you run. Anything that changes how you move. Chest pain or dizziness. Pain above roughly 3 out of 10. Anything still present 48 hours later means you go back a week — not forward with a better attitude.</p>
+      <p>At 66 km a week the tissues that fail first are the calf, the Achilles, the shin and the plantar fascia, roughly in that order. Bone stress injuries announce themselves as a small point of pain that gets worse during a run rather than warming up. That one is not negotiable — stop and get it imaged.</p>
+    </div>
+
+    <div class="note note--go">
+      <span class="label">Carry on</span>
+      <p>A dull ache that warms up and clears within ten minutes and is gone the next morning. Heavy legs on a Sunday after a Saturday long run. General fatigue in weeks 11 and 13. Being bored on easy runs — that means you're doing them right.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>After this</h2>
+    <p class="kicker">Where the sub-3 actually lives</p>
+
+    <div class="prose">
+      <p>Finish this block and you'll have done something most people who talk about marathons never do, and you'll have a real marathon time to build on. The route from there:</p>
+      <ul>
+        <li><strong>Marathon 2</strong> — the same shape, peaking at 80–85 km with two quality days instead of one. Aim to take 15–25 minutes off.</li>
+        <li><strong>Marathon 3</strong> — Pfitzinger 18/70 territory, 6 days a week, 90–100 km peak. This is the block where sub-3 becomes a live question rather than an aspiration.</li>
+      </ul>
+      <p>The markers to watch on the way: <strong>10K under 39 minutes, half marathon under 1:25, and 70–100 km a week sustained for twelve weeks or more.</strong> Hit those three and sub-3 is a matter of picking a flat race on a cool day. Miss them and no plan on earth delivers it.</p>
+    </div>
+  </section>
+
+  <div class="closer">
+    <p>The plan is aggressive on purpose. It peaks 45% higher than the standard first-marathon plan and it trains race pace directly, because you asked for something challenging and because the softer version would leave you on the wrong track for what you actually want.</p>
+    <p>The cost of that is that it has no slack in it. There's no week where you can be casual and catch up later. The rules about missed weeks aren't there for other people.</p>
+    <p>Week 1. 34 kilometres. Clear the gate first.</p>
+  </div>
+
+</div>

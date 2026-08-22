@@ -1,0 +1,217 @@
+- id: a-0
+  seq: 0
+  name: Pogo hops
+  intensity: easy
+  why: Ankle and Achilles stiffness — the cheapest running-economy gain there is. Small, fast, quiet. Knees barely bend.
+  early: 3 × 20
+  mid: 3 × 25
+  late: 2 × 20
+  rest: 45 s
+  session: A
+  intensityLabel: plyo
+- id: a-1
+  seq: 1
+  name: Trap-bar or dumbbell RDL
+  intensity: max
+  why: Hinge. Hamstrings and glutes under real load, with almost no knee flexion — the heaviest thing you can do without provoking the knee.
+  early: 4 × 6
+  mid: 3 × 5
+  late: 2 × 5
+  rest: 2–3 min
+  session: A
+  intensityLabel: heavy
+- id: a-2
+  seq: 2
+  name: Bulgarian split squat or step-up
+  intensity: threshold
+  why: Single-leg strength — running is a single-leg sport and this is the most specific lift in the plan. Also directly trains the hip control your knee is asking for.
+  early: 3 × 8 / leg
+  mid: 3 × 6 / leg
+  late: 2 × 6 / leg
+  rest: 2 min
+  session: A
+  intensityLabel: hard
+- id: a-3
+  seq: 3
+  name: Seated calf raise, bent knee
+  intensity: max
+  why: <strong>The most important lift on this page.</strong> Bent knee targets the soleus, which absorbs the largest single load in running and is the tissue that protects the Achilles and the shin.
+  early: 4 × 10
+  mid: 4 × 8
+  late: 3 × 8
+  rest: 60 s
+  session: A
+  intensityLabel: heavy
+- id: a-4
+  seq: 4
+  name: Standing calf raise, straight knee
+  intensity: null
+  why: Gastrocnemius. Full range, pause at the bottom stretch. Both calf variants are needed; they load different muscles.
+  early: 3 × 12
+  mid: 3 × 10
+  late: 2 × 10
+  rest: 45 s
+  session: A
+- id: a-5
+  seq: 5
+  name: Weighted pull-up
+  intensity: max
+  why: Your headline calisthenic. Placed here because it costs the legs nothing and Wednesday has the recovery room for it.
+  early: 4 × 5
+  mid: 3 × 5
+  late: 2 × 5
+  rest: 2–3 min
+  session: A
+  intensityLabel: heavy
+- id: a-6
+  seq: 6
+  name: Suitcase carry
+  intensity: null
+  why: Anti-lateral-flexion core and grip. One heavy dumbbell, walk tall, don't lean. Transfers to holding form late in a marathon better than any crunch.
+  early: 3 × 40 m
+  mid: 2 × 40 m
+  late: 2 × 30 m
+  rest: 60 s
+  session: A
+- id: b-0
+  seq: 7
+  name: Weighted dip
+  intensity: max
+  why: Your best press. Torso slightly forward, stop at a shoulder-comfortable depth.
+  early: 4 × 6
+  mid: 3 × 6
+  late: 2 × 6
+  rest: 2–3 min
+  session: B
+  intensityLabel: heavy
+- id: b-1
+  seq: 8
+  name: Chest-supported row
+  intensity: threshold
+  why: Horizontal pull with no lower-back cost — the chest support matters on a day before a long run.
+  early: 3 × 8
+  mid: 3 × 8
+  late: 2 × 8
+  rest: 90 s
+  session: B
+  intensityLabel: hard
+- id: b-2
+  seq: 9
+  name: Overhead press, dumbbell
+  intensity: null
+  why: Vertical press and overhead shoulder health. Seated or standing.
+  early: 3 × 8
+  mid: 3 × 6
+  late: 2 × 6
+  rest: 2 min
+  session: B
+- id: b-3
+  seq: 10
+  name: Weighted push-up
+  intensity: null
+  why: Second press dose. At 30–40 bodyweight reps this is endurance, not stimulus, so it must carry a plate or elevated feet to count.
+  early: 3 × 12
+  mid: 2 × 12
+  late: cut
+  rest: 90 s
+  session: B
+- id: b-4
+  seq: 11
+  name: Hip thrust, barbell or dumbbell
+  intensity: null
+  why: Heavy glutes with essentially no knee flexion and minimal next-day soreness — the one lower-body lift that's safe this close to Saturday.
+  early: 3 × 10
+  mid: 3 × 8
+  late: 2 × 8
+  rest: 90 s
+  session: B
+- id: b-5
+  seq: 12
+  name: Face pull or reverse fly
+  intensity: null
+  why: Rear delts and upper back. Counterweight to the pressing and to hours at a desk.
+  early: 3 × 15
+  mid: 2 × 15
+  late: 2 × 15
+  rest: 60 s
+  session: B
+- id: b-6
+  seq: 13
+  name: 'Superset: EZ curl + overhead triceps'
+  intensity: null
+  why: Arms. Present because you want to be strong and it costs the running nothing. First thing cut when time is short.
+  early: 2 × 10 each
+  mid: 2 × 10 each
+  late: cut
+  rest: 90 s
+  session: B
+- id: b-7
+  seq: 14
+  name: Ab wheel or long-lever plank
+  intensity: null
+  why: Anti-extension. The trunk stiffness that stops your form folding in the last 10&nbsp;km.
+  early: 3 × 10
+  mid: 3 × 10
+  late: 2 × 10
+  rest: 60 s
+  session: B
+- id: hip-0
+  seq: 15
+  name: Side-lying hip abduction
+  early: 2 × 15 / side
+  mid: 3 × 15, ankle weight
+  late: 3 × 12, heavier
+  why: Glute medius. Top leg slightly behind the body and toe turned <em>down</em>, not up — that's what takes the TFL out of it.
+  session: hip
+  intensity: null
+  rest: null
+- id: hip-1
+  seq: 16
+  name: Side plank, top-leg raise
+  early: 2 × 20 s / side
+  mid: 3 × 30 s + 8 raises
+  late: 3 × 45 s + 10 raises
+  why: Glute medius under trunk load. From the knees if the full version breaks form.
+  session: hip
+  intensity: null
+  rest: null
+- id: hip-2
+  seq: 17
+  name: Single-leg glute bridge
+  early: 2 × 10 / side
+  mid: 3 × 12, 2 s hold
+  late: 3 × 10, weighted
+  why: Glute max. Hips level throughout — if the free-side hip drops, the set is over.
+  session: hip
+  intensity: null
+  rest: null
+- id: hip-3
+  seq: 18
+  name: Banded lateral walk
+  early: 2 × 12 steps
+  mid: 2 × 15 each way
+  late: 2 × 20 each way
+  why: Band above the knees, quarter-squat, feet never touching. Burn on the outside of the hip, not the thigh.
+  session: hip
+  intensity: null
+  rest: null
+- id: hip-4
+  seq: 19
+  name: Copenhagen plank
+  early: skip
+  mid: 2 × 15 s / side, knee version
+  late: 2 × 25 s / side, full
+  why: Adductors. Balances the abduction work and is the best-evidenced groin-injury insurance there is.
+  session: hip
+  intensity: null
+  rest: null
+- id: hip-5
+  seq: 20
+  name: Single-leg step-down
+  early: 2 × 6, 10 cm step
+  mid: 2 × 8, 15 cm step
+  late: 3 × 8, 20 cm step
+  why: The transfer exercise — this is the single-leg squat from the test, trained. Knee tracks over the second toe. <strong>Pain-free range only.</strong>
+  session: hip
+  intensity: null
+  rest: null
