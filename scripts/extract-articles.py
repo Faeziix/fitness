@@ -63,6 +63,11 @@ def convert(body):
     body = re.sub(r'\n{3,}', '\n\n', body)
     return body.strip()
 
+
+# The 'About these videos' note in the source describes the old file:// architecture
+# (disk-opened pages, a python3 -m http.server workaround, blank offline tiles). It is
+# rewritten by hand in the-knee.mdx; do not re-import it verbatim from the original.
+
 ART = [
     dict(slug='honest-framing', order=1,
          title='What these plans are honest about',
